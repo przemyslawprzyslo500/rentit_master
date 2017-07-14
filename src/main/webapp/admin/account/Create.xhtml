@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AccountCreateDlg" widgetVar="AccountCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAccountTitle}" closeOnEscape="true">
+
+            <h:form id="AccountCreateForm">
+
+                <h:panelGroup id="display" rendered="#{accountController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+<!--                        <p:outputLabel value="#{bundle.CreateAccountLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{accountController.selected.id}" title="#{bundle.CreateAccountTitle_id}" required="true" requiredMessage="#{bundle.CreateAccountRequiredMessage_id}"/>-->
+
+                        <p:outputLabel value="#{bundle.CreateAccountLabel_accountFunction}" for="accountFunction" />
+                        <p:inputText id="accountFunction" value="#{accountController.selected.accountFunction}" title="#{bundle.CreateAccountTitle_accountFunction}"/>
+
+                        <p:outputLabel value="#{bundle.CreateAccountLabel_active}" for="active" />
+                        <p:inputText id="active" value="#{accountController.selected.active}" title="#{bundle.CreateAccountTitle_active}"/>
+
+                        <p:outputLabel value="#{bundle.CreateAccountLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{accountController.selected.email}" title="#{bundle.CreateAccountTitle_email}" size="255" maxlength="255"/>
+
+                        <p:outputLabel value="#{bundle.CreateAccountLabel_login}" for="login" />
+                        <p:inputText id="login" required="true" value="#{accountController.selected.login}" title="#{bundle.CreateAccountTitle_login}" size="255" maxlength="255"/>
+
+                        <p:outputLabel value="#{bundle.CreateAccountLabel_name}" for="name" />
+                        <p:inputText id="name" required="true" value="#{accountController.selected.name}" title="#{bundle.CreateAccountTitle_name}" size="255" maxlength="255"/>
+
+                        <p:outputLabel value="#{bundle.CreateAccountLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{accountController.selected.password}" title="#{bundle.CreateAccountTitle_password}" size="255" maxlength="255"/>
+
+                        <p:outputLabel value="#{bundle.CreateAccountLabel_phone}" for="phone" />
+                        <p:inputText id="phone" value="#{accountController.selected.phone}" title="#{bundle.CreateAccountTitle_phone}" size="255" maxlength="255"/>
+
+                        <p:outputLabel value="#{bundle.CreateAccountLabel_surname}" for="surname" />
+                        <p:inputText id="surname" value="#{accountController.selected.surname}" title="#{bundle.CreateAccountTitle_surname}" size="255" maxlength="255"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{accountController.saveNew}" value="#{bundle.Save}" update="display,:AccountListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('AccountCreateDialog'));">
+                        <p:confirm header="#{bundle.ConfirmationHeader}" message="#{bundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{bundle.Cancel}" oncomplete="PF('AccountCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

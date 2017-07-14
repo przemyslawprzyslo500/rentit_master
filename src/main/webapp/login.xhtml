@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <!--<ui:composition template="/WEB-INF/include/template_empty.xhtml">-->
+    <ui:composition template="/WEB-INF/include/template_empty.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body"><center>
+                <p:panel header="Please, login before start">
+<!--                    <p><h:outputText value="#{bundle.WelcomeMessage}"></h:outputText></p>-->
+                </p:panel>
+                <h2>Hello, please log in:</h2>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="j_username"
+                                       value="Please type your user name : "/>
+                        <h:inputText id="j_username" value="#{loginBean.userName}" 
+                                     autocomplete="off" size="20"/>
+                        <h:outputLabel for="j_password"
+                                       value="Please type your password : " />
+                        <h:inputSecret id="j_password" value="#{loginBean.password}"
+                                       autocomplete="off" size="20"/>
+                    </h:panelGrid>
+                    <h:panelGroup>
+                        <h:commandButton value="Submit" action="#{loginBean.login}"
+                                         type="submit"/>
+                        <h:commandButton value="Clear" type="reset"/>
+                    </h:panelGroup>
+                </h:form>
+                <h:form styleClass="settings-form" rendered="#{request.userPrincipal ne null}">
+                    You are logged in as #{request.userPrincipal.name}
+                    <h:commandButton action="#{loginBean.logout}" value="Logout"/>
+                </h:form>
+
+                <!--                <h:form id="formLogin" prependId="false"
+                                        onsubmit="document.getElementById('formLogin').action = 'j_security_check';">
+                                    <h:panelGrid columns="2">
+                                        <f:facet name="header">
+                                           Login
+                                        </f:facet>
+                                        <h:outputLabel for="j_username" value="Username: "/>
+                                        <h:inputText id="j_username" required="true" />
+                                        <h:outputLabel for="j_password" value="Password: "/>
+                                        <h:inputSecret id="j_password" required="true" />
+                
+                                        <f:facet name="footer">
+                                            <center>  <h:commandButton value="Login" type="submit"/></center>
+                                        </f:facet>
+                                        <h:link value="click For Admin Page - " outcome="/admin/adminOnly" rendered="#{request.isUserInRole('Admin')}" />
+                                    </h:panelGrid>
+                                </h:form>-->
+            </center>
+        </ui:define>
+    </ui:composition>
+</html>
