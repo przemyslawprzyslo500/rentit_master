@@ -30,7 +30,8 @@
         <web-resource-collection>
             <web-resource-name>AdminResource</web-resource-name>
             <description>AdminResource</description>
-            <url-pattern>/admin/*</url-pattern>
+            <url-pattern>/app/account/*</url-pattern>
+            <url-pattern>/WEB-INF/include/entity/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
