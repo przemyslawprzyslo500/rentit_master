@@ -18,11 +18,18 @@
                         <h:outputLabel value="#{bundle.EditAccountLabel_id}" for="id" />
                         <h:outputText id="id" value="#{accountController.selected.id}" />
 
-                        <p:outputLabel value="#{bundle.EditAccountLabel_accountFunction}" for="accountFunction" />
-                        <p:inputText id="accountFunction" value="#{accountController.selected.accountFunction}" title="#{bundle.EditAccountTitle_accountFunction}"/>
+                        <p:outputLabel for="accountFunction" value="#{bundle.CreateAccountLabel_accountFunction}" />
+                        <p:selectOneRadio id="accountFunction" value="#{accountController.selected.accountFunction}">
+                            <f:selectItem itemLabel="Administrator" itemValue="A" />
+                            <f:selectItem itemLabel="Manager" itemValue="M" />
+                            <f:selectItem itemLabel="Employee" itemValue="E" />
+                        </p:selectOneRadio>
 
-                        <p:outputLabel value="#{bundle.EditAccountLabel_active}" for="active" />
-                        <p:inputText id="active" value="#{accountController.selected.active}" title="#{bundle.EditAccountTitle_active}"/>
+                        <p:outputLabel for="accountActive" value="#{bundle.CreateAccountLabel_active}" />
+                        <p:selectOneRadio id="accountActive" value="#{accountController.selected.active}">
+                            <f:selectItem itemLabel="YES" itemValue="1" />
+                            <f:selectItem itemLabel="NO" itemValue="0" />
+                        </p:selectOneRadio>  
 
                         <p:outputLabel value="#{bundle.EditAccountLabel_email}" for="email" />
                         <p:inputText id="email" value="#{accountController.selected.email}" title="#{bundle.EditAccountTitle_email}" size="255" maxlength="255"/>
@@ -47,11 +54,7 @@
                     </p:commandButton>
                     <p:commandButton value="#{bundle.Cancel}" oncomplete="PF('AccountEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
                 </h:panelGroup>
-
             </h:form>
-
         </p:dialog>
-
     </ui:composition>
-
 </html>

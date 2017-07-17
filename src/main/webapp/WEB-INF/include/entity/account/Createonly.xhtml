@@ -8,12 +8,17 @@
 
     <ui:composition>
 
-        <p:dialog id="AccountCreateDlg" widgetVar="AccountCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAccountTitle}" closeOnEscape="true">
 
             <h:form id="AccountCreateForm">
 
                 <h:panelGroup id="display" rendered="#{accountController.selected != null}">
                     <p:panelGrid columns="2" columnClasses="column">
+
+<!--                        <p:outputLabel value="#{bundle.CreateAccountLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{accountController.selected.id}" title="#{bundle.CreateAccountTitle_id}" required="true" requiredMessage="#{bundle.CreateAccountRequiredMessage_id}"/>-->
+
+<!--                        <p:outputLabel value="#{bundle.CreateAccountLabel_accountFunction}" for="accountFunction" />
+                        <p:inputText id="accountFunction" value="#{accountController.selected.accountFunction}" title="#{bundle.CreateAccountTitle_accountFunction}"/>-->
 
                         <p:outputLabel for="accountFunction" value="#{bundle.CreateAccountLabel_accountFunction}" />
                         <p:selectOneRadio id="accountFunction" value="#{accountController.selected.accountFunction}">
@@ -21,6 +26,9 @@
                             <f:selectItem itemLabel="Manager" itemValue="M" />
                             <f:selectItem itemLabel="Employee" itemValue="E" />
                         </p:selectOneRadio>
+
+<!--                        <p:outputLabel value="#{bundle.CreateAccountLabel_active}" for="active" />
+                        <p:inputText id="active" value="#{accountController.selected.active}" title="#{bundle.CreateAccountTitle_active}"/>-->
 
                         <p:outputLabel for="accountActive" value="#{bundle.CreateAccountLabel_active}" />
                         <p:selectOneRadio id="accountActive" value="#{accountController.selected.active}">
@@ -55,7 +63,7 @@
 
             </h:form>
 
-        </p:dialog>
+        <!--</p:dialog>-->
 
     </ui:composition>
 

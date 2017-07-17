@@ -12,14 +12,27 @@
     <h:body>
         <p:growl id="growl" life="3000"/>
         <p:layout fullPage="true">
-            <p:layoutUnit position="north" size="100" header="#{bundle.AppName}">
-                <h:form styleClass="settings-form" rendered="#{request.userPrincipal ne null}">
-                    <p:outputLabel value="You are logged in as #{request.userPrincipal.name}  "/>
-                    <h:commandButton action="#{loginBean.logout}" value="Bean Logout"/>
-                    <h:commandButton action="#{request.logout()}" value="Request Logout"/>
-                </h:form>
+            <p:layoutUnit position="north" size="200" header="#{bundle.AppName}">
+                <p:panelGrid columns="2">
+                    <h:form styleClass="settings-form" rendered="#{request.userPrincipal ne null}">
+                        <p:outputLabel value="You are logged in as #{request.userPrincipal.name}  "/>
+                        <h:commandButton action="#{loginBean.logout}" value="Bean Logout"/>
+                        <h:commandButton action="#{request.logout()}"  value="Request Logout"/>
+                    </h:form>
+                    <p:panelGrid columns="3" >
+                        <p:commandButton value="My Account"/>
+                        <p:commandButton value="FeedBack"/>
+                        <p:commandButton value="My reservations"/>
+
+                        <p:outputLabel id="sessionrole" value="Role:"/>
+                        <p:outputLabel id="sessionuser" value="Owner:"/>
+                        <p:outputLabel id="sessioncatg" value="Category:"/>
+                    </p:panelGrid>
+                </p:panelGrid>
                 <!-- Menu here. Also a layout and a way to log a user out -->
+
                 <ui:include src="/WEB-INF/include/appmenu.xhtml"/>
+
             </p:layoutUnit>
             <p:layoutUnit position="south" size="60">
                 <ui:insert name="footer"/>
