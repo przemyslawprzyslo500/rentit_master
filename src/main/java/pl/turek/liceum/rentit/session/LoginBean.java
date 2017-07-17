@@ -14,6 +14,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import pl.turek.liceum.rentit.model.Account;
 
 /**
  *
@@ -25,6 +26,7 @@ public class LoginBean {
 
     private String userName;
     private String password;
+    private Account currentUser;
 
     public String getUserName() {
         return userName;
@@ -60,10 +62,10 @@ public class LoginBean {
             return null;
         }
     }
-    
+
     public String logout() {
-        ExternalContext externalContext =
-                FacesContext.getCurrentInstance().getExternalContext();
+        ExternalContext externalContext
+                = FacesContext.getCurrentInstance().getExternalContext();
         HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
         try {
             request.logout();
@@ -74,4 +76,21 @@ public class LoginBean {
         }
         return null;
     }
+
+//    public Account getCurrentUser() {
+//        FacesContext fc = FacesContext.getCurrentInstance();
+//        ExternalContext externalContext = fc.getExternalContext();
+//        if (externalContext.getUserPrincipal() == null) {
+//            Logger.getLogger("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!current principal is null");
+//        } else {
+//            Integer id = Integer.parseInt(externalContext.getUserPrincipal().getName());
+//            Logger.getLogger("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!LOGGED USER " + id);
+//            try {
+//                currentUser = getLoginService().getLoginById(id);
+//            } catch (Exception ex) {
+//            }
+//        }
+//        return currentUser;
+//    }
+
 }

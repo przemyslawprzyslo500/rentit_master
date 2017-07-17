@@ -15,7 +15,8 @@
             <p:layoutUnit position="north" size="100" header="#{bundle.AppName}">
                 <h:form styleClass="settings-form" rendered="#{request.userPrincipal ne null}">
                     <p:outputLabel value="You are logged in as #{request.userPrincipal.name}  "/>
-                    <h:commandButton action="#{loginBean.logout}" value="Logout"/>
+                    <h:commandButton action="#{loginBean.logout}" value="Bean Logout"/>
+                    <h:commandButton action="#{request.logout()}" value="Request Logout"/>
                 </h:form>
                 <!-- Menu here. Also a layout and a way to log a user out -->
                 <ui:include src="/WEB-INF/include/appmenu.xhtml"/>
