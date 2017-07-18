@@ -16,8 +16,16 @@
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean> 
     <managed-bean>
-    <managed-bean-name>currentDate</managed-bean-name>
-    <managed-bean-class>java.util.Date</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
+        <managed-bean-name>currentDate</managed-bean-name>
+        <managed-bean-class>java.util.Date</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>login</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

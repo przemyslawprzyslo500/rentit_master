@@ -7,7 +7,7 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition>
-        <p:dialog id="AccountEditDlg" widgetVar="AccountEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{bundle.EditAccountTitle}" closeOnEscape="true">
+        <p:dialog rendered="#{facesContext.externalContext.isUserInRole('admin')}" id="AccountEditDlg" widgetVar="AccountEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{bundle.EditAccountTitle}" closeOnEscape="true">
 
             <h:form id="AccountEditForm">
 
