@@ -60,7 +60,7 @@ public class Account implements Serializable {
     @Column(name = "EMAIL", length = 255)
     private String email;
     @Size(max = 255)
-    @Column(name = "LOGIN", length = 255, nullable = false)
+    @Column(name = "LOGIN", length = 255, nullable = false, unique = true)
     private String login;
     @Size(max = 255)
     @Column(name = "NAME", length = 255, nullable = false)
