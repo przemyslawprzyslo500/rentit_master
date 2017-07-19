@@ -36,7 +36,8 @@
             <url-pattern>/WEB-INF/include/entity/*</url-pattern>
             <url-pattern>/faces/app/reservStatus/*</url-pattern>
             <url-pattern>/faces/app/*</url-pattern>
-            <url-pattern>/faces/app/account/index.xhtml</url-pattern>
+            <url-pattern>/faces/app/account/*</url-pattern>
+            <url-pattern>/faces/errors/*</url-pattern>
             <url-pattern>/faces/WEB-INF/include/entity/account/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
@@ -51,7 +52,9 @@
             <description>EmployeeConstrain</description>
             <url-pattern>/faces/app/account/*</url-pattern>
             <url-pattern>/faces/app/reserv/*</url-pattern>
-            
+            <url-pattern>/faces/app/equipment/*</url-pattern>
+            <url-pattern>/faces/app/reservStatus/*</url-pattern>
+            <url-pattern>/faces/errors/*</url-pattern>
             <url-pattern>/WEB-INF/include/entity/equipment/List.xhtml</url-pattern>
             <url-pattern>/WEB-INF/include/entity/equipment/View.xhtml</url-pattern>
         </web-resource-collection>
@@ -67,7 +70,11 @@
             <description>EmployeeConstrain</description>
             <url-pattern>/WEB-INF/include/entity/equipment/List.xhtml</url-pattern>
             <url-pattern>/WEB-INF/include/entity/equipment/View.xhtml</url-pattern>
+            <url-pattern>/WEB-INF/include/entity/account/EditMyAccount.xhtml</url-pattern>
             <url-pattern>/faces/app/equipment/*</url-pattern>
+            <url-pattern>/faces/app/reserv/*</url-pattern>
+            <!--<url-pattern>/faces/app/account/EditMyAccount.xhtml</url-pattern>-->
+            <url-pattern>/faces/errors/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
@@ -95,7 +102,7 @@
         <description>managers</description>
         <role-name>manager</role-name>
     </security-role>
-    <error-page>
+<!--    <error-page>
         <error-code>403</error-code>
         <location>/faces/errors/403.xhtml</location>
     </error-page>
@@ -106,5 +113,5 @@
     <error-page>
         <error-code>404</error-code>
         <location>/faces/errors/error.xhtml</location>
-    </error-page>
+    </error-page>-->
 </web-app>

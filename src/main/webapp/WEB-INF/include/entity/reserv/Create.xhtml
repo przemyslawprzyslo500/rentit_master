@@ -15,24 +15,19 @@
                 <h:panelGroup id="display" rendered="#{reservController.selected != null}">
                     <p:panelGrid columns="2" columnClasses="column">
 
-<!--                        <p:outputLabel value="#{bundle.CreateReservLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{reservController.selected.id}" title="#{bundle.CreateReservTitle_id}" required="true" requiredMessage="#{bundle.CreateReservRequiredMessage_id}"/>-->
-
                         <p:outputLabel value="#{bundle.CreateReservLabel_description}" for="description" />
-                        <p:inputText id="description" value="#{reservController.selected.description}" title="#{bundle.CreateReservTitle_description}" size="255" maxlength="255"/>
+                        <p:inputText id="description" value="#{reservController.selected.description}" title="#{bundle.CreateReservTitle_description}" size="100" maxlength="255"/>
 
-                        <p:outputLabel value="#{bundle.CreateReservLabel_reservationEnd}" for="reservationEnd" />
-                        <p:calendar id="reservationEnd" pattern="MM/dd/yyyy" value="#{reservController.selected.reservationEnd}" title="#{bundle.CreateReservTitle_reservationEnd}"  showOn="button"/>
-
-                        <p:outputLabel value="#{bundle.CreateReservLabel_reservationMadeDate}" for="reservationMadeDate" />
-                        <!--<p:calendar id="reservationMadeDate" pattern="MM/dd/yyyy" value="#{reservController.selected.reservationMadeDate}" title="#{bundle.CreateReservTitle_reservationMadeDate}"  showOn="button"/>-->
-                        <!--<p:calendar id="reservationMadeDate" pattern="MM/dd/yyyy" value="#{currentDate}" title="#{bundle.CreateReservTitle_reservationMadeDate}"  showOn="button"/>-->
-                        <p:outputLabel id="reservationMadeDate" value="#{currentDate}" title="#{bundle.CreateReservTitle_reservationMadeDate}"/>
-                        
                         <p:outputLabel value="#{bundle.CreateReservLabel_reservationStart}" for="reservationStart" />
                         <p:calendar id="reservationStart" pattern="MM/dd/yyyy" required="true" requiredMessage="#{bundle.CreateReservRequiredMessage_date}" value="#{reservController.selected.reservationStart}" title="#{bundle.CreateReservTitle_reservationStart}"  showOn="button" />
-                        <p:outputLabel value="#{bundle.CreateReservLabel_accountId}" for="accountId" />
                         
+                        <p:outputLabel value="#{bundle.CreateReservLabel_reservationEnd}" for="reservationEnd" />
+                        <p:calendar id="reservationEnd" pattern="MM/dd/yyyy" required="true" value="#{reservController.selected.reservationEnd}" title="#{bundle.CreateReservTitle_reservationEnd}"  showOn="button"/>
+
+                        <p:outputLabel value="#{bundle.CreateReservLabel_reservationMadeDate}" for="reservationMadeDate" />
+                        <p:calendar id="reservationMadeDate" pattern="MM/dd/yyyy" mindate="#{currentDate}" maxdate="#{currentDate}" required="true" value="#{reservController.selected.reservationMadeDate}" title="#{bundle.CreateReservTitle_reservationMadeDate}"  showOn="button"/>
+                        
+                        <p:outputLabel value="#{bundle.CreateReservLabel_accountId}" for="accountId" />
                         <p:selectOneMenu id="accountId" value="#{reservController.selected.accountId}"  converter="accountConverter">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{accountController.items}"
@@ -40,7 +35,6 @@
                                            itemValue="#{accountIdItem}"
                                            itemLabel="#{accountIdItem.name.toString()}"
                                            />
-
                         </p:selectOneMenu>
 
                         <p:outputLabel value="#{bundle.CreateReservLabel_equipmentId}" for="equipmentId" />
@@ -51,7 +45,6 @@
                                            itemValue="#{equipmentIdItem}"
                                            itemLabel="#{equipmentIdItem.name.toString()}"
                                            />
-
                         </p:selectOneMenu>
 
                         <p:outputLabel value="#{bundle.CreateReservLabel_reservStatusId}" for="reservStatusId" />

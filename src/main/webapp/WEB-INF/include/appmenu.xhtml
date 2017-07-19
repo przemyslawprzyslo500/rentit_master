@@ -12,11 +12,13 @@
                 <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
                 <p:menuitem rendered="#{request.userPrincipal==null}" value="Zaloguj" outcome="/login" icon="ui-icon-home"/>
                 <!--<p:submenu label="#{bundle.Maintenance}">-->
+                    <p:menuitem value="Edit my account " outcome="/app/account/EditMyAccount.xhtml" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('admin')}" value="#{bundle.AccountHeading} " outcome="/app/account/index" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('manager')}" value="#{bundle.EquipmentHeading} " outcome="/app/equipment/index" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('employee')}" value="#{bundle.EquipmentHeading} " outcome="/app/equipment/index" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('admin')}" value="#{bundle.LicenseTypeHeading} " outcome="/app/licenseType/index" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('manager')}" value="#{bundle.ReservHeading} " outcome="/app/reserv/index" />
+                    <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('employee')}" value="#{bundle.ReservHeading} " outcome="/app/reserv/index" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('admin')}" value="#{bundle.ReservStatusHeading} " outcome="/app/reservStatus/index" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('manager')}" value="#{bundle.UsePlaceHeading} " outcome="/app/usePlace/index" />
                 <!--</p:submenu>-->

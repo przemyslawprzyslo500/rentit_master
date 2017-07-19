@@ -8,15 +8,15 @@
 
     <ui:composition>
 
-        <p:dialog id="EquipmentCreateDlg" widgetVar="EquipmentCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEquipmentTitle}" closeOnEscape="true">
+        <p:dialog id="EquipmentCreateDlg" widgetVar="EquipmentCreateDialog" 
+                  modal="true" resizable="false" appendTo="@(body)" 
+                  header="#{bundle.CreateEquipmentTitle}" closeOnEscape="true"
+                  rendered="#{facesContext.externalContext.isUserInRole('manager')}">
 
             <h:form id="EquipmentCreateForm">
 
                 <h:panelGroup id="display" rendered="#{equipmentController.selected != null}">
                     <p:panelGrid columns="2" columnClasses="column">
-
-<!--                        <p:outputLabel value="#{bundle.CreateEquipmentLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{equipmentController.selected.id}" title="#{bundle.CreateEquipmentTitle_id}" required="true" requiredMessage="#{bundle.CreateEquipmentRequiredMessage_id}"/>-->
 
                         <p:outputLabel value="#{bundle.CreateEquipmentLabel_name}" for="name" />
                         <p:inputText id="name" value="#{equipmentController.selected.name}" title="#{bundle.CreateEquipmentTitle_name}" size="255" maxlength="255"/>

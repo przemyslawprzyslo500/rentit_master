@@ -4,19 +4,22 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      template="/WEB-INF/include/template.xhtml">
 
-    <ui:composition>
-        <p:dialog rendered="#{facesContext.externalContext.isUserInRole('admin')}" id="AccountEditDlg" widgetVar="AccountEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{bundle.EditAccountTitle}" closeOnEscape="true">
+    <ui:composition template="/WEB-INF/include/template.xhtml">
+        <ui:define name="title">
+            <!--<h:outputText value="#{bundle.AppName}"></h:outputText>-->
+        </ui:define>
+        <ui:define name="body">       
+            <center>
+<!--<p:dialog rendered="#{facesContext.externalContext.isUserInRole('admin')}" id="AccountEditDlg" widgetVar="AccountEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{bundle.EditAccountTitle}" closeOnEscape="true">-->
+                <h:form id="EditMyAccount">
+                    <!--<h:panelGroup id="display">-->
+                    <p:panelGrid  columns="2" columnClasses="column" >
 
-            <h:form id="EditMyAccount">
-
-                <h:panelGroup id="display">
-                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{accountController.selected != null}">
-
-
-                        <h:outputLabel value="#{bundle.EditAccountLabel_id}" for="id" />
-                        <h:outputText id="id" value="#{accountController.selected.id}" />
+<!--                        <h:outputLabel value="#{bundle.EditAccountLabel_id}" for="id" />
+                        <h:outputText id="id" value="#{accountController.selected.id}" />-->
 
                         <p:outputLabel for="accountFunction" value="#{bundle.CreateAccountLabel_accountFunction}" />
                         <p:selectOneRadio id="accountFunction" value="#{accountController.selected.accountFunction}">
@@ -49,12 +52,15 @@
                         <p:outputLabel value="#{bundle.EditAccountLabel_surname}" for="surname" />
                         <p:inputText id="surname" value="#{accountController.selected.surname}" title="#{bundle.EditAccountTitle_surname}" size="100" maxlength="255"/>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{accountController.save}" value="#{bundle.Save}" update="display,:AccountListForm:datalist,:AccountListForm:AccountDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('AccountEditDialog'));">
-                        <p:confirm header="#{bundle.ConfirmationHeader}" message="#{bundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
-                    </p:commandButton>
-                    <p:commandButton value="#{bundle.Cancel}" oncomplete="PF('AccountEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
-                </h:panelGroup>
-            </h:form>
-        </p:dialog>
+
+<!--                    <p:commandButton actionListener="#{accountController.save}" value="#{bundle.Save}" update="display,:AccountListForm:datalist,:AccountListForm:AccountDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('AccountEditDialog'));">
+        <p:confirm header="#{bundle.ConfirmationHeader}" message="#{bundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+    </p:commandButton>
+    <p:commandButton value="#{bundle.Cancel}" oncomplete="PF('AccountEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>-->
+                    <!--</h:panelGroup>-->
+                </h:form>
+                <!--</p:dialog>-->
+                </center>
+        </ui:define>
     </ui:composition>
 </html>

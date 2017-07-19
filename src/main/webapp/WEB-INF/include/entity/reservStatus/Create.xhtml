@@ -15,8 +15,8 @@
                 <h:panelGroup id="display" rendered="#{reservStatusController.selected != null}">
                     <p:panelGrid columns="2" columnClasses="column">
 
-                        <p:outputLabel value="#{bundle.CreateReservStatusLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{reservStatusController.selected.id}" title="#{bundle.CreateReservStatusTitle_id}" required="true" requiredMessage="#{bundle.CreateReservStatusRequiredMessage_id}"/>
+<!--                        <p:outputLabel value="#{bundle.CreateReservStatusLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{reservStatusController.selected.id}" title="#{bundle.CreateReservStatusTitle_id}" required="true" requiredMessage="#{bundle.CreateReservStatusRequiredMessage_id}"/>-->
 
                         <p:outputLabel value="#{bundle.CreateReservStatusLabel_reservationStatusName}" for="reservationStatusName" />
                         <p:inputText id="reservationStatusName" value="#{reservStatusController.selected.reservationStatusName}" title="#{bundle.CreateReservStatusTitle_reservationStatusName}" size="255" maxlength="255"/>
