@@ -10,13 +10,13 @@ DELETE FROM RENTIT.RESERV_STATUS;
 DELETE FROM RENTIT.USE_PLACE;
 
 INSERT INTO RENTIT.ACCOUNT (ID, ACCOUNT_FUNCTION, ACTIVE, EMAIL, LOGIN, NAME, PASSWORD, PHONE, SURNAME) 
-VALUES (1, 'A', 1, 'test@test.pl', 'admin', 'Przemysław', 'admin', '111111111', 'Przyslo');
+VALUES (1, 'admin', 1, 'test@test.pl', 'admin', 'Przemysław', 'admin', '111111111', 'Przyslo');
 
 INSERT INTO RENTIT.ACCOUNT (ID, ACCOUNT_FUNCTION, ACTIVE, EMAIL, LOGIN, NAME, PASSWORD, PHONE, SURNAME) 
-VALUES (2, 'K', 1, 'kierownik@kierownik.pl', 'kierownik', 'Jan', 'kierownik', '222222222', 'Tomaszak');
+VALUES (2, 'manager', 1, 'kierownik@kierownik.pl', 'kierownik', 'Jan', 'kierownik', '222222222', 'Tomaszak');
 
 INSERT INTO RENTIT.ACCOUNT (ID, ACCOUNT_FUNCTION, ACTIVE, EMAIL, LOGIN, NAME, PASSWORD, PHONE, SURNAME) 
-VALUES (3, 'P', 1, 'pracownik@pracownik.pl', 'pracownik', 'Zenon', 'pracownik', '333333333', 'Pajor');
+VALUES (3, 'employee', 1, 'pracownik@pracownik.pl', 'pracownik', 'Zenon', 'pracownik', '333333333', 'Pajor');
 
 -- INSERT INTO RENTIT.ACCOUNT_FUNCTION (ID, FUNCTION_NAME, ACCOUNT_ID) 
 -- VALUES (1, 'Administrator', 1);
