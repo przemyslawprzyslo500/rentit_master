@@ -9,7 +9,7 @@
     <ui:composition>
         <p:dialog rendered="#{facesContext.externalContext.isUserInRole('admin')}" id="AccountEditDlg" widgetVar="AccountEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{bundle.EditAccountTitle}" closeOnEscape="true">
 
-            <h:form id="EditMyAccount">
+            <h:form id="AccountEditForm">
 
                 <h:panelGroup id="display">
                     <p:panelGrid  columns="2" columnClasses="column" rendered="#{accountController.selected != null}">

@@ -14,7 +14,7 @@
 
         <ui:include src="/WEB-INF/include/entity/account/List.xhtml"/>
         <ui:include src="/WEB-INF/include/entity/account/View.xhtml"/>
-        <ui:include src="/WEB-INF/include/entity/account/Edit.xhtml"/>
+        <ui:include rendered="#{facesContext.externalContext.isUserInRole('admin')}" src="/WEB-INF/include/entity/account/Edit.xhtml"/>
         <ui:include rendered="#{facesContext.externalContext.isUserInRole('admin')}" src="/WEB-INF/include/entity/account/Create.xhtml"/>
 
     </ui:define>
