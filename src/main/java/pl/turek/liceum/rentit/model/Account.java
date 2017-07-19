@@ -51,8 +51,8 @@ public class Account implements Serializable {
     @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "AccountIdGen")
     private Integer id;
-    @Column(name = "ACCOUNT_FUNCTION", nullable = false)
-    private Character accountFunction;
+    @Column(name = "ACCOUNT_FUNCTION", nullable = false, length = 20)
+    private String accountFunction;
     @Column(name = "ACTIVE")
     private Short active;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
@@ -93,11 +93,11 @@ public class Account implements Serializable {
         this.id = id;
     }
 
-    public Character getAccountFunction() {
+    public String getAccountFunction() {
         return accountFunction;
     }
 
-    public void setAccountFunction(Character accountFunction) {
+    public void setAccountFunction(String accountFunction) {
         this.accountFunction = accountFunction;
     }
 
