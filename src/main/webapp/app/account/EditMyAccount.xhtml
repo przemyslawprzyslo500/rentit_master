@@ -19,6 +19,8 @@
                         <h:outputLabel value="#{bundle.EditAccountLabel_id}" for="id" />
                         <h:outputText id="id" value="#{accountController.selected.id}=#{request.userPrincipal.name}" />
                         
+                        <h:outputLabel value="login" for="login" />
+                        <h:outputText id="login" value="#{accountDTO.login}" />
 <!--                        <p:outputLabel for="accountFunction" value="#{bundle.CreateAccountLabel_accountFunction}" />
                         <p:selectOneRadio id="accountFunction" value="#{accountController.selected.accountFunction}">
                             <f:selectItem itemLabel="Administrator" itemValue="A" />
