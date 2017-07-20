@@ -13,15 +13,13 @@
         </ui:define>
         <ui:define name="body">       
             <center>
-<!--<p:dialog rendered="#{facesContext.externalContext.isUserInRole('admin')}" id="AccountEditDlg" widgetVar="AccountEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{bundle.EditAccountTitle}" closeOnEscape="true">-->
                 <h:form id="EditMyAccount">
-                    <!--<h:panelGroup id="display">-->
                     <p:panelGrid  columns="2" columnClasses="column" >
 
-<!--                        <h:outputLabel value="#{bundle.EditAccountLabel_id}" for="id" />
-                        <h:outputText id="id" value="#{accountController.selected.id}" />-->
-
-                        <p:outputLabel for="accountFunction" value="#{bundle.CreateAccountLabel_accountFunction}" />
+                        <h:outputLabel value="#{bundle.EditAccountLabel_id}" for="id" />
+                        <h:outputText id="id" value="#{accountController.selected.id}=#{request.userPrincipal.name}" />
+                        
+<!--                        <p:outputLabel for="accountFunction" value="#{bundle.CreateAccountLabel_accountFunction}" />
                         <p:selectOneRadio id="accountFunction" value="#{accountController.selected.accountFunction}">
                             <f:selectItem itemLabel="Administrator" itemValue="A" />
                             <f:selectItem itemLabel="Manager" itemValue="M" />
@@ -50,7 +48,7 @@
                         <p:inputText id="phone" value="#{accountController.selected.phone}" title="#{bundle.EditAccountTitle_phone}" size="100" maxlength="255"/>
 
                         <p:outputLabel value="#{bundle.EditAccountLabel_surname}" for="surname" />
-                        <p:inputText id="surname" value="#{accountController.selected.surname}" title="#{bundle.EditAccountTitle_surname}" size="100" maxlength="255"/>
+                        <p:inputText id="surname" value="#{accountController.selected.surname}" title="#{bundle.EditAccountTitle_surname}" size="100" maxlength="255"/>-->
                     </p:panelGrid>
 
 <!--                    <p:commandButton actionListener="#{accountController.save}" value="#{bundle.Save}" update="display,:AccountListForm:datalist,:AccountListForm:AccountDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('AccountEditDialog'));">
