@@ -17,10 +17,9 @@
                     <h:form styleClass="settings-form" rendered="#{request.userPrincipal ne null}"
                             id="logout" prependId="false">
                         <p:outputLabel value="You are logged in as: #{request.userPrincipal.name}  "/>
-                        <p:outputLabel value="Your role is:  #{request.userPrincipal.name}  "/>
                         <p:commandButton action="#{loginBean.logout}" value="  Logout  "/>
-                        <!--<p:commandButton action="#{request.logout()}" onclick="" value="Request Logout"/>-->
-                        <p:commandButton value="Edit my account" action="/app" immediate="true" />
+                        <!--<p:commandButton value="Edit my account" action="/app" immediate="true" />-->
+                        <!--<p:commandButton id="editButton" value="Edit my account2" update=":AccountEditForm" oncomplete="PF('AccountEditDialog').show()" disabled="#{empty accountController.selected}"/>-->
                     </h:form>
                     <p:panelGrid columns="2" >
                         <p:commandButton value="My Account" />

@@ -21,6 +21,7 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -64,6 +65,9 @@ public class LicenseType implements Serializable {
     private Date licenseStart;
     @OneToMany(mappedBy = "licenseTypeId")
     private Collection<Equipment> equipmentCollection;
+    @Version
+    @Column(name = "VERSION")
+    private Long version;
 
     public LicenseType() {
     }

@@ -18,6 +18,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -49,6 +50,9 @@ public class ReservStatus implements Serializable {
     private String reservationStatusName;
     @OneToMany(mappedBy = "reservStatusId")
     private Collection<Reserv> reservCollection;
+    @Version
+    @Column(name = "VERSION")
+    private Long version;
 
     public ReservStatus() {
     }

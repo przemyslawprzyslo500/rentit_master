@@ -18,6 +18,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -75,6 +76,9 @@ public class Account implements Serializable {
     @Size(max = 255)
     @Column(name = "SURNAME", length = 255, nullable = false)
     private String surname;
+    @Version
+    @Column(name = "VERSION")
+    private Long version;
     @OneToMany(mappedBy = "accountId")
     private Collection<Reserv> reservCollection;
 

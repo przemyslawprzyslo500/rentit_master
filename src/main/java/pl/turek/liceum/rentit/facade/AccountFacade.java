@@ -8,8 +8,11 @@ package pl.turek.liceum.rentit.facade;
 import java.util.Collection;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import pl.turek.liceum.rentit.model.Account;
 import pl.turek.liceum.rentit.model.Account_;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -33,6 +36,39 @@ public class AccountFacade extends AbstractFacade<Account> {
         return em;
     }
 
+    public Account findByName(String name) {
+        return (Account) em.createQuery("SELECT a FROM ACCOUNT a where a.login = :login")
+                .setParameter("login", name).getSingleResult();
+    }
+
+//    public Account znajdzLogin(String login) {
+//        CriteriaBuilder cb = em.getCriteriaBuilder();
+//        CriteriaQuery<Konto> query = cb.createQuery(Konto.class);
+//        Root<Konto> from = query.from(Konto.class);
+//        query = query.select(from);
+//        query = query.where(cb.equal(from.get(Konto_.login), login));
+//        TypedQuery<Konto> tq = em.createQuery(query);
+//        return tq.getSingleResult();
+//    }
+
+//    private Account getCurrentAccount() {
+//        Account u = null;
+//        FacesContext fc = FacesContext.getCurrentInstance();
+//        ExternalContext externalContext = fc.getExternalContext();
+//        if (externalContext.getUserPrincipal() == null) {
+//            System.out.println("current principal is null");
+//        } else {
+//            Long id = Long.parseLong(externalContext.getUserPrincipal().getName());
+//            try {
+//                u = UserLocalServiceUtil.getUserById(id);
+//            } catch (PortalException ex) {
+//                Logger.getLogger(mybean.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (SystemException ex) {
+//                Logger.getLogger(mybean.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//        return u;
+//    }
     public AccountFacade() {
         super(Account.class);
     }
@@ -51,5 +87,5 @@ public class AccountFacade extends AbstractFacade<Account> {
         reservCollection.size();
         return reservCollection;
     }
-    
+
 }

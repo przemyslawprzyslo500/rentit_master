@@ -21,6 +21,7 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -61,6 +62,9 @@ public class Reserv implements Serializable {
     @Column(name = "RESERVATION_START", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date reservationStart;
+    @Version
+    @Column(name = "VERSION")
+    private Long version;
     @JoinColumn(name = "ACCOUNT_ID", referencedColumnName = "ID", nullable = false)
     @ManyToOne
     private Account accountId;

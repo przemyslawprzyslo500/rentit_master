@@ -20,6 +20,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -62,6 +63,9 @@ public class Equipment implements Serializable {
     @JoinColumn(name = "USE_PLACE_ID", referencedColumnName = "ID", nullable = false)
     @ManyToOne
     private UsePlace usePlaceId;
+    @Version
+    @Column(name = "VERSION")
+    private Long version;
     @OneToMany(mappedBy = "equipmentId")
     private Collection<Reserv> reservCollection;
 
