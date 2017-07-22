@@ -1,5 +1,6 @@
 package pl.turek.liceum.rentit.controller;
 
+import javax.ejb.EJB;
 import pl.turek.liceum.rentit.model.Reserv;
 import pl.turek.liceum.rentit.facade.ReservFacade;
 import pl.turek.liceum.rentit.controller.util.MobilePageController;
@@ -12,7 +13,8 @@ import javax.inject.Inject;
 @ViewScoped
 public class ReservController extends AbstractController<Reserv> {
 
-    @Inject
+//    @Inject
+    @EJB
     private AccountController accountIdController;
     @Inject
     private EquipmentController equipmentIdController;

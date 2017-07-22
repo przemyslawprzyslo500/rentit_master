@@ -53,7 +53,7 @@ public class Equipment implements Serializable {
     @Column(name = "NAME", length = 255, nullable = false)
     private String name;
     @Column(name = "RENT_PERMISSION", nullable = false)
-    private Short rentPermission;
+    private boolean rentPermission;
     @Size(max = 255)
     @Column(name = "TYPE", length = 255, nullable = false)
     private String type;
@@ -92,11 +92,11 @@ public class Equipment implements Serializable {
         this.name = name;
     }
 
-    public Short getRentPermission() {
+    public boolean getRentPermission() {
         return rentPermission;
     }
 
-    public void setRentPermission(Short rentPermission) {
+    public void setRentPermission(boolean rentPermission) {
         this.rentPermission = rentPermission;
     }
 

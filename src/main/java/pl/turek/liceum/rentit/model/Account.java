@@ -55,7 +55,7 @@ public class Account implements Serializable {
     @Column(name = "ACCOUNT_FUNCTION", nullable = false, length = 20)
     private String accountFunction;
     @Column(name = "ACTIVE")
-    private Short active;
+    private boolean active;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 255)
     @Column(name = "EMAIL", length = 255)
@@ -105,11 +105,11 @@ public class Account implements Serializable {
         this.accountFunction = accountFunction;
     }
 
-    public Short getActive() {
+    public boolean getActive() {
         return active;
     }
 
-    public void setActive(Short active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 

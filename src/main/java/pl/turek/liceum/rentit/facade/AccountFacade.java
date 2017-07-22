@@ -6,6 +6,7 @@
 package pl.turek.liceum.rentit.facade;
 
 import java.util.Collection;
+import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.faces.context.ExternalContext;
@@ -17,6 +18,7 @@ import pl.turek.liceum.rentit.model.Account;
 import pl.turek.liceum.rentit.model.Account_;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import pl.turek.liceum.rentit.model.Reserv;
 
@@ -36,10 +38,10 @@ public class AccountFacade extends AbstractFacade<Account> {
         return em;
     }
 
-    public Account findByName(String name) {
-        return (Account) em.createQuery("SELECT a FROM ACCOUNT a where a.login = :login")
-                .setParameter("login", name).getSingleResult();
-    }
+//    public Account findByName(String name) {
+//        return (Account) em.createQuery("SELECT a FROM ACCOUNT a where a.login = :login")
+//                .setParameter("login", name).getSingleResult();
+//    }
 
 //    public Account znajdzLogin(String login) {
 //        CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -49,25 +51,6 @@ public class AccountFacade extends AbstractFacade<Account> {
 //        query = query.where(cb.equal(from.get(Konto_.login), login));
 //        TypedQuery<Konto> tq = em.createQuery(query);
 //        return tq.getSingleResult();
-//    }
-
-//    private Account getCurrentAccount() {
-//        Account u = null;
-//        FacesContext fc = FacesContext.getCurrentInstance();
-//        ExternalContext externalContext = fc.getExternalContext();
-//        if (externalContext.getUserPrincipal() == null) {
-//            System.out.println("current principal is null");
-//        } else {
-//            Long id = Long.parseLong(externalContext.getUserPrincipal().getName());
-//            try {
-//                u = UserLocalServiceUtil.getUserById(id);
-//            } catch (PortalException ex) {
-//                Logger.getLogger(mybean.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (SystemException ex) {
-//                Logger.getLogger(mybean.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//        return u;
 //    }
     public AccountFacade() {
         super(Account.class);
@@ -88,4 +71,37 @@ public class AccountFacade extends AbstractFacade<Account> {
         return reservCollection;
     }
 
+    public List<Account> dopasujKonta(String loginWzor, String imieWzor, String nazwiskoWzor, String emailWzor) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Account> query = cb.createQuery(Account.class);
+        Root<Account> from = query.from(Account.class);
+        query = query.select(from);
+        Predicate criteria = cb.conjunction();
+        if (null != loginWzor && !(loginWzor.isEmpty())) {
+            criteria = cb.and(criteria, cb.like(from.get(Account_.login), '%' + loginWzor + '%'));
+        }
+        if (null != imieWzor && !(imieWzor.isEmpty())) {
+            criteria = cb.and(criteria, cb.like(from.get(Account_.name), '%' + imieWzor + '%'));
+        }
+        if (null != nazwiskoWzor && !(nazwiskoWzor.isEmpty())) {
+            criteria = cb.and(criteria, cb.like(from.get(Account_.surname), '%' + nazwiskoWzor + '%'));
+        }
+        if (null != emailWzor && !(emailWzor.isEmpty())) {
+            criteria = cb.and(criteria, cb.like(from.get(Account_.email), '%' + emailWzor + '%'));
+        }
+
+        query = query.where(criteria);
+        TypedQuery<Account> tq = em.createQuery(query);
+        return tq.getResultList();
+    }
+
+    public Account znajdzLogin(String login) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Account> query = cb.createQuery(Account.class);
+        Root<Account> from = query.from(Account.class);
+        query = query.select(from);
+        query = query.where(cb.equal(from.get(Account_.login), login));
+        TypedQuery<Account> tq = em.createQuery(query);
+        return tq.getSingleResult();
+    }
 }

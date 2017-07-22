@@ -18,7 +18,7 @@ import pl.turek.liceum.rentit.model.Account;
 public class AccountDTO {
 //    private Integer id;
     private String accountFunction;
-    private Short active;
+    private boolean active;
     private String email;
     private String login;
     private String name;
@@ -27,7 +27,7 @@ public class AccountDTO {
     private String surname;
     private Account currentAccount;
     
-    public AccountDTO(String accountFunction, Short active, String email, String login, String name, String password, String phone, String surname) {
+    public AccountDTO(String accountFunction, boolean active, String email, String login, String name, String password, String phone, String surname) {
         this.accountFunction = accountFunction;
         this.active = active;
         this.email = email;
@@ -58,11 +58,11 @@ public class AccountDTO {
         this.accountFunction = accountFunction;
     }
 
-    public Short getActive() {
+    public boolean getActive() {
         return active;
     }
 
-    public void setActive(Short active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 
