@@ -31,22 +31,11 @@ public class EdytujKontoPageBean {
     }
 
     private Account konto =  new Account();
+//    private Account konto;
 
     public Account getKonto() {
         return konto;
     }
-    
-//    public boolean isKlient() {
-//        return KontoUtils.isKlient(konto);
-//    }
-
-//    public boolean isPracownik() {
-//        return KontoUtils.isPracownik(konto);
-//    }
-
-//    public boolean isAdministrator() {
-//        return KontoUtils.isAdministrator(konto);
-//    }
     
     public String zapiszKonto() throws AppBaseException {
         return kontoSession.zapiszKontoPoEdycji(konto);

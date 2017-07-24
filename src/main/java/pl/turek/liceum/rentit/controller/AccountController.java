@@ -11,31 +11,50 @@ import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 @Named(value = "accountController")
 @ViewScoped
 public class AccountController extends AbstractController<Account> {
 
-//    @Resource
-//    private SessionContext context;
-    
+    @Resource
+    private SessionContext context;
+
     @Inject
     private MobilePageController mobilePageController;
 
+    @PersistenceContext
+    EntityManager em;
+
     // Flags to indicate if child collections are empty
     private boolean isReservCollectionEmpty;
-//    private Account myAccount;
 
+    public boolean updateUser(Account users) {
+        
+        try {
+            em.getTransaction().begin();
+            Account userx = em.find(Account.class, users.getId());
+            userx.setName(users.getName());
+            userx.setPhone(users.getPhone());
+            userx.setEmail(users.getEmail());
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+            return false;
+        }
+    }
+
+//    private Account myAccount;
 //    public Account getMyAccount() {
 //        String name= context.getCallerPrincipal().getName();
 //        if (myAccount != null) {
 //            
 //            AccountFacade ejbFacade = (AccountFacade) this.getFacade();
-//            myAccount= ejbFacade.findByName(name);
+//            myAccount= 
 //        }
 //        return myAccount;
 //    }
-    
     public AccountController() {
         // Inform the Abstract parent controller of the concrete Account Entity
         super(Account.class);

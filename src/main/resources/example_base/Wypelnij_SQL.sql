@@ -13,10 +13,10 @@ INSERT INTO RENTIT.ACCOUNT (ID, ACCOUNT_FUNCTION, ACTIVE, EMAIL, LOGIN, NAME, PA
 VALUES (1, 'admin', 1, 'test@test.pl', 'admin', 'Przemysław', 'admin', '111111111', 'Przyslo', 1);
 
 INSERT INTO RENTIT.ACCOUNT (ID, ACCOUNT_FUNCTION, ACTIVE, EMAIL, LOGIN, NAME, PASSWORD, PHONE, SURNAME, VERSION) 
-VALUES (2, 'manager', 1, 'kierownik@kierownik.pl', 'manager', 'Jan', 'kierownik', '222222222', 'Tomaszak', 1);
+VALUES (2, 'manager', 1, 'kierownik@kierownik.pl', 'manager', 'Jan', 'manager', '222222222', 'Tomaszak', 1);
 
 INSERT INTO RENTIT.ACCOUNT (ID, ACCOUNT_FUNCTION, ACTIVE, EMAIL, LOGIN, NAME, PASSWORD, PHONE, SURNAME, VERSION) 
-VALUES (3, 'employee', 1, 'pracownik@pracownik.pl', 'employee', 'Zenon', 'pracownik', '333333333', 'Pajor', 1);
+VALUES (3, 'employee', 1, 'pracownik@pracownik.pl', 'employee', 'Zenon', 'employee', '333333333', 'Pajor', 1);
 
 -- INSERT INTO RENTIT.ACCOUNT_FUNCTION (ID, FUNCTION_NAME, ACCOUNT_ID) 
 -- VALUES (1, 'Administrator', 1);

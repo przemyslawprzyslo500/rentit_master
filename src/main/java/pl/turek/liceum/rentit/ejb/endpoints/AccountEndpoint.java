@@ -4,6 +4,7 @@ package pl.turek.liceum.rentit.ejb.endpoints;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.*;
+import javax.inject.Named;
 import javax.interceptor.Interceptors;
 import pl.turek.liceum.rentit.ejb.managers.KontaManager;
 import pl.turek.liceum.rentit.exception.AppBaseException;
@@ -18,21 +19,13 @@ import pl.turek.liceum.rentit.web.account.KontoUtils;
 @Stateful
 @LocalBean
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+
 public class AccountEndpoint extends AbstractEndpoint implements SessionSynchronization {
     @EJB
     private KontaManager kontaManager;
     
     @EJB
     private AccountFacade kontoFacade;
-    
-//    @EJB
-//    private KlientFacade klientFacade;
-//    
-//    @EJB
-//    private PracownikFacade pracownikFacade;
-//    
-//    @EJB
-//    private AdministratorFacade administratorFacade;
     
     @Resource
     private SessionContext sctx;
@@ -47,26 +40,19 @@ public class AccountEndpoint extends AbstractEndpoint implements SessionSynchron
 //        konto.setAktywne(true);
 //        konto.setPotwierdzone(true);
         // Konto ma hasło jawne podane w formularzu, należy je przeliczyć na skrót
-        //konto.setHaslo(KontoUtils.wyliczSkrotHasla(konto.getHaslo()));
+        konto.setPassword(KontoUtils.wyliczSkrotHasla(konto.getPassword()));
         kontoFacade.create(konto);
     }
 
-//    public void rejestrujKlienta(Klient klient) throws AppBaseException {
-//        klient.setAktywne(true);
-//        klient.setPotwierdzone(false);
-//        klient.setHaslo(KontoUtils.wyliczSkrotHasla(klient.getHaslo()));
-//        klientFacade.create(klient);
+//    public void aktywujKonto(Account konto){
+//        Account k = kontoFacade.find(konto.getId());
+//        k.setActive(true);
 //    }
-//    
-    public void aktywujKonto(Account konto){
-        Account k = kontoFacade.find(konto.getId());
-        k.setActive(true);
-    }
     
-    public void deaktywujKonto(Account konto){
-        Account k = kontoFacade.find(konto.getId());
-        k.setActive(false);
-    }
+//    public void deaktywujKonto(Account konto){
+//        Account k = kontoFacade.find(konto.getId());
+//        k.setActive(false);
+//    }
     
 //    public void potwierdzKonto(Konto konto){
 //        Konto k = kontoFacade.find(konto.getId());

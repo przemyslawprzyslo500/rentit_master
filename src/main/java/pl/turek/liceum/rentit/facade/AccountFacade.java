@@ -43,15 +43,6 @@ public class AccountFacade extends AbstractFacade<Account> {
 //                .setParameter("login", name).getSingleResult();
 //    }
 
-//    public Account znajdzLogin(String login) {
-//        CriteriaBuilder cb = em.getCriteriaBuilder();
-//        CriteriaQuery<Konto> query = cb.createQuery(Konto.class);
-//        Root<Konto> from = query.from(Konto.class);
-//        query = query.select(from);
-//        query = query.where(cb.equal(from.get(Konto_.login), login));
-//        TypedQuery<Konto> tq = em.createQuery(query);
-//        return tq.getSingleResult();
-//    }
     public AccountFacade() {
         super(Account.class);
     }

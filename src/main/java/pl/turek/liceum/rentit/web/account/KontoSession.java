@@ -2,8 +2,6 @@ package pl.turek.liceum.rentit.web.account;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -11,7 +9,6 @@ import pl.turek.liceum.rentit.ejb.endpoints.AccountEndpoint;
 import pl.turek.liceum.rentit.exception.AppBaseException;
 import pl.turek.liceum.rentit.model.Account;
 import pl.turek.liceum.rentit.web.utils.ContextUtils;
-
 
 /**
  *
@@ -36,11 +33,9 @@ public class KontoSession implements Serializable {
 
     public String getMojLogin() {
         return ContextUtils.getUserName();
+//        return ContextUtils.getUserName();
     }
-//    private Klient klientRejestracja;
-//    private Klient klientUtworz;
-//    private Pracownik pracownikUtworz;
-//    private Administrator administratorUtworz;
+
     private Account kontoEdytuj;
     private Account kontoZmienHaslo;
 
@@ -52,122 +47,21 @@ public class KontoSession implements Serializable {
         return kontoEdytuj;
     }
 
-//    public Klient getKlientRejestracja() {
-//        return klientRejestracja;
-//    }
-
     public KontoSession() {
     }
-
-//    public String utworzKlienta(Klient klient) {
-//        try {
-//            klientUtworz = klient;
-//            kontoEndpoint.utworzKonto(klientUtworz);
-//            klientUtworz = null;
-//            return "success";
-//        } catch (KontoException ke) {
-//            if (KontoException.KEY_DB_CONSTRAINT.equals(ke.getMessage())) {
-//                ContextUtils.emitInternationalizedMessage("login", KontoException.KEY_DB_CONSTRAINT); //wyjątki aplikacyjne powinny przenosić jedynie klucz do internacjonalizacji
-//            } else {
-//                Logger.getLogger(KontoSession.class.getName()).log(Level.SEVERE, "Zgłoszenie w metodzie akcji utworzKlienta wyjatku: ", ke);               
-//            }
-//            return null;
-//        } catch (AppBaseException abe) {
-//            Logger.getLogger(KontoSession.class.getName()).log(Level.SEVERE, "Zgłoszenie w metodzie akcji utworzKlienta wyjatku typu: ", abe.getClass());
-//            if (ContextUtils.isInternationalizationKeyExist(abe.getMessage())) {
-//                ContextUtils.emitInternationalizedMessage(null , abe.getMessage()); //wyjątki aplikacyjne powinny przenosić jedynie klucz do internacjonalizacji
-//            }
-//            return null;
-//        }
-//    }
-
-//    public String utworzPracownika(Pracownik pracownik) {
-//        try {
-//            pracownikUtworz = pracownik;
-//            kontoEndpoint.utworzKonto(pracownikUtworz);
-//            pracownikUtworz = null;
-//            return "success";
-//        } catch (KontoException ke) {
-//            if (KontoException.KEY_DB_CONSTRAINT.equals(ke.getMessage())) {
-//                ContextUtils.emitInternationalizedMessage("login", KontoException.KEY_DB_CONSTRAINT); //wyjątki aplikacyjne powinny przenosić jedynie klucz do internacjonalizacji
-//            } else {
-//                Logger.getLogger(KontoSession.class.getName()).log(Level.SEVERE, "Zgłoszenie w metodzie akcji utworzPracownika wyjatku: ", ke);               
-//            }
-//            return null;
-//        } catch (AppBaseException abe) {
-//            Logger.getLogger(KontoSession.class.getName()).log(Level.SEVERE, "Zgłoszenie w metodzie akcji utworzPracownika wyjatku typu: ", abe.getClass());
-//            if (ContextUtils.isInternationalizationKeyExist(abe.getMessage())) {
-//                ContextUtils.emitInternationalizedMessage(null , abe.getMessage()); //wyjątki aplikacyjne powinny przenosić jedynie klucz do internacjonalizacji
-//            }
-//            return null;
-//        }
-//    }
-
-//    public String utworzAdministratora(Administrator admin) {
-//        try {
-//            administratorUtworz = admin;
-//            kontoEndpoint.utworzKonto(administratorUtworz);
-//            administratorUtworz = null;
-//            return "success";
-//        } catch (KontoException ke) {
-//            if (KontoException.KEY_DB_CONSTRAINT.equals(ke.getMessage())) {
-//                ContextUtils.emitInternationalizedMessage("login", KontoException.KEY_DB_CONSTRAINT); //wyjątki aplikacyjne powinny przenosić jedynie klucz do internacjonalizacji
-//            } else {
-//                Logger.getLogger(KontoSession.class.getName()).log(Level.SEVERE, "Zgłoszenie w metodzie akcji utworzAdministratora wyjatku: ", ke);               
-//            }
-//            return null;
-//        } catch (AppBaseException abe) {
-//            Logger.getLogger(KontoSession.class.getName()).log(Level.SEVERE, "Zgłoszenie w metodzie akcji utworzAdministratora wyjatku typu: ", abe.getClass());
-//            if (ContextUtils.isInternationalizationKeyExist(abe.getMessage())) {
-//                ContextUtils.emitInternationalizedMessage(null , abe.getMessage()); //wyjątki aplikacyjne powinny przenosić jedynie klucz do internacjonalizacji
-//            }
-//            return null;
-//        }
-//    }
-
-//    public String potwierdzRejestracjeKlienta(Klient klient) {
-//        this.klientRejestracja = klient;
-//        return "confirmRegister";
-//    }
 
     public String rozpocznijZmianeHasla(Account konto) {
         this.kontoZmienHaslo = konto;
         return "changePassword";
     }
 
-//    public String rejestrujKlienta() {
-//        try {
-//            kontoEndpoint.rejestrujKlienta(klientRejestracja);
-//            klientRejestracja = null;
-//            return "success";
-//        } catch (KontoException ke) {
-//            if (KontoException.KEY_DB_CONSTRAINT.equals(ke.getMessage())) {
-//                ContextUtils.emitInternationalizedMessage("login", KontoException.KEY_DB_CONSTRAINT); //wyjątki aplikacyjne powinny przenosić jedynie klucz do internacjonalizacji
-//            } else {
-//                Logger.getLogger(KontoSession.class.getName()).log(Level.SEVERE, "Zgłoszenie w metodzie akcji rejestrujKlienta wyjatku: ", ke);               
-//            }
-//            return null;
-//        } catch (AppBaseException abe) {
-//            Logger.getLogger(KontoSession.class.getName()).log(Level.SEVERE, "Zgłoszenie w metodzie akcji rejestrujKlienta wyjatku typu: ", abe.getClass());
-//            if (ContextUtils.isInternationalizationKeyExist(abe.getMessage())) {
-//                ContextUtils.emitInternationalizedMessage(null , abe.getMessage()); //wyjątki aplikacyjne powinny przenosić jedynie klucz do internacjonalizacji
-//            }
-//            return null;
-//        }
+//    public void aktywujKonto(Account Konto) {
+//        kontoEndpoint.aktywujKonto(Konto);
+//        ContextUtils.emitSuccessMessage(ListaKontPageBean.GENERAL_MSG_ID);
 //    }
 
-    public void aktywujKonto(Account Konto) {
-        kontoEndpoint.aktywujKonto(Konto);
-        ContextUtils.emitSuccessMessage(ListaKontPageBean.GENERAL_MSG_ID);
-    }
-
-    public void deaktywujKonto(Account Konto) {
-        kontoEndpoint.deaktywujKonto(Konto);
-        ContextUtils.emitSuccessMessage(ListaKontPageBean.GENERAL_MSG_ID);
-    }
-
-//    public void potwierdzKonto(Account Konto) {
-//        kontoEndpoint.potwierdzKonto(Konto);
+//    public void deaktywujKonto(Account Konto) {
+//        kontoEndpoint.deaktywujKonto(Konto);
 //        ContextUtils.emitSuccessMessage(ListaKontPageBean.GENERAL_MSG_ID);
 //    }
 

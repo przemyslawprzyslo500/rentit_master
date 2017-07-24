@@ -7,13 +7,16 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition>
+        <ui:param name="pageBean" value="#{edytujKontoPageBean}" />
         <h:form id="menuForm" prependId="false">
             <p:menubar>
                 <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
                 <p:menuitem rendered="#{request.userPrincipal==null}" value="Zaloguj" outcome="/login" icon="ui-icon-home"/>
                 <!--<p:submenu label="#{bundle.Maintenance}">-->
-                <p:menuitem value="Edit my account " action="#{listaKontPageBean.edytujKonto()}" outcome="/app/account/EditMyAccount.xhtml" />
-                    <!--<p:menuitem value="Edit my account 2 " outcome="/WEB-INF/include/entity/account/EditMyAccount.xhtml" />-->
+                <p:menuitem value="setKontoSession " action="#{edytujKontoPageBean.setKontoSession(session)}" outcome="/app/account/EditMyAccount.xhtml" />
+                <p:menuitem value="Edit my account" action="#{listaKontPageBean.edytujKonto()}" outcome="/app/account/EditMyAccount.xhtml" />
+                <!--<p:menuitem action="#{kontoSession.resetujSesje()}" value="Close Session" />-->
+                <!--<p:menuitem value="Edit my account 2 " outcome="/WEB-INF/include/entity/account/EditMyAccount.xhtml" />-->
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('admin')}" value="#{bundle.AccountHeading} " outcome="/app/account/index" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('manager')}" value="#{bundle.EquipmentHeading} " outcome="/app/equipment/index" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('employee')}" value="#{bundle.EquipmentHeading} " outcome="/app/equipment/index" />

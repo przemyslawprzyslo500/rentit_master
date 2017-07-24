@@ -88,15 +88,15 @@ public class ListaKontPageBean {
         return kontaDataModel;
     }
 
-    public void aktywujKonto() {
-        kontoSession.aktywujKonto(kontaDataModel.getRowData());
-        initModel();
-    }
+//    public void aktywujKonto() {
+//        kontoSession.aktywujKonto(kontaDataModel.getRowData());
+//        initModel();
+//    }
 
-    public void deaktywujKonto() {
-        kontoSession.deaktywujKonto(kontaDataModel.getRowData());
-        initModel();
-    }
+//    public void deaktywujKonto() {
+//        kontoSession.deaktywujKonto(kontaDataModel.getRowData());
+//        initModel();
+//    }
 
 //    public void potwierdzKonto() {
 //        kontoSession.potwierdzKonto(kontaDataModel.getRowData());
