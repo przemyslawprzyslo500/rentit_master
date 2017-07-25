@@ -14,7 +14,7 @@
                 <p:panel header="#{bundle.Welcome}">
                     <p><h:outputText value="#{bundle.WelcomeMessage}"></h:outputText></p>
                 </p:panel>
-                <h2>You are logged in as #{request.userPrincipal.name}<br/></h2>
+                <h:outputText value="You are logged in as #{request.userPrincipal.name ne null}"/>
                 <h:form styleClass="settings-form" rendered="#{request.userPrincipal ne null}"
                         id="logoutbean" prependId="false">
                     <h:commandButton action="#{loginBean.logout}" value="Logout"/>

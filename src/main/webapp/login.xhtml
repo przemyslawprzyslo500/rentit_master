@@ -14,9 +14,11 @@
         </ui:define>
         <ui:define name="body"><center>
                 <h:form id="logoutonlogin" prependId="false" styleClass="settings-form" rendered="#{request.userPrincipal ne null}">
-                    You are logged in as #{request.userPrincipal.name}
-                    <h:commandButton action="/index" value="HOME PAGE"/>
+                    <h:outputText value="You are logged in as #{request.userPrincipal.name ne null}"/>
+                 <!--   You are logged in as #{request.userPrincipal.name} -->
+                    
                 </h:form>
+                <h:commandButton action="/index" value="HOME PAGE"/>
                 <h:form id="notlogin" prependId="false" rendered="#{request.userPrincipal ne not null}">
                     <h2>Hello, please log in:</h2><br />
                     <h:panelGrid columns="2">

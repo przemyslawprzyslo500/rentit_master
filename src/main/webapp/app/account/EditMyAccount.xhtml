@@ -37,9 +37,16 @@
                             <p:inputText id="email" value="#{edytujKontoPageBean.konto.email}" title="email" /><!--
                             <h:inputText id="email2" value="" title="email" />
                             -->                                                        
-                            <h:outputText value="Password: " />
-                            <p:password id="password1" value="#{edytujKontoPageBean.konto.password}" feedback="true" inline="true" />
-<!--                            <h:outputLabel value="Password: " for="password"/>
+<!--                            <h:outputText value="Password: " />
+                            <p:password id="password1" value="#{edytujKontoPageBean.konto.password}" feedback="true" inline="true" />-->
+
+                                <h:outputLabel for="pwd1" value="Password: *" />  
+                                <p:password id="pwd1" value="#{edytujKontoPageBean.konto.password}" feedback="true" match="pwd2" label="Password" required="true"/>  
+
+                                <h:outputLabel for="pwd2" value="Password confirm: *" />  
+                                <p:password id="pwd2" value="#{edytujKontoPageBean.konto.password}" feedback="false" label="Password_repeat" required="true"/>  
+                            <!--                        
+                            <h:outputLabel value="Password: " for="password"/>
                             <h:inputText id="password" value="#{edytujKontoPageBean.konto.password}" title="password" />-->
 
 
