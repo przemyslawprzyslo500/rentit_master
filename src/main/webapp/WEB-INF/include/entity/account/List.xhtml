@@ -15,7 +15,7 @@
                 <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('admin')}" value="#{bundle.Edit}" onclick="document.getElementById('AccountListForm:editButton').click();" icon="ui-icon-pencil"/>
                 <p:menuitem value="#{bundle.Delete}" onclick="document.getElementById('AccountListForm:deleteButton').click();" icon="ui-icon-trash"/>
                 <p:separator/>
-                <p:menuitem value="#{bundle.AccountMenuItem_reservCollection}" icon="ui-icon-search"  action="#{accountController.navigateReservCollection}" disabled="#{accountController.isReservCollectionEmpty}" ajax="false"/>  
+                <p:menuitem value="#{bundle.AccountMenuItem_reservCollection}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" icon="ui-icon-search"  action="#{accountController.navigateReservCollection}" disabled="#{accountController.isReservCollectionEmpty}" ajax="false"/>  
             </p:contextMenu>
             <p:dataTable id="datalist"
                          value="#{accountController.items}"

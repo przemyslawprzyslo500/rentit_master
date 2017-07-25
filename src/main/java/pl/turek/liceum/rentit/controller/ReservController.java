@@ -14,7 +14,8 @@ import javax.inject.Inject;
 public class ReservController extends AbstractController<Reserv> {
 
 //    @Inject
-    @EJB
+//    @EJB
+    @Inject
     private AccountController accountIdController;
     @Inject
     private EquipmentController equipmentIdController;

@@ -15,9 +15,9 @@
                 <p:menuitem value="#{bundle.Edit}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" onclick="document.getElementById('EquipmentListForm:editButton').click();" icon="ui-icon-pencil"/>
                 <p:menuitem value="#{bundle.Delete}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" onclick="document.getElementById('EquipmentListForm:deleteButton').click();" icon="ui-icon-trash"/>
                 <p:separator/>
-                <p:menuitem value="#{bundle.EquipmentMenuItem_licenseTypeId}" icon="ui-icon-search"  actionListener="#{equipmentController.prepareLicenseTypeId}" update=":LicenseTypeViewForm" oncomplete="PF('LicenseTypeViewDialog').show()" disabled="#{empty equipmentController.selected.licenseTypeId}"/>  
-                <p:menuitem value="#{bundle.EquipmentMenuItem_usePlaceId}" icon="ui-icon-search"  actionListener="#{equipmentController.prepareUsePlaceId}" update=":UsePlaceViewForm" oncomplete="PF('UsePlaceViewDialog').show()" disabled="#{empty equipmentController.selected.usePlaceId}"/>  
-                <p:menuitem value="#{bundle.EquipmentMenuItem_reservCollection}" icon="ui-icon-search"  action="#{equipmentController.navigateReservCollection}" disabled="#{equipmentController.isReservCollectionEmpty}" ajax="false"/>  
+                <p:menuitem value="#{bundle.EquipmentMenuItem_licenseTypeId}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" icon="ui-icon-search"  actionListener="#{equipmentController.prepareLicenseTypeId}" update=":LicenseTypeViewForm" oncomplete="PF('LicenseTypeViewDialog').show()" disabled="#{empty equipmentController.selected.licenseTypeId}"/>  
+                <p:menuitem value="#{bundle.EquipmentMenuItem_usePlaceId}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" icon="ui-icon-search"  actionListener="#{equipmentController.prepareUsePlaceId}" update=":UsePlaceViewForm" oncomplete="PF('UsePlaceViewDialog').show()" disabled="#{empty equipmentController.selected.usePlaceId}"/>  
+                <p:menuitem value="#{bundle.EquipmentMenuItem_reservCollection}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" icon="ui-icon-search"  action="#{equipmentController.navigateReservCollection}" disabled="#{equipmentController.isReservCollectionEmpty}" ajax="false"/>  
             </p:contextMenu>
             <p:dataTable id="datalist"
                          value="#{equipmentController.items}"
