@@ -18,37 +18,42 @@
                         <!--<p:panelGrid  columns="3" columnClasses="column" rendered="#{accountController.myAccount != null}">-->
 
                             <h:outputLabel value="Login: " for="login"/>
-                            <h:outputText id="login" value="#{edytujKontoPageBean.konto.login}" title="login" />
+                            <p:inputText id="login" value="#{edytujKontoPageBean.konto.login}" title="login" />
                             <!--<h:outputText id="login" value="#{szczegolyMojegoKontaPageBean.konto.login}" title="login" />-->
                             <!--<h:inputText id="login2" value="#{accountController.pobierzMojeKonto.login}" title="login" />-->
                             <!--<h:inputText id="login2" value="#{pageBean.login}" title="login" />-->
 
                             <h:outputLabel value="Name: " for="name"/>
-                            <h:inputText id="name" value="#{edytujKontoPageBean.konto.name}" title="name" />
+                            <p:inputText id="name" value="#{edytujKontoPageBean.konto.name}" title="name" />
                             <!--<h:inputText id="name" value="#{szczegolyMojegoKontaPageBean.konto.name}" title="name" readonly="true" />-->
                             <!--<h:inputText id="name2" value="" title="name" />-->
                             <!--<h:inputText id="name2" value="#{pageBean.name}" title="name" />-->
 
                             <h:outputLabel value="Surname: " for="surname"/>
-                            <h:inputText id="surname" value="#{edytujKontoPageBean.konto.surname}" title="surname" readonly="true"/><!--
+                            <p:inputText id="surname" value="#{edytujKontoPageBean.konto.surname}" title="surname" /><!--
                             <h:inputText id="surname2" value="#{szczegolyMojegoKontaPageBean.konto.setName(surname)}" title="surname" />
                             -->                                                        
                             <h:outputLabel value="E-mail: " for="email"/>
-                            <h:inputText id="email" value="#{edytujKontoPageBean.konto.email}" title="email" /><!--
+                            <p:inputText id="email" value="#{edytujKontoPageBean.konto.email}" title="email" /><!--
                             <h:inputText id="email2" value="" title="email" />
                             -->                                                        
-                            <h:outputLabel value="Password: " for="password"/>
-                            <h:inputText id="password" value="#{edytujKontoPageBean.konto.password}" title="password" /><!--
+                            <h:outputText value="Password: " />
+                            <p:password id="password1" value="#{edytujKontoPageBean.konto.password}" feedback="true" inline="true" />
+<!--                            <h:outputLabel value="Password: " for="password"/>
+                            <h:inputText id="password" value="#{edytujKontoPageBean.konto.password}" title="password" />-->
+
+
+                            <!--
                             <h:inputText id="password2" value="" title="password" />
                             -->                                                        
                             <h:outputLabel value="Phone: " for="phone"/>
-                            <h:inputText id="phone" value="#{edytujKontoPageBean.konto.phone}" title="phone" /><!--
+                            <p:inputText id="phone" value="#{edytujKontoPageBean.konto.phone}" title="phone" /><!--
                             <h:inputText id="phone2" value="" title="phone" />-->
 
                         </p:panelGrid>
 
                         <h:commandButton action="#{edytujKontoPageBean.zapiszKonto()}" value="Zapisz" />
-                        <h:commandButton value="Cancel" action="index" immediate="true" />
+                        <h:commandButton value="Cancel" action="index.xhtml" immediate="true" />
 
                         <br />
 

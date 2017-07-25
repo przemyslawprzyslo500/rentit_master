@@ -18,7 +18,7 @@
                             id="logout" prependId="false">
                         <p:outputLabel value="You are logged in as: #{request.userPrincipal.name}  "/>
                         <p:commandButton action="#{loginBean.logout}" value="  Logout  "/>
-                        
+
                         <p:panelGrid columns="2">
                             <h:outputLabel id="testopis" value="Sesion ID"/>
                             <h:outputLabel id="test" value="#{request.session.id}"/>
@@ -30,13 +30,17 @@
                         <!--<p:commandButton value="Edit my account" action="/app" immediate="true" />-->
                         <!--<p:commandButton id="editButton" value="Edit my account2" update=":AccountEditForm" oncomplete="PF('AccountEditDialog').show()" disabled="#{empty accountController.selected}"/>-->
                     </h:form>
-                    <p:panelGrid columns="2" >
-                        <p:commandButton value="My Account" />
-                        <p:commandButton value="FeedBack"/>
+                    <p:panelGrid columns="3" >
+                        <!--                        <p:commandButton value="Imię:" />
+                                                <p:commandButton value="FeedBack"/>-->
                         <!--<p:commandButton value="My reservations"/>-->
-
-                        <p:outputLabel id="sessionrole" value="Role: "/>
-                        <p:outputLabel id="sessionuser" value="Owner: "/>
+                        <p:outputLabel id="yourname" style="font-weight: bold" value="Name: " />
+                        <p:outputLabel id="yoursurname" style="font-weight: bold" value="Surname: " />
+                        <p:outputLabel id="yoursessionrole" style="font-weight: bold" value="Role: " />
+                        <p:outputLabel id="yourname2" value="#{szczegolyMojegoKontaPageBean.konto.name}" />
+                        <p:outputLabel id="yoursurname2" value="#{szczegolyMojegoKontaPageBean.konto.surname}" />
+                        <p:outputLabel id="yoursessionrole2" value="#{szczegolyMojegoKontaPageBean.konto.accountFunction}" />
+                        
                         <!--<p:outputLabel id="sessioncatg" value="Category: "/>-->
                     </p:panelGrid>
                 </p:panelGrid>

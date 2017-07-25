@@ -36,6 +36,7 @@
             <url-pattern>/faces/app/account/*</url-pattern>
             <url-pattern>/faces/errors/*</url-pattern>
             <url-pattern>/faces/WEB-INF/include/entity/account/*</url-pattern>
+            <url-pattern>/faces/app/account/EditMyAccount.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
@@ -47,7 +48,8 @@
         <web-resource-collection>
             <web-resource-name>ManagerConstraint</web-resource-name>
             <description>EmployeeConstrain</description>
-            <url-pattern>/faces/app/account/*</url-pattern>
+            <!--<url-pattern>/faces/app/account/*</url-pattern>-->
+            <url-pattern>/faces/app/account/EditMyAccount.xhtml</url-pattern>
             <url-pattern>/faces/app/reserv/*</url-pattern>
             <url-pattern>/faces/app/equipment/*</url-pattern>
             <url-pattern>/faces/app/reservStatus/*</url-pattern>
@@ -70,7 +72,7 @@
             <url-pattern>/WEB-INF/include/entity/account/EditMyAccount.xhtml</url-pattern>
             <url-pattern>/faces/app/equipment/*</url-pattern>
             <url-pattern>/faces/app/reserv/*</url-pattern>
-            <!--<url-pattern>/faces/app/account/EditMyAccount.xhtml</url-pattern>-->
+            <url-pattern>/faces/app/account/EditMyAccount.xhtml</url-pattern>
             <url-pattern>/faces/errors/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
