@@ -95,6 +95,6 @@ public class KontoSession implements Serializable {
     }
 
     public Account pobierzMojeKonto() {
-        return kontoEndpoint.pobierzMojeKonto();
+        return kontoEndpoint.pobierzMojeKonto2();
     }
 }

@@ -8,7 +8,7 @@
       template="/WEB-INF/include/template.xhtml">
 
     <ui:composition template="/WEB-INF/include/template.xhtml">
-        <ui:param name="pageBean" value="#{accountController.pobierzMojeKonto()}" />
+        <!--<ui:param name="pageBean" value="#{accountController.pobierzMojeKonto()}" />-->
         <ui:define name="title" />
         <ui:define name="body">     
             <h:form id="EditMyAccount">
@@ -29,21 +29,21 @@
                             <!--<h:inputText id="name2" value="" title="name" />-->
                             <!--<h:inputText id="name2" value="#{pageBean.name}" title="name" />-->
 
-                                                    <h:outputLabel value="Surname: " for="surname"/>
-                                                        <h:inputText id="surname" value="#{szczegolyMojegoKontaPageBean.konto.surname}" title="surname" readonly="true"/><!--
-                                                        <h:inputText id="surname2" value="#{szczegolyMojegoKontaPageBean.konto.setName(surname)}" title="surname" />
-                            
--->                                                        <h:outputLabel value="E-mail: " for="email"/>
-                                                        <h:inputText id="email" value="#{szczegolyMojegoKontaPageBean.konto.email}" title="email" /><!--
-                                                        <h:inputText id="email2" value="" title="email" />
-                            
--->                                                        <h:outputLabel value="Password: " for="password"/>
-                                                        <h:inputText id="password" value="#{szczegolyMojegoKontaPageBean.konto.password}" title="password" /><!--
-                                                        <h:inputText id="password2" value="" title="password" />
-                            
--->                                                        <h:outputLabel value="Phone: " for="phone"/>
-                                                        <h:inputText id="phone" value="#{szczegolyMojegoKontaPageBean.konto.phone}" title="phone" /><!--
-                                                        <h:inputText id="phone2" value="" title="phone" />-->
+                            <h:outputLabel value="Surname: " for="surname"/>
+                            <h:inputText id="surname" value="#{edytujKontoPageBean.konto.surname}" title="surname" readonly="true"/><!--
+                            <h:inputText id="surname2" value="#{szczegolyMojegoKontaPageBean.konto.setName(surname)}" title="surname" />
+                            -->                                                        
+                            <h:outputLabel value="E-mail: " for="email"/>
+                            <h:inputText id="email" value="#{edytujKontoPageBean.konto.email}" title="email" /><!--
+                            <h:inputText id="email2" value="" title="email" />
+                            -->                                                        
+                            <h:outputLabel value="Password: " for="password"/>
+                            <h:inputText id="password" value="#{edytujKontoPageBean.konto.password}" title="password" /><!--
+                            <h:inputText id="password2" value="" title="password" />
+                            -->                                                        
+                            <h:outputLabel value="Phone: " for="phone"/>
+                            <h:inputText id="phone" value="#{edytujKontoPageBean.konto.phone}" title="phone" /><!--
+                            <h:inputText id="phone2" value="" title="phone" />-->
 
                         </p:panelGrid>
 
