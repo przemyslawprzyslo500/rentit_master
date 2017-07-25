@@ -49,6 +49,7 @@ public class EdytujKontoPageBean {
     }
 
     public String zapiszKonto() throws AppBaseException {
+        kontoSession.pobierzKontoDoEdycji(konto);
         return kontoSession.zapiszKontoPoEdycji(konto);
     }
 //    public Account pobierzKontoDoEdycji(){
