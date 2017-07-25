@@ -1,4 +1,4 @@
-package pl.turek.liceum.rentit.web.account;
+package pl.turek.liceum.rentit.web.konto;
 
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -8,7 +8,6 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import pl.turek.liceum.rentit.model.Account;
-
 
 /**
  *
@@ -88,22 +87,7 @@ public class ListaKontPageBean {
         return kontaDataModel;
     }
 
-//    public void aktywujKonto() {
-//        kontoSession.aktywujKonto(kontaDataModel.getRowData());
-//        initModel();
-//    }
-
-//    public void deaktywujKonto() {
-//        kontoSession.deaktywujKonto(kontaDataModel.getRowData());
-//        initModel();
-//    }
-
-//    public void potwierdzKonto() {
-//        kontoSession.potwierdzKonto(kontaDataModel.getRowData());
-//        initModel();
-//    }
-
-    public String edytujKonto() {
+        public String edytujKonto() {
         return kontoSession.pobierzKontoDoEdycji(kontaDataModel.getRowData());
     }
 

@@ -1,12 +1,15 @@
-package pl.turek.liceum.rentit.web.account;
+package pl.turek.liceum.rentit.web.konto;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import pl.turek.liceum.rentit.ejb.endpoints.AccountEndpoint;
+import pl.turek.liceum.rentit.ejb.endpoints.KontoEndpoint;
 import pl.turek.liceum.rentit.exception.AppBaseException;
+import pl.turek.liceum.rentit.exception.KontoException;
 import pl.turek.liceum.rentit.model.Account;
 import pl.turek.liceum.rentit.web.utils.ContextUtils;
 
@@ -19,7 +22,7 @@ import pl.turek.liceum.rentit.web.utils.ContextUtils;
 public class KontoSession implements Serializable {
 
     @EJB
-    private AccountEndpoint kontoEndpoint;
+    private KontoEndpoint kontoEndpoint;
 
     public String resetujSesje() {
         ContextUtils.invalidateSession();
@@ -33,9 +36,7 @@ public class KontoSession implements Serializable {
 
     public String getMojLogin() {
         return ContextUtils.getUserName();
-//        return ContextUtils.getUserName();
     }
-
     private Account kontoEdytuj;
     private Account kontoZmienHaslo;
 
@@ -55,22 +56,22 @@ public class KontoSession implements Serializable {
         return "changePassword";
     }
 
-//    public void aktywujKonto(Account Konto) {
-//        kontoEndpoint.aktywujKonto(Konto);
-//        ContextUtils.emitSuccessMessage(ListaKontPageBean.GENERAL_MSG_ID);
-//    }
+    public void aktywujKonto(Account Konto) {
+        kontoEndpoint.aktywujKonto(Konto);
+        ContextUtils.emitSuccessMessage(ListaKontPageBean.GENERAL_MSG_ID);
+    }
 
-//    public void deaktywujKonto(Account Konto) {
-//        kontoEndpoint.deaktywujKonto(Konto);
-//        ContextUtils.emitSuccessMessage(ListaKontPageBean.GENERAL_MSG_ID);
-//    }
+    public void deaktywujKonto(Account Konto) {
+        kontoEndpoint.deaktywujKonto(Konto);
+        ContextUtils.emitSuccessMessage(ListaKontPageBean.GENERAL_MSG_ID);
+    }
 
     public String pobierzKontoDoEdycji(Account Konto) {
         kontoEdytuj = kontoEndpoint.pobierzKontoDoEdycji(Konto);
         return "editAccount";
     }
 
-    public String zapiszKontoPoEdycji(Account Konto) throws AppBaseException, pl.turek.liceum.rentit.exception.AppBaseException {
+    public String zapiszKontoPoEdycji(Account Konto) throws AppBaseException {
         kontoEndpoint.zapiszKontoPoEdycji(Konto);
         return "success";
     }

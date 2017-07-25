@@ -1,21 +1,21 @@
-package pl.turek.liceum.rentit.web.account;
+package pl.turek.liceum.rentit.web.konto;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import pl.turek.liceum.rentit.exception.AppBaseException;
 import pl.turek.liceum.rentit.model.Account;
+import pl.turek.liceum.rentit.web.utils.KontoUtils;
 
 /**
  *
  * @author java
  */
-@ManagedBean(name = "edytujKontoPageBean")
+@ManagedBean(name = "szczegolyMojegoKontaPageBean")
 @RequestScoped
-public class EdytujKontoPageBean {
+public class SzczegolyMojegoKontaPageBean {
     
-    public EdytujKontoPageBean() {
+    public SzczegolyMojegoKontaPageBean() {
     }
     
     @ManagedProperty(value="#{kontoSession}")
@@ -27,18 +27,13 @@ public class EdytujKontoPageBean {
     
     @PostConstruct
     private void init() {
-        konto = kontoSession.getKontoEdytuj();
+        konto = kontoSession.pobierzMojeKonto();
     }
 
     private Account konto =  new Account();
-//    private Account konto;
 
     public Account getKonto() {
         return konto;
     }
     
-    public String zapiszKonto() throws AppBaseException {
-        return kontoSession.zapiszKontoPoEdycji(konto);
-    }
-
 }

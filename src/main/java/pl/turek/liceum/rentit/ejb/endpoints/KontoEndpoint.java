@@ -1,16 +1,17 @@
 
 package pl.turek.liceum.rentit.ejb.endpoints;
 
+import java.rmi.RemoteException;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.*;
-import javax.inject.Named;
 import javax.interceptor.Interceptors;
+import pl.turek.liceum.rentit.ejb.facades.KontoFacade;
+import pl.turek.liceum.rentit.ejb.interceptor.LoggingInterceptor;
 import pl.turek.liceum.rentit.ejb.managers.KontaManager;
 import pl.turek.liceum.rentit.exception.AppBaseException;
-import pl.turek.liceum.rentit.facade.AccountFacade;
 import pl.turek.liceum.rentit.model.Account;
-import pl.turek.liceum.rentit.web.account.KontoUtils;
+import pl.turek.liceum.rentit.web.utils.KontoUtils;
 
 /**
  *
@@ -19,14 +20,13 @@ import pl.turek.liceum.rentit.web.account.KontoUtils;
 @Stateful
 @LocalBean
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-
-public class AccountEndpoint extends AbstractEndpoint implements SessionSynchronization {
+public class KontoEndpoint extends AbstractEndpoint implements SessionSynchronization {
     @EJB
     private KontaManager kontaManager;
     
     @EJB
-    private AccountFacade kontoFacade;
-    
+    private KontoFacade kontoFacade;
+        
     @Resource
     private SessionContext sctx;
     
@@ -37,27 +37,18 @@ public class AccountEndpoint extends AbstractEndpoint implements SessionSynchron
     }
 
     public void utworzKonto(Account konto) throws AppBaseException {
-//        konto.setAktywne(true);
-//        konto.setPotwierdzone(true);
         // Konto ma hasło jawne podane w formularzu, należy je przeliczyć na skrót
         konto.setPassword(KontoUtils.wyliczSkrotHasla(konto.getPassword()));
         kontoFacade.create(konto);
     }
 
-//    public void aktywujKonto(Account konto){
-//        Account k = kontoFacade.find(konto.getId());
-//        k.setActive(true);
-//    }
+    public void aktywujKonto(Account konto){
+        Account k = kontoFacade.find(konto.getId());
+    }
     
-//    public void deaktywujKonto(Account konto){
-//        Account k = kontoFacade.find(konto.getId());
-//        k.setActive(false);
-//    }
-    
-//    public void potwierdzKonto(Konto konto){
-//        Konto k = kontoFacade.find(konto.getId());
-//        k.setPotwierdzone(true);
-//    }
+    public void deaktywujKonto(Account konto){
+        Account k = kontoFacade.find(konto.getId());
+    }
     
     public List<Account> pobierzWszystkieKonta() {
         return kontoFacade.findAll();
@@ -76,7 +67,7 @@ public class AccountEndpoint extends AbstractEndpoint implements SessionSynchron
         return kontoStan;
     }
     
-    public void zapiszKontoPoEdycji(Account konto) {
+    public void zapiszKontoPoEdycji(Account konto) throws AppBaseException {
         if (null == kontoStan) {
             throw new IllegalArgumentException("Brak wczytanego konta do modyfikacji");
         }
@@ -102,4 +93,5 @@ public class AccountEndpoint extends AbstractEndpoint implements SessionSynchron
         Account k = kontoFacade.find(konto.getId());
         k.setPassword(KontoUtils.wyliczSkrotHasla(haslo));
     }
+
 }

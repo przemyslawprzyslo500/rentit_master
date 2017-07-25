@@ -4,6 +4,7 @@ import pl.turek.liceum.rentit.model.Account;
 import pl.turek.liceum.rentit.model.Reserv;
 import java.util.Collection;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.SessionContext;
 import pl.turek.liceum.rentit.facade.AccountFacade;
 import pl.turek.liceum.rentit.controller.util.MobilePageController;
@@ -24,37 +25,26 @@ public class AccountController extends AbstractController<Account> {
     @Inject
     private MobilePageController mobilePageController;
 
-    @PersistenceContext
-    EntityManager em;
-
+//    @Resource
+//    private AccountFacade accountFacade;
     // Flags to indicate if child collections are empty
     private boolean isReservCollectionEmpty;
 
-    public boolean updateUser(Account users) {
-        
-        try {
-            em.getTransaction().begin();
-            Account userx = em.find(Account.class, users.getId());
-            userx.setName(users.getName());
-            userx.setPhone(users.getPhone());
-            userx.setEmail(users.getEmail());
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-            return false;
+    private Account myAccount;
+
+    public Account getMyAccount() {
+        String name = context.getCallerPrincipal().getName();
+        if (myAccount != null) {
+            AccountFacade ejbFacade = (AccountFacade) this.getFacade();
+            myAccount = ejbFacade.znajdzLogin(name);
         }
+        return myAccount;
     }
 
-//    private Account myAccount;
-//    public Account getMyAccount() {
-//        String name= context.getCallerPrincipal().getName();
-//        if (myAccount != null) {
-//            
-//            AccountFacade ejbFacade = (AccountFacade) this.getFacade();
-//            myAccount= 
-//        }
-//        return myAccount;
+//    public Account pobierzMojeKonto() {
+//        return znajdzLogin(context.getCallerPrincipal().getName());
 //    }
+
     public AccountController() {
         // Inform the Abstract parent controller of the concrete Account Entity
         super(Account.class);
