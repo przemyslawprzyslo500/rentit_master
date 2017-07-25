@@ -42,7 +42,7 @@ public class KontoEndpoint extends AbstractEndpoint implements SessionSynchroniz
 //        return accountFacade.findByName(context.getCallerPrincipal().getName());
 //    }
 
-    public Account pobierzMojeKonto2() {
+    public Account pobierzMojeKonto() {
 //        return kontoFacade.findByName(sctx.getCallerPrincipal().getName());
         return kontoFacade.znajdzLogin(sctx.getCallerPrincipal().getName());
 //        return accountFacade.findByName(context.getCallerPrincipal().getName());
@@ -95,7 +95,7 @@ public class KontoEndpoint extends AbstractEndpoint implements SessionSynchroniz
     }
 
     public void zmienMojeHaslo(String stare, String nowe) {
-        Account mojeKonto = pobierzMojeKonto2();
+        Account mojeKonto = pobierzMojeKonto();
         if (!mojeKonto.getPassword().equals(KontoUtils.wyliczSkrotHasla(stare))) {
             throw new IllegalArgumentException("Podane dotychczasowe hasło nie zgadza się");
         }
