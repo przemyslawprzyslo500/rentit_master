@@ -19,7 +19,7 @@
     </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
+            10
         </session-timeout>
     </session-config>
     <welcome-file-list>
@@ -53,6 +53,7 @@
             <url-pattern>/faces/app/reserv/*</url-pattern>
             <url-pattern>/faces/app/equipment/*</url-pattern>
             <url-pattern>/faces/app/reservStatus/*</url-pattern>
+            <url-pattern>/faces/app/usePlace/*</url-pattern>
             <url-pattern>/faces/errors/*</url-pattern>
             <url-pattern>/WEB-INF/include/entity/equipment/List.xhtml</url-pattern>
             <url-pattern>/WEB-INF/include/entity/equipment/View.xhtml</url-pattern>

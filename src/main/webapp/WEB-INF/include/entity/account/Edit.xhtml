@@ -36,17 +36,17 @@
                         <p:inputText id="phone" value="#{accountController.selected.phone}" title="#{bundle.EditAccountTitle_phone}" size="100" maxlength="255"/>
                         
                         <p:outputLabel for="accountFunction" value="#{bundle.CreateAccountLabel_accountFunction}" />
-                        <p:selectOneRadio id="accountFunction" value="#{accountController.selected.accountFunction}">
+                        <h:selectOneRadio id="accountFunction" value="#{accountController.selected.accountFunction}">
                             <f:selectItem itemLabel="Administrator" itemValue="admin" />
                             <f:selectItem itemLabel="Manager" itemValue="manager" />
                             <f:selectItem itemLabel="Employee" itemValue="employee" />
-                        </p:selectOneRadio>
+                        </h:selectOneRadio>
 
                         <p:outputLabel for="accountActive" value="#{bundle.CreateAccountLabel_active}" />
-                        <p:selectOneRadio id="accountActive" value="#{accountController.selected.active}">
-                            <f:selectItem itemLabel="YES" itemValue="1" />
-                            <f:selectItem itemLabel="NO" itemValue="0" />
-                        </p:selectOneRadio>  
+                        <h:selectOneRadio id="accountActive" value="#{accountController.selected.active}">
+                            <f:selectItem itemLabel="YES" itemValue="true" />
+                            <f:selectItem itemLabel="NO" itemValue="false" />
+                        </h:selectOneRadio>  
 
                     </p:panelGrid>
                     <p:commandButton actionListener="#{accountController.save}" value="#{bundle.Save}" update="display,:AccountListForm:datalist,:AccountListForm:AccountDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('AccountEditDialog'));">

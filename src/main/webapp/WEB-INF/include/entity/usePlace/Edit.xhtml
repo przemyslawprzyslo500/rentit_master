@@ -19,13 +19,13 @@
                         <h:outputText id="id" value="#{usePlaceController.selected.id}" />-->
 
                         <p:outputLabel value="#{bundle.EditUsePlaceLabel_building}" for="building" />
-                        <p:inputText id="building" value="#{usePlaceController.selected.building}" title="#{bundle.EditUsePlaceTitle_building}" size="255" maxlength="255"/>
+                        <p:inputText id="building" value="#{usePlaceController.selected.building}" title="#{bundle.EditUsePlaceTitle_building}" size="100" maxlength="255"/>
 
                         <p:outputLabel value="#{bundle.EditUsePlaceLabel_floor}" for="floor" />
                         <p:inputText id="floor" value="#{usePlaceController.selected.floor}" title="#{bundle.EditUsePlaceTitle_floor}"/>
 
                         <p:outputLabel value="#{bundle.EditUsePlaceLabel_place}" for="place" />
-                        <p:inputText id="place" value="#{usePlaceController.selected.place}" title="#{bundle.EditUsePlaceTitle_place}" size="255" maxlength="255"/>
+                        <p:inputText id="place" value="#{usePlaceController.selected.place}" title="#{bundle.EditUsePlaceTitle_place}" size="100" maxlength="255"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{usePlaceController.save}" value="#{bundle.Save}" update="display,:UsePlaceListForm:datalist,:UsePlaceListForm:UsePlaceDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('UsePlaceEditDialog'));">
                         <p:confirm header="#{bundle.ConfirmationHeader}" message="#{bundle.ConfirmEditMessage}" icon="ui-icon-alert"/>

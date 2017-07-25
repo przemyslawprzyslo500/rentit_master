@@ -19,13 +19,19 @@
                         <p:inputText id="id" value="#{usePlaceController.selected.id}" title="#{bundle.CreateUsePlaceTitle_id}" required="true" requiredMessage="#{bundle.CreateUsePlaceRequiredMessage_id}"/>-->
 
                         <p:outputLabel value="#{bundle.CreateUsePlaceLabel_building}" for="building" />
-                        <p:inputText id="building" value="#{usePlaceController.selected.building}" title="#{bundle.CreateUsePlaceTitle_building}" size="255" maxlength="255"/>
-
+                        <p:inputText id="building"  value="#{usePlaceController.selected.building}" title="#{bundle.CreateUsePlaceTitle_building}" size="100" maxlength="255" >
+                        <p:watermark for="building" value="Text..."/>
+                        </p:inputText>
+                        
                         <p:outputLabel value="#{bundle.CreateUsePlaceLabel_floor}" for="floor" />
-                        <p:inputText id="floor" value="#{usePlaceController.selected.floor}" title="#{bundle.CreateUsePlaceTitle_floor}"/>
-
+                        <p:inputText id="floor" value="#{usePlaceController.selected.floor}" title="#{bundle.CreateUsePlaceTitle_floor}">
+                        <p:watermark for="floor" value="Number..."/>
+                        </p:inputText>    
+                        
                         <p:outputLabel value="#{bundle.CreateUsePlaceLabel_place}" for="place" />
-                        <p:inputText id="place" value="#{usePlaceController.selected.place}" title="#{bundle.CreateUsePlaceTitle_place}" size="255" maxlength="255"/>
+                        <p:inputText id="place" value="#{usePlaceController.selected.place}" title="#{bundle.CreateUsePlaceTitle_place}" size="100" maxlength="255">
+                        <p:watermark for="place" value="Text..."/>
+                        </p:inputText>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{usePlaceController.saveNew}" value="#{bundle.Save}" update="display,:UsePlaceListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('UsePlaceCreateDialog'));">
                         <p:confirm header="#{bundle.ConfirmationHeader}" message="#{bundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
