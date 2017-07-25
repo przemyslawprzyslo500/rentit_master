@@ -38,10 +38,10 @@ public class AccountFacade extends AbstractFacade<Account> {
         return em;
     }
 
-//    public Account findByName(String name) {
-//        return (Account) em.createQuery("SELECT a FROM ACCOUNT a where a.login = :login")
-//                .setParameter("login", name).getSingleResult();
-//    }
+    public Account findByName(String name) {
+        return (Account) em.createQuery("SELECT a FROM ACCOUNT a where a.login = :login")
+                .setParameter("login", name).getSingleResult();
+    }
 
     public AccountFacade() {
         super(Account.class);

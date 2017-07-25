@@ -19,11 +19,14 @@ import javax.persistence.PersistenceContext;
 @ViewScoped
 public class AccountController extends AbstractController<Account> {
 
+    @EJB
+    private AccountFacade accountFacade;
+    
     @Resource
-    private SessionContext context;
+    SessionContext context;
 
-    @Inject
-    private MobilePageController mobilePageController;
+//    @Inject
+//    private MobilePageController mobilePageController;
 
 //    @Resource
 //    private AccountFacade accountFacade;
@@ -41,9 +44,9 @@ public class AccountController extends AbstractController<Account> {
         return myAccount;
     }
 
-//    public Account pobierzMojeKonto() {
-//        return znajdzLogin(context.getCallerPrincipal().getName());
-//    }
+    public Account pobierzMojeKonto() {
+        return accountFacade.findByName(context.getCallerPrincipal().getName());
+    }
 
     public AccountController() {
         // Inform the Abstract parent controller of the concrete Account Entity
@@ -78,14 +81,14 @@ public class AccountController extends AbstractController<Account> {
      *
      * @return navigation outcome for Reserv page
      */
-    public String navigateReservCollection() {
-        Account selected = this.getSelected();
-        if (selected != null) {
-            AccountFacade ejbFacade = (AccountFacade) this.getFacade();
-            Collection<Reserv> selectedReservCollection = ejbFacade.findReservCollection(selected);
-            FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("Reserv_items", selectedReservCollection);
-        }
-        return this.mobilePageController.getMobilePagesPrefix() + "/app/reserv/index";
-    }
+//    public String navigateReservCollection() {
+//        Account selected = this.getSelected();
+//        if (selected != null) {
+//            AccountFacade ejbFacade = (AccountFacade) this.getFacade();
+//            Collection<Reserv> selectedReservCollection = ejbFacade.findReservCollection(selected);
+//            FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("Reserv_items", selectedReservCollection);
+//        }
+//        return this.mobilePageController.getMobilePagesPrefix() + "/app/reserv/index";
+//    }
 
 }
