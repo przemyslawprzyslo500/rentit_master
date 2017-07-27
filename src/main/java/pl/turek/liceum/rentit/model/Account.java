@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Account.findAll", query = "SELECT a FROM Account a")
     , @NamedQuery(name = "Account.findById", query = "SELECT a FROM Account a WHERE a.id = :id")
     , @NamedQuery(name = "Account.findByAccountFunction", query = "SELECT a FROM Account a WHERE a.accountFunction = :accountFunction")
-    , @NamedQuery(name = "Account.findByActive", query = "SELECT a FROM Account a WHERE a.active = :active")
+//    , @NamedQuery(name = "Account.findByActive", query = "SELECT a FROM Account a WHERE a.active = :active")
     , @NamedQuery(name = "Account.findByEmail", query = "SELECT a FROM Account a WHERE a.email = :email")
     , @NamedQuery(name = "Account.findByLogin", query = "SELECT a FROM Account a WHERE a.login = :login")
     , @NamedQuery(name = "Account.findByName", query = "SELECT a FROM Account a WHERE a.name = :name")
@@ -54,8 +54,8 @@ public class Account implements Serializable {
     private Integer id;
     @Column(name = "ACCOUNT_FUNCTION", nullable = false, length = 20)
     private String accountFunction;
-    @Column(name = "ACTIVE")
-    private boolean active;
+//    @Column(name = "ACTIVE")
+//    private boolean active;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 255)
     @Column(name = "EMAIL", length = 255)
@@ -105,13 +105,13 @@ public class Account implements Serializable {
         this.accountFunction = accountFunction;
     }
 
-    public boolean getActive() {
-        return active;
-    }
+//    public boolean getActive() {
+//        return active;
+//    }
 
-    public void setActive(boolean active) {
-        this.active = active;
-    }
+//    public void setActive(boolean active) {
+//        this.active = active;
+//    }
 
     public String getEmail() {
         return email;

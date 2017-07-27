@@ -40,13 +40,14 @@
                             <f:selectItem itemLabel="Administrator" itemValue="admin" />
                             <f:selectItem itemLabel="Manager" itemValue="manager" />
                             <f:selectItem itemLabel="Employee" itemValue="employee" />
+                            <f:selectItem itemLabel="Inactive" itemValue="inactive" />
                         </h:selectOneRadio>
 
-                        <p:outputLabel for="accountActive" value="#{bundle.CreateAccountLabel_active}" />
+<!--                        <p:outputLabel for="accountActive" value="#{bundle.CreateAccountLabel_active}" />
                         <h:selectOneRadio id="accountActive" value="#{accountController.selected.active}">
                             <f:selectItem itemLabel="YES" itemValue="true" />
                             <f:selectItem itemLabel="NO" itemValue="false" />
-                        </h:selectOneRadio>  
+                        </h:selectOneRadio>  -->
 
                     </p:panelGrid>
                     <p:commandButton actionListener="#{accountController.save}" value="#{bundle.Save}" update="display,:AccountListForm:datalist,:AccountListForm:AccountDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('AccountEditDialog'));">

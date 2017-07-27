@@ -26,6 +26,15 @@
         <welcome-file>faces/login.xhtml</welcome-file>
     </welcome-file-list>
     <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Entire Application</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <security-constraint>
         <display-name>AdminConstrain</display-name>
         <web-resource-collection>
             <web-resource-name>AdminResource</web-resource-name>
@@ -42,6 +51,9 @@
             <description/>
             <role-name>admin</role-name>
         </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
     </security-constraint>
     <security-constraint>
         <display-name>ManagerConstraint</display-name>
@@ -59,9 +71,12 @@
             <url-pattern>/WEB-INF/include/entity/equipment/View.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <description/>
+            <!--            <description/>-->
             <role-name>manager</role-name>
         </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
     </security-constraint>
     <security-constraint>
         <display-name>EmployeeConstrain</display-name>
@@ -80,6 +95,28 @@
             <description/>
             <role-name>employee</role-name>
         </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>InactiveConstraint</display-name>
+        <web-resource-collection>
+            <web-resource-name>InactiveConstrain</web-resource-name>
+            <description>InactiveConstrain</description>
+            <url-pattern>/faces/accountinactiv.xhtml</url-pattern>
+            <url-pattern>/faces/index.xhtml</url-pattern>
+            <url-pattern>/faces/errors/*</url-pattern>
+            <url-pattern>/faces/app/account/EditMyAccount.xhtml</url-pattern>
+            <url-pattern>/faces/app/account/index.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>inactive</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
     </security-constraint>
     <login-config>
         <auth-method>FORM</auth-method>
@@ -113,4 +150,8 @@
         <error-code>404</error-code>
         <location>/faces/errors/error.xhtml</location>
     </error-page>-->
+    <security-role>
+        <description>inactives</description>
+        <role-name>inactive</role-name>
+    </security-role>
 </web-app>

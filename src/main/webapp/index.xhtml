@@ -12,7 +12,13 @@
         </ui:define>
         <ui:define name="body"><center>
                 <p:panel header="#{bundle.Welcome}">
-                    <p><h:outputText value="#{bundle.WelcomeMessage}"></h:outputText></p>
+                    <p><h:outputText value="#{bundle.WelcomeMessage}"
+                                     rendered="!#{facesContext.externalContext.isUserInRole('inactive')}">
+                        </h:outputText></p>
+                    <br />
+                    <h2><h:outputText value="Your account is INACTIVE. Please, contact with administrator." 
+                                     rendered="#{facesContext.externalContext.isUserInRole('inactive')}">
+                        </h:outputText></h2>
                 </p:panel>
                 <h:outputText value="You are logged in as #{request.userPrincipal.name}"/>
                 <h:form styleClass="settings-form" rendered="#{request.userPrincipal ne null}"

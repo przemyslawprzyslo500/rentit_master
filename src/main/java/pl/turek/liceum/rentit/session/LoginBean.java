@@ -35,19 +35,6 @@ import pl.turek.liceum.rentit.web.konto.SzczegolyMojegoKontaPageBean;
 @Transactional
 public class LoginBean {
 
-//    EdytujKontoPageBean edytujKontoPageBean;
-    
-//    ListaKontPageBean listaKontPageBean;
-//    @Inject
-//    private KontoFacade kontoFacade;
-
-    @Inject
-    SzczegolyMojegoKontaPageBean szczegolyMojegoKontaPageBean;
-    
-    @Inject
-    ListaKontPageBean listaKontPageBean;
-//    EdytujKontoPageBean edytujKontoPageBean;
-    
     private String userName;
     private String password;
     private Account currentUser;
@@ -69,19 +56,14 @@ public class LoginBean {
     }
 
     public String login() {
-        listaKontPageBean.edytujKonto();
         ExternalContext externalContext
                 = FacesContext.getCurrentInstance().getExternalContext();
         HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
         try {
             request.login(userName, password);
-            if (szczegolyMojegoKontaPageBean.getKonto().getActive())
-                return "index";
-            else {
-                return "accountinactiv";
+                   return "index";
             }
-            }
-catch (ServletException ex) {
+            catch (ServletException ex) {
             Logger.getLogger(LoginBean.class.getName()).log(Level.INFO,
                     "Failed to log in {0}", userName);
             FacesContext facesContext = FacesContext.getCurrentInstance();

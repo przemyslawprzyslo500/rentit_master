@@ -2,7 +2,6 @@
 package pl.turek.liceum.rentit.web.utils;
 
 import pl.turek.liceum.rentit.model.Account;
-
 /**
  *
  */
@@ -27,6 +26,7 @@ public class KontoUtils {
     
     public static String wyliczSkrotHasla(String hasloJawne){
         //TODO: wstawić algorytm skrótu hasła
+//        String output = Hashing.sha256().hashString(hasloJawne, Charsets.UTF_8)
         return hasloJawne;
     }
 
