@@ -6,7 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/WEB-INF/include/template.xhtml">
+    <ui:composition template="/WEB-INF/include/template_empty.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.AppName}"></h:outputText>
         </ui:define>
@@ -14,11 +14,7 @@
                 <p:panel header="#{bundle.Welcome}">
                     <p><h:outputText value="#{bundle.WelcomeMessage}"></h:outputText></p>
                 </p:panel>
-                <h:outputText value="You are logged in as #{request.userPrincipal.name}"/>
-                <h:form styleClass="settings-form" rendered="#{request.userPrincipal ne null}"
-                        id="logoutbean" prependId="false">
-                    <h:commandButton action="#{loginBean.logout}" value="Logout"/>
-                </h:form>
+                <h2> Konto nie aktywne </h2>
             </center>
         </ui:define>
 

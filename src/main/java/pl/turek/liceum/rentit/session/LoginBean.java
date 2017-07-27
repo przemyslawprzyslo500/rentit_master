@@ -7,14 +7,23 @@ package pl.turek.liceum.rentit.session;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
+import pl.turek.liceum.rentit.ejb.facades.KontoFacade;
 import pl.turek.liceum.rentit.model.Account;
+import pl.turek.liceum.rentit.web.konto.EdytujKontoPageBean;
+import pl.turek.liceum.rentit.web.konto.ListaKontPageBean;
+import pl.turek.liceum.rentit.web.konto.SzczegolyMojegoKontaPageBean;
 
 /**
  *
@@ -22,8 +31,23 @@ import pl.turek.liceum.rentit.model.Account;
  */
 @Named(value = "loginBean")
 @RequestScoped
+//@TransactionAttribute(TransactionAttributeType.MANDATORY)
+@Transactional
 public class LoginBean {
 
+//    EdytujKontoPageBean edytujKontoPageBean;
+    
+//    ListaKontPageBean listaKontPageBean;
+//    @Inject
+//    private KontoFacade kontoFacade;
+
+    @Inject
+    SzczegolyMojegoKontaPageBean szczegolyMojegoKontaPageBean;
+    
+    @Inject
+    ListaKontPageBean listaKontPageBean;
+//    EdytujKontoPageBean edytujKontoPageBean;
+    
     private String userName;
     private String password;
     private Account currentUser;
@@ -45,13 +69,19 @@ public class LoginBean {
     }
 
     public String login() {
+        listaKontPageBean.edytujKonto();
         ExternalContext externalContext
                 = FacesContext.getCurrentInstance().getExternalContext();
         HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
         try {
             request.login(userName, password);
-            return "index";
-        } catch (ServletException ex) {
+            if (szczegolyMojegoKontaPageBean.getKonto().getActive())
+                return "index";
+            else {
+                return "accountinactiv";
+            }
+            }
+catch (ServletException ex) {
             Logger.getLogger(LoginBean.class.getName()).log(Level.INFO,
                     "Failed to log in {0}", userName);
             FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -85,6 +115,28 @@ public class LoginBean {
 //        if (externalContext.getUserPrincipal() == null) {
 //            Logger.getLogger("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!current principal is null");
 //        } else {
+////            Integer id = Integer.parseInt(externalContext.getUserPrincipal().getName());
+////            String name = kontoFacade.znajdzLogin(externalContext.getUserPrincipal().getName());
+//            Logger.getLogger("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!LOGGED USER " + externalContext.getUserPrincipal().getName());
+////            Logger.getLogger("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!LOGGED USER " + id);
+//            try {
+////                currentUser = getLoginService().getLoginById(id);
+////                currentUser = kontoFacade.znajdzLogin(externalContext.getUserPrincipal().getName());
+//                listaKontPageBean.edytujKonto();
+//                currentUser = edytujKontoPageBean.getKonto();
+//            } catch (Exception ex) {
+//                Logger.getLogger("!!!!!!!!!!!!!!!!!!!!!!currentUser not loaded ");
+//            }
+//        }
+//        return currentUser;
+//    }
+
+//    public Account getCurrentUser() {
+//        FacesContext fc = FacesContext.getCurrentInstance();
+//        ExternalContext externalContext = fc.getExternalContext();
+//        if (externalContext.getUserPrincipal() == null) {
+//            Logger.getLogger("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!current principal is null");
+//        } else {
 //            Integer id = Integer.parseInt(externalContext.getUserPrincipal().getName());
 //            Logger.getLogger("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!LOGGED USER " + id);
 //            try {
@@ -94,5 +146,4 @@ public class LoginBean {
 //        }
 //        return currentUser;
 //    }
-
 }
