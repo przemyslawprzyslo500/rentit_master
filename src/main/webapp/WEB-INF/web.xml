@@ -8,6 +8,10 @@
         <param-name>facelets.SKIP_COMMENTS</param-name>
         <param-value>true</param-value>
     </context-param>
+    <!--    <context-param>
+        <param-name>org.ajax4jsf.handleViewExpiredOnClient</param-name> 
+        <param-value>true</param-value>     
+    </context-param>-->
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -34,6 +38,17 @@
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
+<!--    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Public</web-resource-name>
+            <description>Makes the landing page explicitly public</description>
+            <url-pattern>/login.html</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+         No auth-constraint = everybody has access! 
+    </security-constraint>-->
     <security-constraint>
         <display-name>AdminConstrain</display-name>
         <web-resource-collection>
@@ -42,6 +57,7 @@
             <url-pattern>/WEB-INF/include/entity/*</url-pattern>
             <url-pattern>/faces/app/reservStatus/*</url-pattern>
             <url-pattern>/faces/app/*</url-pattern>
+            <url-pattern>/faces/app/index.hxtml</url-pattern>
             <url-pattern>/faces/app/account/*</url-pattern>
             <url-pattern>/faces/errors/*</url-pattern>
             <url-pattern>/faces/WEB-INF/include/entity/account/*</url-pattern>
@@ -71,7 +87,6 @@
             <url-pattern>/WEB-INF/include/entity/equipment/View.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <!--            <description/>-->
             <role-name>manager</role-name>
         </auth-constraint>
         <user-data-constraint>
@@ -138,7 +153,11 @@
         <description>managers</description>
         <role-name>manager</role-name>
     </security-role>
-    <!--    <error-page>
+    <security-role>
+        <description>inactives</description>
+        <role-name>inactive</role-name>
+    </security-role>
+    <!--        <error-page>
         <error-code>403</error-code>
         <location>/faces/errors/403.xhtml</location>
     </error-page>
@@ -150,8 +169,7 @@
         <error-code>404</error-code>
         <location>/faces/errors/error.xhtml</location>
     </error-page>-->
-    <security-role>
-        <description>inactives</description>
-        <role-name>inactive</role-name>
-    </security-role>
+    <!--  
+      ViewExpiredException occurs if the user posts back to a page once their session has expired  
+    -->  
 </web-app>

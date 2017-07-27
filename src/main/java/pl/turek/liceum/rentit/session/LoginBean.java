@@ -7,23 +7,15 @@ package pl.turek.liceum.rentit.session;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.EJB;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
-import pl.turek.liceum.rentit.ejb.facades.KontoFacade;
 import pl.turek.liceum.rentit.model.Account;
-import pl.turek.liceum.rentit.web.konto.EdytujKontoPageBean;
-import pl.turek.liceum.rentit.web.konto.ListaKontPageBean;
-import pl.turek.liceum.rentit.web.konto.SzczegolyMojegoKontaPageBean;
 
 /**
  *
@@ -83,7 +75,8 @@ public class LoginBean {
             FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
             request.logout();
 //            return "login";
-            return "/login?faces-redirect=true";
+//            return "/login?faces-redirect=true";
+            return "index?faces-redirect=true";
         } catch (ServletException ex) {
             Logger.getLogger(LoginBean.class.getName()).log(Level.SEVERE,
                     "Failed to logout", ex);
