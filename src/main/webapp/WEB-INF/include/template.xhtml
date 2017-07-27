@@ -22,7 +22,6 @@
                         <p:outputLabel value="You are logged in as: #{request.userPrincipal.name}  "/>
                         <p:commandButton action="#{loginBean.logout}" value="  Logout  " immediate="true"/>
                         <!--<p:commandButton action="logout?faces-redirect=true" value="  Logout  "/>-->
-
                         <p:panelGrid columns="2">
                             <h:outputLabel id="testopis" value="Sesion ID"/>
                             <h:outputLabel id="test" value="#{request.session.id}"/>
@@ -31,8 +30,6 @@
                             <h:outputLabel id="test3opis" value="valueNames"/>
                             <h:outputLabel id="test3" value="#{request.session.valueNames}"/>
                         </p:panelGrid>
-                        <!--<p:commandButton value="Edit my account" action="/app" immediate="true" />-->
-                        <!--<p:commandButton id="editButton" value="Edit my account2" update=":AccountEditForm" oncomplete="PF('AccountEditDialog').show()" disabled="#{empty accountController.selected}"/>-->
                     </h:form>
                     <p:panelGrid columns="4" >
                         <p:outputLabel id="yourname" style="font-weight: bold" value="Name: " />
