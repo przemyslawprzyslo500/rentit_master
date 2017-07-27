@@ -16,10 +16,11 @@
         <p:layout fullPage="true">
             <p:layoutUnit position="north" size="200" header="#{bundle.AppName}">
                 <p:panelGrid columns="3">
-                    <h:form styleClass="settings-form" rendered="#{request.userPrincipal ne null}"
+                    <!--<h:form styleClass="settings-form" rendered="#{request.userPrincipal ne null}"-->
+                    <h:form styleClass="settings-form"
                             id="logout" prependId="false">
                         <p:outputLabel value="You are logged in as: #{request.userPrincipal.name}  "/>
-                        <p:commandButton action="#{loginBean.logout}" value="  Logout  "/>
+                        <p:commandButton action="#{loginBean.logout}" value="  Logout  " immediate="true"/>
                         <!--<p:commandButton action="logout?faces-redirect=true" value="  Logout  "/>-->
 
                         <p:panelGrid columns="2">
