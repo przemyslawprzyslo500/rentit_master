@@ -9,8 +9,6 @@ import java.util.Collection;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -27,7 +25,7 @@ import pl.turek.liceum.rentit.model.Reserv;
  * @author miszcz
  */
 @Stateless
-//@RolesAllowed("admin")
+@RolesAllowed("admin")
 public class AccountFacade extends AbstractFacade<Account> {
 
     @PersistenceContext(unitName = "pl.turek.liceum.rentit_RentIt_war_PU")

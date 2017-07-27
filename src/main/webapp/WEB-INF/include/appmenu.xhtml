@@ -10,7 +10,8 @@
         <ui:param name="pageBean" value="#{edytujKontoPageBean}" />
         <h:form id="menuForm" prependId="false">
             <p:menubar>
-                <p:menuitem value="#{bundle.Home}" outcome="/index.xhtml" icon="ui-icon-home"/>
+                <!--<p:menuitem value="#{bundle.Home}" outcome="/index.xhtml" icon="ui-icon-home"/>-->
+                <p:menuitem value="#{bundle.Home}" action="/faces/index.xhtml" immediate="true" icon="ui-icon-home"/>
                 <p:menuitem rendered="#{request.userPrincipal==null}" value="Zaloguj" outcome="/login" icon="ui-icon-home"/>
                 <!--<p:submenu label="#{bundle.Maintenance}">-->
                 <!--<p:menuitem value="setKontoSession " action="#{edytujKontoPageBean.setKontoSession(session)}" outcome="/app/account/EditMyAccount.xhtml" />-->
@@ -26,7 +27,8 @@
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('admin')}" value="#{bundle.ReservStatusHeading} " outcome="/app/reservStatus/index" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('manager')}" value="#{bundle.UsePlaceHeading} " outcome="/app/usePlace/index" />
                 <!--</p:submenu>-->
-                <p:menuitem value="#{bundle.Mobile}" outcome="/mobile/index" icon="ui-icon-signal"/>
+                <!--<p:menuitem value="#{bundle.Mobile}" outcome="/mobile/index" icon="ui-icon-signal"/>-->
+                <p:menuitem value="BACK" onclick="history.go(-1)" icon="ui-icon-seek-prev"/>
             </p:menubar>
         </h:form>
     </ui:composition>

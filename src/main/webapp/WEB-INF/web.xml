@@ -6,13 +6,14 @@
     </context-param>
     <context-param>
         <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
-        <!--<param-name>facelets.SKIP_COMMENTS</param-name>-->
         <param-value>true</param-value>
     </context-param>
-    <!--    <context-param>
+    
+<!--        <context-param>
         <param-name>org.ajax4jsf.handleViewExpiredOnClient</param-name> 
         <param-value>true</param-value>     
-    </context-param>-->
+    </context-param>
+    -->
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -60,6 +61,7 @@
             <description>AdminResource</description>
             <url-pattern>/WEB-INF/include/entity/*</url-pattern>
             <url-pattern>/faces/app/reservStatus/*</url-pattern>
+            <url-pattern>/faces/app/licenseType/*</url-pattern>
             <url-pattern>/faces/app/*</url-pattern>
             <url-pattern>/faces/app/index.hxtml</url-pattern>
             <url-pattern>/faces/app/login.hxtml</url-pattern>
@@ -84,7 +86,7 @@
             <url-pattern>/faces/app/account/EditMyAccount.xhtml</url-pattern>
             <url-pattern>/faces/app/reserv/*</url-pattern>
             <url-pattern>/faces/app/equipment/*</url-pattern>
-            <url-pattern>/faces/app/reservStatus/*</url-pattern>
+            <!--<url-pattern>/faces/app/reservStatus/*</url-pattern>-->
             <url-pattern>/faces/app/index.hxtml</url-pattern>
             <url-pattern>/faces/app/login.hxtml</url-pattern>
             <url-pattern>/faces/app/usePlace/*</url-pattern>
@@ -165,7 +167,7 @@
         <description>inactives</description>
         <role-name>inactive</role-name>
     </security-role>
-    <error-page>
+<!--    <error-page>
         <error-code>403</error-code>
         <location>/errors/403.xhtml</location>
     </error-page>
@@ -176,5 +178,5 @@
     <error-page>
         <error-code>404</error-code>
         <location>/errors/error.xhtml</location>
-    </error-page>
+    </error-page>-->
 </web-app>

@@ -1,9 +1,11 @@
 package pl.turek.liceum.rentit.web.konto;
 
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import pl.turek.liceum.rentit.model.Account;
 import pl.turek.liceum.rentit.web.utils.KontoUtils;
 
@@ -12,8 +14,9 @@ import pl.turek.liceum.rentit.web.utils.KontoUtils;
  * @author java
  */
 @ManagedBean(name = "szczegolyMojegoKontaPageBean")
-@RequestScoped
-public class SzczegolyMojegoKontaPageBean {
+//@RequestScoped
+@SessionScoped
+public class SzczegolyMojegoKontaPageBean implements Serializable{
     
     public SzczegolyMojegoKontaPageBean() {
     }
