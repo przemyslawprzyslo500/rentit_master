@@ -19,8 +19,8 @@ import pl.turek.liceum.rentit.web.utils.KontoUtils;
  * @author java
  */
 @ManagedBean(name = "edytujKontoPageBean")
-//@RequestScoped
-@SessionScoped
+@RequestScoped
+//@SessionScoped
 public class EdytujKontoPageBean implements Serializable{
 
 //    @EJB

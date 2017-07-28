@@ -25,7 +25,7 @@ import pl.turek.liceum.rentit.model.Reserv;
  * @author miszcz
  */
 @Stateless
-@RolesAllowed("admin")
+//@RolesAllowed("admin")
 public class AccountFacade extends AbstractFacade<Account> {
 
     @PersistenceContext(unitName = "pl.turek.liceum.rentit_RentIt_war_PU")

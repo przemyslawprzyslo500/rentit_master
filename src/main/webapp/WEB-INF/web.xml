@@ -60,15 +60,20 @@
             <web-resource-name>AdminResource</web-resource-name>
             <description>AdminResource</description>
             <url-pattern>/WEB-INF/include/entity/*</url-pattern>
+            <url-pattern>/faces/app/account/EditMyAccount.xhtml</url-pattern>
+            <url-pattern>/faces/app/account/index.xhtml</url-pattern>
+            <url-pattern>/faces/app/account/success.xhtml</url-pattern>
             <url-pattern>/faces/app/reservStatus/*</url-pattern>
             <url-pattern>/faces/app/licenseType/*</url-pattern>
             <url-pattern>/faces/app/*</url-pattern>
             <url-pattern>/faces/app/index.hxtml</url-pattern>
             <url-pattern>/faces/app/login.hxtml</url-pattern>
-            <url-pattern>/faces/app/account/*</url-pattern>
             <url-pattern>/faces/errors/*</url-pattern>
-            <url-pattern>/faces/WEB-INF/include/entity/account/*</url-pattern>
-            <url-pattern>/faces/app/account/EditMyAccount.xhtml</url-pattern>
+            <!--<url-pattern>/errors/*</url-pattern>-->
+            <url-pattern>/faces/WEB-INF/include/entity/account/List.xhtml</url-pattern>
+            <url-pattern>/faces/WEB-INF/include/entity/account/Create.xhtml</url-pattern>
+            <url-pattern>/faces/WEB-INF/include/entity/account/Edit.xhtml</url-pattern>
+            <url-pattern>/faces/WEB-INF/include/entity/account/View.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
