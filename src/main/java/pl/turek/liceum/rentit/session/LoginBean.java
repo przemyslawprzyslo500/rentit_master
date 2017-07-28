@@ -13,6 +13,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import pl.turek.liceum.rentit.model.Account;
@@ -25,7 +26,7 @@ import pl.turek.liceum.rentit.model.Account;
 @RequestScoped
 //@TransactionAttribute(TransactionAttributeType.MANDATORY)
 @Transactional
-public class LoginBean {
+public class LoginBean extends HttpServlet{
 
     private String userName;
     private String password;
@@ -73,7 +74,6 @@ public class LoginBean {
         HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
         try {
             FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-            
             request.logout();
 //            return "login";
 //            return "/login?faces-redirect=true";

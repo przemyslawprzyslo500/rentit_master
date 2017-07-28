@@ -138,7 +138,7 @@
             <url-pattern>/faces/index.xhtml</url-pattern>
             <url-pattern>/faces/errors/*</url-pattern>
             <url-pattern>/faces/app/account/EditMyAccount.xhtml</url-pattern>
-            <url-pattern>/faces/app/account/index.xhtml</url-pattern>
+            <!--<url-pattern>/faces/app/account/index.xhtml</url-pattern>-->
         </web-resource-collection>
         <auth-constraint>
             <description/>
@@ -174,14 +174,14 @@
     </security-role>
 <!--    <error-page>
         <error-code>403</error-code>
-        <location>/errors/403.xhtml</location>
+        <location>/faces/errors/403.xhtml</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>
-        <location>/errors/error.xhtml</location>
+        <location>/faces/errors/error.xhtml</location>
     </error-page>
     <error-page>
         <error-code>404</error-code>
-        <location>/errors/error.xhtml</location>
+        <location>/faces/errors/error.xhtml</location>
     </error-page>-->
 </web-app>
