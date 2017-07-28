@@ -8,14 +8,15 @@
 
     <ui:composition>
 
-        <p:dialog rendered="#{facesContext.externalContext.isUserInRole('admin')}" id="AccountCreateDlg" widgetVar="AccountCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAccountTitle}" closeOnEscape="true">
+        <p:dialog rendered="#{facesContext.externalContext.isUserInRole('admin')}" id="AccountCreateDlg" widgetVar="AccountCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="${msg.CreateAccountTitle}" closeOnEscape="true">
+        <!--<p:dialog rendered="#{facesContext.externalContext.isUserInRole('admin')}" id="AccountCreateDlg" widgetVar="AccountCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAccountTitle}" closeOnEscape="true">-->
 
             <h:form id="AccountCreateForm">
 
                 <h:panelGroup id="display" rendered="#{accountController.selected != null}">
                     <p:panelGrid columns="2" columnClasses="column">
 
-                        <p:outputLabel value="#{bundle.CreateAccountLabel_name}" for="name" />
+                        <p:outputLabel value="${msg.CreateAccountLabel_name}" for="name" />
                         <p:inputText id="name" required="true" value="#{accountController.selected.name}" title="#{bundle.CreateAccountTitle_name}" size="100" maxlength="255">
                             <p:watermark for="name,surname,login" value="Text..."/>
                             <p:watermark for="pwd1,pwd2" value="Combination of characters"/>

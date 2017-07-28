@@ -8,33 +8,30 @@
 
     <ui:composition>
 
-        <p:dialog id="UsePlaceCreateDlg" widgetVar="UsePlaceCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateUsePlaceTitle}" closeOnEscape="true">
+        <p:dialog id="UsePlaceCreateDlg" widgetVar="UsePlaceCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="${msg.CreateUsePlaceTitle}" closeOnEscape="true">
 
             <h:form id="UsePlaceCreateForm">
 
                 <h:panelGroup id="display" rendered="#{usePlaceController.selected != null}">
                     <p:panelGrid columns="2" columnClasses="column">
 
-<!--                        <p:outputLabel value="#{bundle.CreateUsePlaceLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{usePlaceController.selected.id}" title="#{bundle.CreateUsePlaceTitle_id}" required="true" requiredMessage="#{bundle.CreateUsePlaceRequiredMessage_id}"/>-->
-
                         <p:outputLabel value="#{bundle.CreateUsePlaceLabel_building}" for="building" />
-                        <p:inputText id="building"  value="#{usePlaceController.selected.building}" title="#{bundle.CreateUsePlaceTitle_building}" size="100" maxlength="255" >
+                        <p:inputText id="building"  value="#{usePlaceController.selected.building}" title="${msg.CreateUsePlaceTitle_building}" size="100" maxlength="255" >
                         <p:watermark for="building" value="Text..."/>
                         </p:inputText>
                         
                         <p:outputLabel value="#{bundle.CreateUsePlaceLabel_floor}" for="floor" />
-                        <p:inputText id="floor" value="#{usePlaceController.selected.floor}" title="#{bundle.CreateUsePlaceTitle_floor}">
+                        <p:inputText id="floor" value="#{usePlaceController.selected.floor}" title="${msg.CreateUsePlaceTitle_floor}">
                         <p:watermark for="floor" value="Number..."/>
                         </p:inputText>    
                         
                         <p:outputLabel value="#{bundle.CreateUsePlaceLabel_place}" for="place" />
-                        <p:inputText id="place" value="#{usePlaceController.selected.place}" title="#{bundle.CreateUsePlaceTitle_place}" size="100" maxlength="255">
+                        <p:inputText id="place" value="#{usePlaceController.selected.place}" title="${msg.CreateUsePlaceTitle_place}" size="100" maxlength="255">
                         <p:watermark for="place" value="Text..."/>
                         </p:inputText>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{usePlaceController.saveNew}" value="#{bundle.Save}" update="display,:UsePlaceListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('UsePlaceCreateDialog'));">
-                        <p:confirm header="#{bundle.ConfirmationHeader}" message="#{bundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                        <p:confirm header="${msg.ConfirmationHeader}" message="${msg.ConfirmCreateMessage}" icon="ui-icon-alert"/>
                     </p:commandButton>
 
                     <p:commandButton value="#{bundle.Cancel}" oncomplete="PF('UsePlaceCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>

@@ -15,14 +15,14 @@
                 <h:panelGroup id="display" rendered="#{reservStatusController.selected != null}">
                     <p:panelGrid columns="2" columnClasses="column">
 
-                        <p:outputLabel value="#{bundle.CreateReservStatusLabel_reservationStatusName}" for="reservationStatusName" />
+                        <p:outputLabel value="${msg.CreateReservStatusLabel_reservationStatusName}" for="reservationStatusName" />
                         <p:inputText id="reservationStatusName" value="#{reservStatusController.selected.reservationStatusName}" title="#{bundle.CreateReservStatusTitle_reservationStatusName}" size="100" maxlength="255"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{reservStatusController.saveNew}" value="#{bundle.Save}" update="display,:ReservStatusListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ReservStatusCreateDialog'));">
-                        <p:confirm header="#{bundle.ConfirmationHeader}" message="#{bundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                        <p:confirm header="${msg.ConfirmationHeader}" message="#{bundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
                     </p:commandButton>
 
-                    <p:commandButton value="#{bundle.Cancel}" oncomplete="PF('ReservStatusCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                    <p:commandButton value="${msg.Cancel}" oncomplete="PF('ReservStatusCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
                 </h:panelGroup>
 
             </h:form>
