@@ -38,6 +38,8 @@
             <url-pattern>/faces/errors/403.xhtml</url-pattern>
             <url-pattern>/faces/errors/404.xhtml</url-pattern>
             <url-pattern>/faces/errors/error.xhtml</url-pattern>
+            <url-pattern>/faces/login.xhtml</url-pattern>
+            <url-pattern>/faces/index.xhtml</url-pattern>
         </web-resource-collection>
         <user-data-constraint>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
@@ -172,6 +174,10 @@
         <description>inactives</description>
         <role-name>inactive</role-name>
     </security-role>
+       <error-page>
+        <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+        <location>/faces/login.xhtml</location>
+    </error-page>
 <!--    <error-page>
         <error-code>403</error-code>
         <location>/faces/errors/403.xhtml</location>

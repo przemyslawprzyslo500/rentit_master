@@ -8,12 +8,13 @@
 
     <h:form id="EquipmentListForm">
 
-        <p:panel header="${msg.ListEquipmentTitle}">
+        <!--<p:panel header="${msg.ListEquipmentTitle}">-->
+        <p:panel header="Lista sprzętu employee">
             <p:contextMenu id="EquipmentDataTableContextMenu" for="datalist">  
-                <p:menuitem value="${msg.Create}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" onclick="document.getElementById('EquipmentListForm:createButton').click();" icon="ui-icon-plus"/>
+                <!--<p:menuitem value="${msg.Create}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" onclick="document.getElementById('EquipmentListForm:createButton').click();" icon="ui-icon-plus"/>-->
                 <p:menuitem value="${msg.View}" onclick="document.getElementById('EquipmentListForm:viewButton').click();" icon="ui-icon-search"/>
-                <p:menuitem value="${msg.Edit}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" onclick="document.getElementById('EquipmentListForm:editButton').click();" icon="ui-icon-pencil"/>
-                <p:menuitem value="${msg.Delete}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" onclick="document.getElementById('EquipmentListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <!--<p:menuitem value="${msg.Edit}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" onclick="document.getElementById('EquipmentListForm:editButton').click();" icon="ui-icon-pencil"/>-->
+                <!--<p:menuitem value="${msg.Delete}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" onclick="document.getElementById('EquipmentListForm:deleteButton').click();" icon="ui-icon-trash"/>-->
                 <p:separator/>
                 <p:menuitem value="${msg.EquipmentMenuItem_licenseTypeId}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" icon="ui-icon-search"  actionListener="#{equipmentController.prepareLicenseTypeId}" update=":LicenseTypeViewForm" oncomplete="PF('LicenseTypeViewDialog').show()" disabled="#{empty equipmentController.selected.licenseTypeId}"/>  
                 <p:menuitem value="${msg.EquipmentMenuItem_usePlaceId}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" icon="ui-icon-search"  actionListener="#{equipmentController.prepareUsePlaceId}" update=":UsePlaceViewForm" oncomplete="PF('UsePlaceViewDialog').show()" disabled="#{empty equipmentController.selected.usePlaceId}"/>  
@@ -30,19 +31,13 @@
                          selectionMode="single"
                          selection="#{equipmentController.selected}"
                          filteredValue="#{equipmentController.filteredItems}">
-                <!--
-                         To enable Lazy Loading, please copy/replace the following lines above,
-                         and be sure to replace the word HASH with the # symbol:
-                
-                         value="HASH{equipmentController.lazyItems}"
-                         lazy="true"
-                         rowKey="HASH{item.id}"  <<< Remove this line
-                -->
 
-
-                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:EquipmentDataTableContextMenu" listener="#{equipmentController.resetParents}"/>
-                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:EquipmentDataTableContextMenu" listener="#{equipmentController.resetParents}"/>
-                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{equipmentController.resetParents}"/>
+                <p:ajax event="rowSelect"   update="@form:viewButton,@form:EquipmentDataTableContextMenu" listener="#{equipmentController.resetParents}"/>
+                <!--<p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:EquipmentDataTableContextMenu" listener="#{equipmentController.resetParents}"/>-->
+                <p:ajax event="rowUnselect" update="@form:viewButton,@form:EquipmentDataTableContextMenu" listener="#{equipmentController.resetParents}"/>
+                <!--<p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:EquipmentDataTableContextMenu" listener="#{equipmentController.resetParents}"/>-->
+                <p:ajax event="contextMenu" update="@form:viewButton" listener="#{equipmentController.resetParents}"/>
+                <!--<p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{equipmentController.resetParents}"/>-->
                 <p:ajax event="rowDblselect" onsuccess="document.getElementById('EquipmentListForm:viewButton').click();"/>
 
                 <p:column sortBy="#{item.id}" filterBy="#{item.id}">
@@ -95,12 +90,12 @@
 
             </p:dataTable>
 
-            <p:commandButton id="createButton"                             rendered="#{facesContext.externalContext.isUserInRole('manager')}" icon="ui-icon-plus"   value="${msg.Create}" actionListener="#{equipmentController.prepareCreate}" update=":EquipmentCreateForm" oncomplete="PF('EquipmentCreateDialog').show()"/>
+            <!--<p:commandButton id="createButton"                             rendered="#{facesContext.externalContext.isUserInRole('manager')}" icon="ui-icon-plus"   value="${msg.Create}" actionListener="#{equipmentController.prepareCreate}" update=":EquipmentCreateForm" oncomplete="PF('EquipmentCreateDialog').show()"/>-->
             <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="${msg.View}" update=":EquipmentViewForm" oncomplete="PF('EquipmentViewDialog').show()" disabled="#{empty equipmentController.selected}"/>
-            <p:commandButton id="editButton"   style="visibility: hidden;" rendered="#{facesContext.externalContext.isUserInRole('manager')}" icon="ui-icon-pencil" value="${msg.Edit}" update=":EquipmentEditForm" oncomplete="PF('EquipmentEditDialog').show()" disabled="#{empty equipmentController.selected}"/>
-            <p:commandButton id="deleteButton" style="visibility: hidden;" rendered="#{facesContext.externalContext.isUserInRole('manager')}" icon="ui-icon-trash"  value="${msg.Delete}" actionListener="#{equipmentController.delete}" update=":growl,datalist" disabled="#{empty equipmentController.selected}">
-                <p:confirm header="${msg.ConfirmationHeader}" message="${msg.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
-            </p:commandButton>
+            <!--<p:commandButton id="editButton"   style="visibility: hidden;" rendered="#{facesContext.externalContext.isUserInRole('manager')}" icon="ui-icon-pencil" value="${msg.Edit}" update=":EquipmentEditForm" oncomplete="PF('EquipmentEditDialog').show()" disabled="#{empty equipmentController.selected}"/>-->
+            <!--<p:commandButton id="deleteButton" style="visibility: hidden;" rendered="#{facesContext.externalContext.isUserInRole('manager')}" icon="ui-icon-trash"  value="${msg.Delete}" actionListener="#{equipmentController.delete}" update=":growl,datalist" disabled="#{empty equipmentController.selected}">-->
+                <!--<p:confirm header="${msg.ConfirmationHeader}" message="${msg.ConfirmDeleteMessage}" icon="ui-icon-alert"/>-->
+            <!--</p:commandButton>-->
 
         </p:panel>
         <ui:include src="/WEB-INF/include/confirmation.xhtml"/>
