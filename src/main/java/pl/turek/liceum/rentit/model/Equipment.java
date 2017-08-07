@@ -38,7 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Equipment.findAll", query = "SELECT e FROM Equipment e")
     , @NamedQuery(name = "Equipment.findById", query = "SELECT e FROM Equipment e WHERE e.id = :id")
     , @NamedQuery(name = "Equipment.findByName", query = "SELECT e FROM Equipment e WHERE e.name = :name")
-    , @NamedQuery(name = "Equipment.findByRentPermission", query = "SELECT e FROM Equipment e WHERE e.rentPermission = :rentPermission")
+    , @NamedQuery(name = "Equipment.findEquipmentRentable", query = "SELECT e FROM Equipment e WHERE e.rentPermission = :rentPermission")
+//    , @NamedQuery(name = "Equipment.findByRentPermission", query = "SELECT e FROM Equipment e WHERE e.rentPermission = :rentPermission")
     , @NamedQuery(name = "Equipment.findByType", query = "SELECT e FROM Equipment e WHERE e.type = :type")})
 public class Equipment implements Serializable {
 

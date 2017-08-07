@@ -13,36 +13,10 @@ import javax.inject.Inject;
 @ViewScoped
 public class AccountController extends AbstractController<Account> {
 
-//    @EJB
     @Inject
     private AccountFacade accountFacade;
     
-//    @Resource
-//    private SessionContext context;
-
-//    @Inject
-//    private MobilePageController mobilePageController;
-
-//    @Resource
-//    private AccountFacade accountFacade;
-    // Flags to indicate if child collections are empty
-    
     private boolean isReservCollectionEmpty;
-
-//    private Account myAccount;
-
-//    public Account getMyAccount() {
-//        String name = context.getCallerPrincipal().getName();
-//        if (myAccount != null) {
-//            AccountFacade ejbFacade = (AccountFacade) this.getFacade();
-//            myAccount = ejbFacade.znajdzLogin(name);
-//        }
-//        return myAccount;
-//    }
-
-//    public Account pobierzMojeKonto() {
-//        return accountFacade.findByName(context.getCallerPrincipal().getName());
-//    }
 
     public AccountController() {
         // Inform the Abstract parent controller of the concrete Account Entity

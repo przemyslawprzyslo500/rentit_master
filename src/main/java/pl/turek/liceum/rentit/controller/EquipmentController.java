@@ -24,6 +24,8 @@ public class EquipmentController extends AbstractController<Equipment> {
 
     // Flags to indicate if child collections are empty
     private boolean isReservCollectionEmpty;
+    private Collection<Equipment> items;
+    private EquipmentFacade equipmentFacade;
 
     public EquipmentController() {
         // Inform the Abstract parent controller of the concrete Equipment Entity
@@ -58,6 +60,13 @@ public class EquipmentController extends AbstractController<Equipment> {
             licenseTypeIdController.setSelected(selected.getLicenseTypeId());
         }
     }
+
+//    public Collection<Equipment> getRentableEquipmentItems() {
+//        if (items == null) {
+//            items = equipmentFacade.findEquipmentRentable();
+//        }
+//        return items;
+//    }
 
     /**
      * Sets the "selected" attribute of the UsePlace controller in order to

@@ -20,7 +20,7 @@
                     </h:outputText></h2>
             </p:panel>
             <h:outputText value="${msg.Logged_as} "/>
-            <h:outputText value=" #{request.userPrincipal.name}"/>
+            <h:outputText value=" #{request.userPrincipal.name} "/>
             <h:form styleClass="settings-form" rendered="#{request.userPrincipal ne null}"
                     id="logoutbean" prependId="false">
                 <h:commandButton action="#{loginBean.logout}" value="${msg.Logout}"/>

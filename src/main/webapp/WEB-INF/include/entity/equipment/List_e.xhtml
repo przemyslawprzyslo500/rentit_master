@@ -5,23 +5,17 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui">
-
     <h:form id="EquipmentListForm">
-
-        <!--<p:panel header="${msg.ListEquipmentTitle}">-->
         <p:panel header="Lista sprzętu employee">
             <p:contextMenu id="EquipmentDataTableContextMenu" for="datalist">  
-                <!--<p:menuitem value="${msg.Create}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" onclick="document.getElementById('EquipmentListForm:createButton').click();" icon="ui-icon-plus"/>-->
                 <p:menuitem value="${msg.View}" onclick="document.getElementById('EquipmentListForm:viewButton').click();" icon="ui-icon-search"/>
-                <!--<p:menuitem value="${msg.Edit}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" onclick="document.getElementById('EquipmentListForm:editButton').click();" icon="ui-icon-pencil"/>-->
-                <!--<p:menuitem value="${msg.Delete}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" onclick="document.getElementById('EquipmentListForm:deleteButton').click();" icon="ui-icon-trash"/>-->
                 <p:separator/>
                 <p:menuitem value="${msg.EquipmentMenuItem_licenseTypeId}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" icon="ui-icon-search"  actionListener="#{equipmentController.prepareLicenseTypeId}" update=":LicenseTypeViewForm" oncomplete="PF('LicenseTypeViewDialog').show()" disabled="#{empty equipmentController.selected.licenseTypeId}"/>  
                 <p:menuitem value="${msg.EquipmentMenuItem_usePlaceId}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" icon="ui-icon-search"  actionListener="#{equipmentController.prepareUsePlaceId}" update=":UsePlaceViewForm" oncomplete="PF('UsePlaceViewDialog').show()" disabled="#{empty equipmentController.selected.usePlaceId}"/>  
                 <p:menuitem value="${msg.EquipmentMenuItem_reservCollection}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" icon="ui-icon-search"  action="#{equipmentController.navigateReservCollection}" disabled="#{equipmentController.isReservCollectionEmpty}" ajax="false"/>  
             </p:contextMenu>
             <p:dataTable id="datalist"
-                         value="#{equipmentController.items}"
+                         value="#{equipmentController.rentableEquipmentItems}"
                          lazy="false"
                          rowKey="#{item.id}"
                          var="item"

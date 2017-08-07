@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import pl.turek.liceum.rentit.model.Equipment;
 
 /**
  *
@@ -43,17 +43,32 @@ public abstract class AbstractFacade<T> {
     public T find(Object id) {
         return getEntityManager().find(entityClass, id);
     }
-    
+
 //    public T find(String name) {
 //        return getEntityManager().find(entityClass, id);
 //    }
-
     public List<T> findAll() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
     }
-    
+
+    public List<Equipment> findEquipmentRentable() {
+        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        return getEntityManager().createNamedQuery("Equipment.findEquipmentRentable")
+                .setParameter("rentPermission", Boolean.TRUE).getResultList();
+        
+//        return em.createQuery("SELECT e FROM Equipment e WHERE e.rentPermission = :rentPermission")
+//                .setParameter("rentPermission", 1).getResultList();
+//        return em.createNamedQuery("Equipment.findByRentPermission").setParameter("rentPermission", 1).getResultList();
+//        TypedQuery<Equipment> tq = getEntityManager().createNamedQuery("Equipment.findByRentPermission", Equipment.class);
+//        TypedQuery<Equipment> tq = em.createNamedQuery("Equipment.findByRentPermission", Equipment.class);
+//        tq.setParameter("rentPermission", '1');
+//        return tq.getResultList();
+//        return tq.setParameter("rentPermission", 1).getResultList();
+//                createQuery(tq.setParameter("rentPermission", 1).getResultList());
+    }
+
     public List<T> findRange(int[] range) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
@@ -217,5 +232,5 @@ public abstract class AbstractFacade<T> {
     public T findWithParents(T entity) {
         return entity;
     }
-    
+
 }

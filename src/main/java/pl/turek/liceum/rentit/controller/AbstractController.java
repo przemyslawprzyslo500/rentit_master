@@ -11,13 +11,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
-
 import java.util.ResourceBundle;
 import javax.ejb.EJBException;
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import pl.turek.liceum.rentit.model.Equipment;
 
 /**
  * Represents an abstract shell of to be used as JSF Controller to be used in
@@ -35,6 +35,7 @@ public abstract class AbstractController<T> implements Serializable {
     private Class<T> itemClass;
     private T selected;
     private Collection<T> items;
+    private Collection<Equipment> equipments_items;
     private LazyEntityDataModel<T> lazyItems;
     private List<T> filteredItems;
 
@@ -127,6 +128,13 @@ public abstract class AbstractController<T> implements Serializable {
             items = this.ejbFacade.findAll();
         }
         return items;
+    }
+    
+    public Collection<Equipment> getRentableEquipmentItems() {
+        if (equipments_items == null) {
+            equipments_items = this.ejbFacade.findEquipmentRentable();
+        }
+        return equipments_items;
     }
     
     /**
