@@ -61,13 +61,6 @@ public class EquipmentController extends AbstractController<Equipment> {
         }
     }
 
-//    public Collection<Equipment> getRentableEquipmentItems() {
-//        if (items == null) {
-//            items = equipmentFacade.findEquipmentRentable();
-//        }
-//        return items;
-//    }
-
     /**
      * Sets the "selected" attribute of the UsePlace controller in order to
      * display its data in its View dialog.
