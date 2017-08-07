@@ -8,8 +8,7 @@
 
     <ui:composition>
 
-        <p:dialog id="ReservCreateDlg" widgetVar="ReservCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="${msg.CreateReservTitle} employee" closeOnEscape="true">
-        <!--<p:dialog id="ReservCreateDlg" widgetVar="ReservCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="${msg.CreateReservTitle}" closeOnEscape="true">-->
+        <p:dialog id="ReservCreateDlg" widgetVar="ReservCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="${msg.CreateReservTitle}" closeOnEscape="true">
 
             <h:form id="ReservCreateForm">
 
@@ -26,25 +25,30 @@
                         <p:calendar id="reservationEnd" pattern="MM/dd/yyyy" required="true" mindate="#{currentDate}" value="#{reservController.selected.reservationEnd}" title="${msg.CreateReservTitle_reservationEnd}"  showOn="button"/>
 
                         <p:outputLabel value="${msg.CreateReservLabel_reservationMadeDate}" for="reservationMadeDate" />
-                        <!--<p:inputText id="reservationMadeDate" readonly="true"  value="#{reservController.selected.reservationMadeDate.setDate(now)}" title="${msg.CreateReservTitle_reservationMadeDate}"/>-->
-                        <!--<p:calendar id="reservationMadeDate" pattern="MM/dd/yyyy" readonly="true" value="#{reservController.selected.reservationMadeDate.setDate(now)}" title="${msg.CreateReservTitle_reservationMadeDate}"/>-->
                         <p:calendar id="reservationMadeDate" pattern="MM/dd/yyyy" mindate="#{currentDate}" maxdate="#{currentDate}" required="true" value="#{reservController.selected.reservationMadeDate}" title="${msg.CreateReservTitle_reservationMadeDate}"  showOn="button"/>
                         
-                        <p:outputLabel value="${msg.CreateReservLabel_accountId}" for="accountId2" rendered="#{facesContext.externalContext.isUserInRole('employee')}"/>
-                        <p:inputText id="accountId2" value="#{szczegolyMojegoKontaPageBean.konto.name}" size="20" maxlength="100" readonly="true" style="font-weight: bold" rendered="#{facesContext.externalContext.isUserInRole('employee')}"/>
-
+                        <p:outputLabel value="${msg.CreateReservLabel_accountId}" for="accountId" />
+                        <p:selectOneMenu id="accountId" value="#{reservController.selected.accountId}"  converter="accountConverter" >
+                            <f:selectItem itemLabel="${msg.SelectOneMessage}"/>
+                            <f:selectItems value="#{accountController.items}"
+                                           var="accountIdItem"
+                                           itemValue="#{accountIdItem}"
+                                           itemLabel="#{accountIdItem.name.toString()}"
+                                           />
+                        </p:selectOneMenu>
+                        
                         <p:outputLabel value="${msg.CreateReservLabel_equipmentId}" for="equipmentId" />
                         <p:selectOneMenu id="equipmentId" value="#{reservController.selected.equipmentId}"  converter="equipmentConverter">
                             <f:selectItem itemLabel="${msg.SelectOneMessage}"/>
-                            <f:selectItems value="#{equipmentController.rentableEquipmentItems}"
+                            <f:selectItems value="#{equipmentController.items}"
                                            var="equipmentIdItem"
                                            itemValue="#{equipmentIdItem}"
                                            itemLabel="#{equipmentIdItem.name.toString()}"
                                            />
                         </p:selectOneMenu>
                         
-                        <p:outputLabel value="${msg.CreateReservLabel_reservStatusId}" for="reservStatusId" rendered="#{facesContext.externalContext.isUserInRole('admin')}"/>
-                        <p:selectOneMenu id="reservStatusId" value="#{reservController.selected.reservStatusId}" converter="reservStatusConverter" rendered="#{facesContext.externalContext.isUserInRole('admin')}">
+                        <p:outputLabel value="${msg.CreateReservLabel_reservStatusId}" for="reservStatusId" />
+                        <p:selectOneMenu id="reservStatusId" value="#{reservController.selected.reservStatusId}" converter="reservStatusConverter">
                             <f:selectItem itemLabel="${msg.SelectOneMessage}"/>
                             <f:selectItems value="#{reservStatusController.items}"
                                            var="reservStatusIdItem"
@@ -52,9 +56,6 @@
                                            itemLabel="#{reservStatusIdItem.reservationStatusName.toString()}"
                                            />
                         </p:selectOneMenu>
-                        
-                        <p:outputLabel value="${msg.CreateReservLabel_reservStatusId}" for="reservStatusId2" rendered="#{facesContext.externalContext.isUserInRole('employee')}"/>
-                        <p:inputText id="reservStatusId2" value="Zarezerwowany" size="20" maxlength="100" readonly="true" style="font-weight: bold" rendered="#{facesContext.externalContext.isUserInRole('employee')}"/>
                     
                     </p:panelGrid>
                     <p:commandButton actionListener="#{reservController.saveNew}" value="${msg.Save}" update="display,:ReservListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ReservCreateDialog'));">
