@@ -13,6 +13,7 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import pl.turek.liceum.rentit.model.Equipment;
+import pl.turek.liceum.rentit.model.ReservStatus;
 
 /**
  *
@@ -57,16 +58,12 @@ public abstract class AbstractFacade<T> {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         return getEntityManager().createNamedQuery("Equipment.findEquipmentRentable")
                 .setParameter("rentPermission", Boolean.TRUE).getResultList();
-        
-//        return em.createQuery("SELECT e FROM Equipment e WHERE e.rentPermission = :rentPermission")
-//                .setParameter("rentPermission", 1).getResultList();
-//        return em.createNamedQuery("Equipment.findByRentPermission").setParameter("rentPermission", 1).getResultList();
-//        TypedQuery<Equipment> tq = getEntityManager().createNamedQuery("Equipment.findByRentPermission", Equipment.class);
-//        TypedQuery<Equipment> tq = em.createNamedQuery("Equipment.findByRentPermission", Equipment.class);
-//        tq.setParameter("rentPermission", '1');
-//        return tq.getResultList();
-//        return tq.setParameter("rentPermission", 1).getResultList();
-//                createQuery(tq.setParameter("rentPermission", 1).getResultList());
+    }
+    
+    public List<ReservStatus> findEmployeeReservationStatus(){
+        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        return getEntityManager().createNamedQuery("ReservStatus.findById")
+                .setParameter("id", 1).getResultList();
     }
 
     public List<T> findRange(int[] range) {

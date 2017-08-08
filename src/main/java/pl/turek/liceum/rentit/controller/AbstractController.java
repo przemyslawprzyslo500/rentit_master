@@ -18,6 +18,7 @@ import javax.faces.context.FacesContext;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import pl.turek.liceum.rentit.model.Equipment;
+import pl.turek.liceum.rentit.model.ReservStatus;
 
 /**
  * Represents an abstract shell of to be used as JSF Controller to be used in
@@ -36,6 +37,7 @@ public abstract class AbstractController<T> implements Serializable {
     private T selected;
     private Collection<T> items;
     private Collection<Equipment> equipments_items;
+    private Collection<ReservStatus> employeeReservationStatus;
     private LazyEntityDataModel<T> lazyItems;
     private List<T> filteredItems;
 
@@ -129,14 +131,21 @@ public abstract class AbstractController<T> implements Serializable {
         }
         return items;
     }
-    
+
     public Collection<Equipment> getRentableEquipmentItems() {
         if (equipments_items == null) {
             equipments_items = this.ejbFacade.findEquipmentRentable();
         }
         return equipments_items;
     }
-    
+
+    public Collection<ReservStatus> getEmployeeReservationStatus() {
+        if (employeeReservationStatus == null) {
+            employeeReservationStatus = this.ejbFacade.findEmployeeReservationStatus();
+        }
+        return employeeReservationStatus;
+    }
+
     /**
      * Pass in collection of items
      *

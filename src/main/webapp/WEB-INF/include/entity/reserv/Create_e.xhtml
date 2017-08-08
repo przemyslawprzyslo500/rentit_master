@@ -29,7 +29,7 @@
 
                         <p:outputLabel for="accountId" value="${msg.CreateReservLabel_accountId}" />
                         <h:selectOneRadio id="accountId" value="#{reservController.selected.accountId}" converter="accountConverter">
-                            <f:selectItem itemLabel="Your account" itemValue="#{edytujKontoPageBean.konto.id}" />
+                            <f:selectItem itemLabel="Your account" itemValue="#{edytujKontoPageBean.konto}" />
                         </h:selectOneRadio>
 
                         <!--<p:outputLabel value="${msg.CreateReservLabel_accountId}" for="accountId" />-->
@@ -52,10 +52,15 @@
                                            />
                         </p:selectOneMenu>
 
+<!--                        <p:outputLabel for="reservStatusId" value="${msg.CreateReservLabel_reservStatusId}" />
+                        <h:selectOneRadio id="reservStatusId" value="#{reservController.selected.reservStatusId}" converter="reservStatusConverter">
+                            <f:selectItem itemLabel="Zarezerwowany" itemValue="123"} />
+                        </h:selectOneRadio>-->
+                        
                         <p:outputLabel value="${msg.CreateReservLabel_reservStatusId}" for="reservStatusId" />
                         <p:selectOneMenu id="reservStatusId" value="#{reservController.selected.reservStatusId}" converter="reservStatusConverter">
                             <f:selectItem itemLabel="${msg.SelectOneMessage}"/>
-                            <f:selectItems value="#{reservStatusController.items}"
+                            <f:selectItems value="#{reservStatusController.employeeReservationStatus}"
                                            var="reservStatusIdItem"
                                            itemValue="#{reservStatusIdItem}"
                                            itemLabel="#{reservStatusIdItem.reservationStatusName.toString()}"
