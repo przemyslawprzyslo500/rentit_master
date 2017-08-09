@@ -17,6 +17,7 @@ import pl.turek.liceum.rentit.model.Reserv_;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 import pl.turek.liceum.rentit.ejb.interceptor.LoggingInterceptor;
 import pl.turek.liceum.rentit.ejb.interceptor.PerformanceInterceptor;
 import pl.turek.liceum.rentit.model.Account;
@@ -30,7 +31,8 @@ import pl.turek.liceum.rentit.model.ReservStatus;
 @Stateless
 @LocalBean
 @Interceptors({LoggingInterceptor.class, PerformanceInterceptor.class})
-@TransactionAttribute(TransactionAttributeType.MANDATORY)
+@Transactional
+//@TransactionAttribute(TransactionAttributeType.MANDATORY)
 public class ReservFacade extends AbstractFacade<Reserv> {
 
     @PersistenceContext(unitName = "pl.turek.liceum.rentit_RentIt_war_PU")

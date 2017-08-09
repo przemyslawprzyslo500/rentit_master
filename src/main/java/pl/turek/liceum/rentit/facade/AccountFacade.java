@@ -21,6 +21,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 import pl.turek.liceum.rentit.model.Reserv;
 import pl.turek.liceum.rentit.ejb.interceptor.LoggingInterceptor;
 import pl.turek.liceum.rentit.ejb.interceptor.PerformanceInterceptor;
@@ -31,7 +32,8 @@ import pl.turek.liceum.rentit.ejb.interceptor.PerformanceInterceptor;
 @Stateless
 @LocalBean
 @Interceptors({LoggingInterceptor.class, PerformanceInterceptor.class})
-@TransactionAttribute(TransactionAttributeType.MANDATORY)
+@Transactional
+//@TransactionAttribute(TransactionAttributeType.MANDATORY)
 //@RolesAllowed("admin")
 public class AccountFacade extends AbstractFacade<Account> {
 

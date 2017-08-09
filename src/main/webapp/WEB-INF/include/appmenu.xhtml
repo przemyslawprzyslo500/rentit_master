@@ -10,7 +10,7 @@
         <ui:param name="pageBean" value="#{edytujKontoPageBean}" />
         <h:form id="menuForm" prependId="false">
             <p:menubar>
-                <p:menuitem value="${msg.Home}" action="/faces/index.xhtml" immediate="true" icon="ui-icon-home"/>
+                <p:menuitem value="${msg.Home}" action="/index.xhtml" immediate="true" icon="ui-icon-home"/>
                 <p:menuitem rendered="#{request.userPrincipal==null}" value="Zaloguj" outcome="/login" icon="ui-icon-home"/>
                 <p:menuitem value="${msg.EditAccountTitle}" action="#{listaKontPageBean.edytujKonto()}" outcome="/app/account/EditMyAccount.xhtml" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('admin')}" value="${msg.AccountHeading} " outcome="/app/account/index" />
@@ -18,7 +18,7 @@
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('employee')}" value="${msg.EquipmentHeading} " outcome="/app/equipment/index_e" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('admin')}" value="${msg.LicenseTypeHeading} " outcome="/app/licenseType/index" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('manager')}" value="${msg.ReservHeading} " outcome="/app/reserv/index" />
-                    <!--<p:menuitem rendered="#{facesContext.externalContext.isUserInRole('manager')}" value="${msg.ReservationsMadeByEmployees} " outcome="/app/reserv/index_m" />-->
+                    <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('manager')}" value="${msg.ReservationsMadeByEmployees} " outcome="/app/reserv/index_m" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('employee')}" value="${msg.ReservHeading} " outcome="/app/reserv/index_e" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('admin')}" value="${msg.ReservStatusHeading} " outcome="/app/reservStatus/index" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('manager')}" value="${msg.UsePlaceHeading} " outcome="/app/usePlace/index" />

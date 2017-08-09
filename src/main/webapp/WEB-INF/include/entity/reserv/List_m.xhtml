@@ -20,7 +20,7 @@
                 <p:menuitem value="${msg.ReservMenuItem_reservStatusId}" icon="ui-icon-search"  actionListener="#{reservController.prepareReservStatusId}" update=":ReservStatusViewForm" oncomplete="PF('ReservStatusViewDialog').show()" disabled="#{empty reservController.selected.reservStatusId}"/>  
             </p:contextMenu>
             <p:dataTable id="datalist"
-                         value="#{reservController.reservations}"
+                         value="#{reservController.items}"
                          lazy="false"
                          rowKey="#{item.id}"
                          var="item"
@@ -99,13 +99,48 @@
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:outputText>
                 </p:column>
-                
-                    <p:column sortBy="#{item.reservStatusId.reservationStatusName}" filterBy="#{item.reservStatusId.reservationStatusName}">
-                        <f:facet name="header">
-                            <h:outputText value="${msg.ListReservTitle_reservStatusId}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.reservStatusId.reservationStatusName}"/>
-                    </p:column>
+
+<!--                <p:column sortBy="#{item.reservStatusId.reservationStatusName}" filterBy="#{item.reservStatusId.reservationStatusName}" filterValue="Zarezerwowany" filterMatchMode="contains" >
+    <f:facet name="header">
+        <h:outputText value="${msg.ListReservTitle_reservStatusId}"/>
+    </f:facet>
+    <h:outputText value="#{item.reservStatusId.reservationStatusName}"/>
+</p:column>-->
+
+                <p:column headerText="${msg.ListReservTitle_reservStatusId}" sortBy="#{item.reservStatusId.reservationStatusName}" 
+                          filterBy="#{item.reservStatusId.reservationStatusName}">
+                    <f:facet name="filter">
+                        <p:selectOneMenu id="reservationStatusId" value="#{reservStatusController.reservationStatusId}">
+                            <f:selectItem itemLabel="${msg.SelectOneMessage}" />
+                            <f:selectItems value="#{reservStatusController.items}" 
+                                           var="reservStatusIdItem"
+                                           itemValue="#{reservationStatusIdItem}"
+                                           itemLabel="#{reservationStatusIdItem.reservationStatusName.toString()}" />
+                        </p:selectOneMenu>
+                    </f:facet>
+                    <h:outputText value="#{item.reservStatusId.reservationStatusName}"/>
+                </p:column>
+
+<!--            <p:selectOneMenu id="licenseTypeId" value="#{equipmentController.selected.licenseTypeId}"  converter="licenseTypeConverter">
+                    <f:selectItem itemLabel="${msg.SelectOneMessage}"/>
+                    <f:selectItems value="#{licenseTypeController.items}"
+                                   var="licenseTypeIdItem"
+                                   itemValue="#{licenseTypeIdItem}"
+                                   itemLabel="#{licenseTypeIdItem.licenseName.toString()}"
+                                   />
+
+                </p:selectOneMenu>-->
+
+<!--                <p:outputLabel value="${msg.CreateEquipmentLabel_usePlaceId}" for="usePlaceId" />
+<p:selectOneMenu id="usePlaceId" value="#{equipmentController.selected.usePlaceId}"  converter="usePlaceConverter">
+<f:selectItem itemLabel="${msg.SelectOneMessage}"/>
+<f:selectItems value="#{usePlaceController.items}"
+           var="usePlaceIdItem"
+           itemValue="#{usePlaceIdItem}"
+           itemLabel="#{usePlaceIdItem.id.toString()}"
+           />
+
+</p:selectOneMenu>-->
 
             </p:dataTable>
 

@@ -43,7 +43,8 @@
                         </p:selectOneMenu>
 
                         <p:outputLabel value="${msg.CreateEquipmentLabel_usePlaceId}" for="usePlaceId" />
-                        <p:selectOneMenu id="usePlaceId" value="#{equipmentController.selected.usePlaceId}"  converter="usePlaceConverter">
+                        <p:selectOneMenu id="usePlaceId" value="#{equipmentController.selected.usePlaceId}"  
+                                         converter="usePlaceConverter">
                             <f:selectItem itemLabel="${msg.SelectOneMessage}"/>
                             <f:selectItems value="#{usePlaceController.items}"
                                            var="usePlaceIdItem"

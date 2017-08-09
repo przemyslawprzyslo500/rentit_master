@@ -18,23 +18,25 @@
                         <p:outputLabel value="${msg.CreateLicenseTypeLabel_licenseName}" for="licenseName" />
                         <p:inputText id="licenseName" value="#{licenseTypeController.selected.licenseName}" 
                                      title="${msg.CreateLicenseTypeTitle_licenseName}" size="60" maxlength="255">
-                        <p:watermark for="licenseEnd,licenseStart" value="Date from callendar..."/>
-                        <p:watermark for="licenseSerial" value="XXXXX-XXXXX-XXXXX-XXXXX-XXXXX"/>
-                        <p:watermark for="licenseName" value="Text..."/>
+                            <p:watermark for="licenseEnd,licenseStart" value="Date from callendar..."/>
+                            <p:watermark for="licenseSerial" value="XXXXX-XXXXX-XXXXX-XXXXX-XXXXX"/>
+                            <p:watermark for="licenseName" value="Text..."/>
                         </p:inputText>
-                        
+
                         <p:outputLabel value="${msg.CreateLicenseTypeLabel_licenseSerial}" for="licenseSerial" />
                         <p:inputText id="licenseSerial" value="#{licenseTypeController.selected.licenseSerial}" 
                                      title="${msg.CreateLicenseTypeTitle_licenseSerial}" size="60" maxlength="255"/>
-                        
+
                         <p:outputLabel value="${msg.CreateLicenseTypeLabel_licenseStart}" for="licenseStart" />
                         <p:calendar id="licenseStart" pattern="MM/dd/yyyy" value="#{licenseTypeController.selected.licenseStart}" 
-                                    title="${msg.CreateLicenseTypeTitle_licenseStart}"  showOn="button"/>
-                        
+                                    title="${msg.CreateLicenseTypeTitle_licenseStart}"  showOn="button">
+                                    <p:ajax event="dateSelect" update="licenseEnd"/>
+                        </p:calendar>
+
                         <p:outputLabel value="${msg.CreateLicenseTypeLabel_licenseEnd}" for="licenseEnd" />
                         <p:calendar id="licenseEnd" pattern="MM/dd/yyyy" value="#{licenseTypeController.selected.licenseEnd}" 
                                     title="${msg.CreateLicenseTypeTitle_licenseEnd}"  showOn="button"
-                                    mindate="licenseStart"/>
+                                    mindate="${msg.CreateLicenseTypeLabel_licenseStart}"/>
 
                     </p:panelGrid>
                     <p:commandButton actionListener="#{licenseTypeController.saveNew}" value="${msg.Save}" 
