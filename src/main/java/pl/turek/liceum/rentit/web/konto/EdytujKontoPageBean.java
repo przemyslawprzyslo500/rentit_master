@@ -2,17 +2,11 @@ package pl.turek.liceum.rentit.web.konto;
 
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import javax.ejb.EJB;
-import javax.ejb.SessionContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import pl.turek.liceum.rentit.exception.AppBaseException;
-import pl.turek.liceum.rentit.facade.AccountFacade;
 import pl.turek.liceum.rentit.model.Account;
-import pl.turek.liceum.rentit.web.utils.KontoUtils;
 
 /**
  *

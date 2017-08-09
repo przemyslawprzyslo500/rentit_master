@@ -27,11 +27,8 @@
                          filteredValue="#{equipmentController.filteredItems}">
 
                 <p:ajax event="rowSelect"   update="@form:viewButton,@form:EquipmentDataTableContextMenu" listener="#{equipmentController.resetParents}"/>
-                <!--<p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:EquipmentDataTableContextMenu" listener="#{equipmentController.resetParents}"/>-->
                 <p:ajax event="rowUnselect" update="@form:viewButton,@form:EquipmentDataTableContextMenu" listener="#{equipmentController.resetParents}"/>
-                <!--<p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:EquipmentDataTableContextMenu" listener="#{equipmentController.resetParents}"/>-->
                 <p:ajax event="contextMenu" update="@form:viewButton" listener="#{equipmentController.resetParents}"/>
-                <!--<p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{equipmentController.resetParents}"/>-->
                 <p:ajax event="rowDblselect" onsuccess="document.getElementById('EquipmentListForm:viewButton').click();"/>
 
                 <p:column sortBy="#{item.id}" filterBy="#{item.id}">
@@ -49,13 +46,12 @@
                     <h:outputText value="#{item.name}"/>
                 </p:column>
 
-
-                <p:column sortBy="#{item.rentPermission}" filterBy="#{item.rentPermission}">
+<!--                <p:column sortBy="#{item.rentPermission}" filterBy="#{item.rentPermission}">
                     <f:facet name="header">
                         <h:outputText value="${msg.ListEquipmentTitle_rentPermission}"/>
                     </f:facet>
                     <h:outputText value="#{item.rentPermission}"/>
-                </p:column>
+                </p:column>-->
 
 
                 <p:column sortBy="#{item.type}" filterBy="#{item.type}">

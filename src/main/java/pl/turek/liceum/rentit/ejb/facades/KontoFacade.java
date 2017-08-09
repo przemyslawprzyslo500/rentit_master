@@ -6,6 +6,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
@@ -15,6 +16,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.eclipse.persistence.exceptions.DatabaseException;
+import pl.turek.liceum.rentit.ejb.interceptor.LoggingInterceptor;
+import pl.turek.liceum.rentit.ejb.interceptor.PerformanceInterceptor;
 import pl.turek.liceum.rentit.exception.AppBaseException;
 import pl.turek.liceum.rentit.exception.KontoException;
 import pl.turek.liceum.rentit.model.Account;
@@ -22,7 +25,7 @@ import pl.turek.liceum.rentit.model.Account_;
 
 @Stateless
 @LocalBean
-//@Interceptors({LoggingInterceptor.class, PerformanceInterceptor.class})
+@Interceptors({LoggingInterceptor.class, PerformanceInterceptor.class})
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
 public class KontoFacade extends AbstractFacade<Account> {
 

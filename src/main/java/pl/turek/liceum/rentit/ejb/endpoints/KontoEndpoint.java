@@ -23,24 +23,14 @@ import pl.turek.liceum.rentit.web.utils.KontoUtils;
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 public class KontoEndpoint extends AbstractEndpoint implements SessionSynchronization {
 
-//    @EJB
-//    private KontaManager kontaManager;
     @EJB
-//    private KontoFacade kontoFacade;
     private AccountFacade kontoFacade;
 
     @Resource
     SessionContext sctx;
 
-//    @Inject
-//    private AccountFacade accountFacade;
     private Account kontoStan;
 
-//    public Account pobierzMojeKonto() {
-//        return znajdzLogin(sctx.getCallerPrincipal().getName());
-//        return accountFacade.findByName(sctx.getCallerPrincipal().getName());
-//        return accountFacade.findByName(context.getCallerPrincipal().getName());
-//    }
 
     public Account pobierzMojeKonto() {
         return kontoFacade.znajdzLogin(sctx.getCallerPrincipal().getName());

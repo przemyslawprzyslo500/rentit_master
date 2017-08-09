@@ -19,10 +19,12 @@
                         <p:inputText id="description" value="#{reservController.selected.description}" title="${msg.CreateReservTitle_description}" size="100" maxlength="255"/>
 
                         <p:outputLabel value="${msg.CreateReservLabel_reservationStart}" for="reservationStart" />
-                        <p:calendar id="reservationStart" pattern="MM/dd/yyyy" required="true" mindate="#{currentDate}" requiredMessage="${msg.CreateReservRequiredMessage_date}" value="#{reservController.selected.reservationStart}" title="${msg.CreateReservTitle_reservationStart}"  showOn="button" />
+                        <p:calendar id="reservationStart" pattern="MM/dd/yyyy" required="true" mindate="#{currentDate}" requiredMessage="${msg.CreateReservRequiredMessage_date}" value="#{reservController.selected.reservationStart}" title="${msg.CreateReservTitle_reservationStart}"  showOn="button" >
+                        <p:ajax event="dateSelect" update="reservationEnd"/>
+                        </p:calendar>
                         
                         <p:outputLabel value="${msg.CreateReservLabel_reservationEnd}" for="reservationEnd" />
-                        <p:calendar id="reservationEnd" pattern="MM/dd/yyyy" required="true" mindate="#{currentDate}" value="#{reservController.selected.reservationEnd}" title="${msg.CreateReservTitle_reservationEnd}"  showOn="button"/>
+                        <p:calendar id="reservationEnd" pattern="MM/dd/yyyy" required="true" mindate="#{reservController.selected.reservationStart}" value="#{reservController.selected.reservationEnd}" title="${msg.CreateReservTitle_reservationEnd}"  showOn="button"/>
 
                         <p:outputLabel value="${msg.CreateReservLabel_reservationMadeDate}" for="reservationMadeDate" />
                         <p:calendar id="reservationMadeDate" pattern="MM/dd/yyyy" mindate="#{currentDate}" maxdate="#{currentDate}" required="true" value="#{reservController.selected.reservationMadeDate}" title="${msg.CreateReservTitle_reservationMadeDate}"  showOn="button"/>

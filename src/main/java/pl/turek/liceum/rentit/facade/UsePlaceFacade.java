@@ -6,7 +6,11 @@
 package pl.turek.liceum.rentit.facade;
 
 import java.util.Collection;
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import pl.turek.liceum.rentit.model.UsePlace;
@@ -14,6 +18,8 @@ import pl.turek.liceum.rentit.model.UsePlace_;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import pl.turek.liceum.rentit.ejb.interceptor.LoggingInterceptor;
+import pl.turek.liceum.rentit.ejb.interceptor.PerformanceInterceptor;
 import pl.turek.liceum.rentit.model.Equipment;
 
 /**
@@ -21,6 +27,9 @@ import pl.turek.liceum.rentit.model.Equipment;
  * @author miszcz
  */
 @Stateless
+@LocalBean
+@Interceptors({LoggingInterceptor.class, PerformanceInterceptor.class})
+@TransactionAttribute(TransactionAttributeType.MANDATORY)
 public class UsePlaceFacade extends AbstractFacade<UsePlace> {
 
     @PersistenceContext(unitName = "pl.turek.liceum.rentit_RentIt_war_PU")

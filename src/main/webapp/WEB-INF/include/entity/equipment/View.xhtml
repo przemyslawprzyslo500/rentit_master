@@ -31,7 +31,16 @@
                         <h:outputText value="#{equipmentController.selected.licenseTypeId.licenseName}"/>
 
                         <h:outputText value="${msg.ViewEquipmentLabel_usePlaceId}"/>
-                        <h:outputText value="#{equipmentController.selected.usePlaceId.id}"/>
+                        <h:outputText value="#{equipmentController.selected.usePlaceId.building}, #{equipmentController.selected.usePlaceId.place}"/>
+                        <!--<h:outputText value="#{equipmentController.selected.usePlaceId.id}"/>-->
+
+<!--                        <p:column sortBy="#{item.usePlaceId.id}" filterBy="#{item.usePlaceId.id}">
+                            <f:facet name="header">
+                                <h:outputText value="${msg.ListEquipmentTitle_usePlaceId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usePlaceId.building} #{item.usePlaceId.place}"/>
+                        </p:column>-->
+
                     </p:panelGrid>
                     <p:commandButton value="${msg.Close}" onclick="PF('EquipmentViewDialog').hide()"/>
                 </h:panelGroup>
