@@ -5,6 +5,8 @@
  */
 package pl.turek.liceum.rentit.session;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import pl.turek.liceum.rentit.model.Account;
+import static pl.turek.liceum.rentit.session.HashPassword.hashPassword;
 
 /**
  *

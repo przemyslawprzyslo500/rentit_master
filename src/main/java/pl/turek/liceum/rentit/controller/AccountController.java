@@ -45,20 +45,4 @@ public class AccountController extends AbstractController<Account> {
         }
     }
 
-    /**
-     * Sets the "items" attribute with a collection of Reserv entities that are
-     * retrieved from Account and returns the navigation outcome.
-     *
-     * @return navigation outcome for Reserv page
-     */
-//    public String navigateReservCollection() {
-//        Account selected = this.getSelected();
-//        if (selected != null) {
-//            AccountFacade ejbFacade = (AccountFacade) this.getFacade();
-//            Collection<Reserv> selectedReservCollection = ejbFacade.findReservCollection(selected);
-//            FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("Reserv_items", selectedReservCollection);
-//        }
-//        return this.mobilePageController.getMobilePagesPrefix() + "/app/reserv/index";
-//    }
-
 }

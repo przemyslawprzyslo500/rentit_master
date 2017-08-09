@@ -6,6 +6,8 @@
 package pl.turek.liceum.rentit.model;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -23,6 +25,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import static pl.turek.liceum.rentit.session.HashPassword.hashPassword;
 
 /**
  *
@@ -66,8 +69,8 @@ public class Account implements Serializable {
     @Size(max = 255)
     @Column(name = "NAME", length = 255, nullable = false)
     private String name;
-    @Size(max = 255)
-    @Column(name = "PASSWORD", length = 255, nullable = false)
+    @Size(max = 45)
+    @Column(name = "PASSWORD", length = 45, nullable = false)
     private String password;
     // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
     @Size(max = 255)
@@ -105,14 +108,6 @@ public class Account implements Serializable {
         this.accountFunction = accountFunction;
     }
 
-//    public boolean getActive() {
-//        return active;
-//    }
-
-//    public void setActive(boolean active) {
-//        this.active = active;
-//    }
-
     public String getEmail() {
         return email;
     }
@@ -142,7 +137,9 @@ public class Account implements Serializable {
     }
 
     public void setPassword(String password) {
+//        this.password = hashPassword(password);
         this.password = password;
+//        System.out.println(this.password);
     }
 
     public String getPhone() {

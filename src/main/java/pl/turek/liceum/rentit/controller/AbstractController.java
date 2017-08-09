@@ -18,6 +18,7 @@ import javax.faces.context.FacesContext;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import pl.turek.liceum.rentit.model.Equipment;
+import pl.turek.liceum.rentit.model.Reserv;
 import pl.turek.liceum.rentit.model.ReservStatus;
 
 /**
@@ -38,6 +39,7 @@ public abstract class AbstractController<T> implements Serializable {
     private Collection<T> items;
     private Collection<Equipment> equipments_items;
     private Collection<ReservStatus> employeeReservationStatus;
+//    private Collection<Reserv> reservations;
     private LazyEntityDataModel<T> lazyItems;
     private List<T> filteredItems;
 
@@ -145,6 +147,13 @@ public abstract class AbstractController<T> implements Serializable {
         }
         return employeeReservationStatus;
     }
+
+//    public Collection<Reserv> getReservations() {
+//        if (reservations == null) {
+//            reservations = this.ejbFacade.findReservations();
+//        }
+//        return reservations;
+//    }
 
     /**
      * Pass in collection of items

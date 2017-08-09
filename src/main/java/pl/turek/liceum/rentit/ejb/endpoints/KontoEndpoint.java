@@ -43,9 +43,7 @@ public class KontoEndpoint extends AbstractEndpoint implements SessionSynchroniz
 //    }
 
     public Account pobierzMojeKonto() {
-//        return kontoFacade.findByName(sctx.getCallerPrincipal().getName());
         return kontoFacade.znajdzLogin(sctx.getCallerPrincipal().getName());
-//        return accountFacade.findByName(context.getCallerPrincipal().getName());
     }
 
     public void utworzKonto(Account konto) throws AppBaseException {

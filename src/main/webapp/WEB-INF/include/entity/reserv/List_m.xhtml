@@ -20,7 +20,7 @@
                 <p:menuitem value="${msg.ReservMenuItem_reservStatusId}" icon="ui-icon-search"  actionListener="#{reservController.prepareReservStatusId}" update=":ReservStatusViewForm" oncomplete="PF('ReservStatusViewDialog').show()" disabled="#{empty reservController.selected.reservStatusId}"/>  
             </p:contextMenu>
             <p:dataTable id="datalist"
-                         value="#{reservController.items}"
+                         value="#{reservController.reservations}"
                          lazy="false"
                          rowKey="#{item.id}"
                          var="item"
@@ -99,13 +99,13 @@
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:outputText>
                 </p:column>
-
-                <p:column sortBy="#{item.reservStatusId.reservationStatusName}" filterBy="#{item.reservStatusId.reservationStatusName}">
-                    <f:facet name="header">
-                        <h:outputText value="${msg.ListReservTitle_reservStatusId}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.reservStatusId.reservationStatusName}"/>
-                </p:column>
+                
+                    <p:column sortBy="#{item.reservStatusId.reservationStatusName}" filterBy="#{item.reservStatusId.reservationStatusName}">
+                        <f:facet name="header">
+                            <h:outputText value="${msg.ListReservTitle_reservStatusId}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.reservStatusId.reservationStatusName}"/>
+                    </p:column>
 
             </p:dataTable>
 

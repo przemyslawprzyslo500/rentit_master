@@ -40,7 +40,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Reserv.findByDescription", query = "SELECT r FROM Reserv r WHERE r.description = :description")
     , @NamedQuery(name = "Reserv.findByReservationEnd", query = "SELECT r FROM Reserv r WHERE r.reservationEnd = :reservationEnd")
     , @NamedQuery(name = "Reserv.findByReservationMadeDate", query = "SELECT r FROM Reserv r WHERE r.reservationMadeDate = :reservationMadeDate")
-    , @NamedQuery(name = "Reserv.findByReservationStart", query = "SELECT r FROM Reserv r WHERE r.reservationStart = :reservationStart")})
+//    , @NamedQuery(name = "Reserv.findReservations", query = "SELECT r FROM Reserv r where r.reservStatusId=:reservStatusId")
+//    , @NamedQuery(name = "Reserv.findReservations", query = "SELECT r FROM Reserv r join r.ReservStatus a WHERE a.reservStatusId = :reservStatusId")
+//                                                           SELECT b FROM Lots b JOIN b.boats a WHERE a.user = :user"
+//    , @NamedQuery(name = "Reserv.findReservations", query = "SELECT r FROM Reserv join ReservStatus ON RESERV.ID = Reserv_Status.id r WHERE r.reservStatusId = :reservStatusId")
+//                                                          SELECT * FROM Reserv join RESERV_STATUS ON RESERV.ID = RESERV_STATUS.ID WHERE RESERV_STATUS.ID = 1;
+        , @NamedQuery(name = "Reserv.findByReservationStart", query = "SELECT r FROM Reserv r WHERE r.reservationStart = :reservationStart")})
 public class Reserv implements Serializable {
 
     private static final long serialVersionUID = 1L;

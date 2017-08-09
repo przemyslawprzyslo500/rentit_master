@@ -10,9 +10,11 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import pl.turek.liceum.rentit.model.Equipment;
+import pl.turek.liceum.rentit.model.Reserv;
 import pl.turek.liceum.rentit.model.ReservStatus;
 
 /**
@@ -66,6 +68,14 @@ public abstract class AbstractFacade<T> {
                 .setParameter("id", 1).getResultList();
     }
 
+//    public List<Reserv> findReservations(){
+//        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+//        return getEntityManager().createQuery("SELECT * FROM Reserv join RESERV_STATUS ON RESERV.ID = RESERV_STATUS.ID WHERE RESERV_STATUS.ID = 1;").getResultList();
+//        return getEntityManager().createQuery("SELECT * FROM RESERV as res where res.RESERV_STATUS_ID=1;").getResultList();
+//        return getEntityManager().createNamedQuery("Reserv.findReservations")
+//                .setParameter("reservStatusId", 1).getResultList();
+//    }
+    
     public List<T> findRange(int[] range) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
