@@ -14,8 +14,7 @@ import pl.turek.liceum.rentit.web.utils.KontoUtils;
  * @author java
  */
 @ManagedBean(name = "szczegolyMojegoKontaPageBean")
-@RequestScoped
-//@SessionScoped
+@SessionScoped
 public class SzczegolyMojegoKontaPageBean implements Serializable{
     
     public SzczegolyMojegoKontaPageBean() {

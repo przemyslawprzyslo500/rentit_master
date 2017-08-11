@@ -14,9 +14,11 @@ import javax.inject.Inject;
 import java.util.ResourceBundle;
 import javax.ejb.EJBException;
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.context.FacesContext;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import pl.turek.liceum.rentit.ejb.endpoints.KontoEndpoint;
 import pl.turek.liceum.rentit.model.Equipment;
 import pl.turek.liceum.rentit.model.Reserv;
 import pl.turek.liceum.rentit.model.ReservStatus;
@@ -32,6 +34,9 @@ public abstract class AbstractController<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @EJB
+    private KontoEndpoint kontoEndpoint;
+
     @Inject
     private AbstractFacade<T> ejbFacade;
     private Class<T> itemClass;
@@ -39,7 +44,8 @@ public abstract class AbstractController<T> implements Serializable {
     private Collection<T> items;
     private Collection<Equipment> equipments_items;
     private Collection<ReservStatus> employeeReservationStatus;
-//    private Collection<Reserv> reservations;
+    private Collection<Reserv> employeeReservations;
+    private Collection<Reserv> managerEmployeeReservations;
     private LazyEntityDataModel<T> lazyItems;
     private List<T> filteredItems;
 
@@ -148,13 +154,26 @@ public abstract class AbstractController<T> implements Serializable {
         return employeeReservationStatus;
     }
 
+    public Collection<Reserv> getEmployeeReservations() {
+        if (employeeReservations == null) {
+            employeeReservations = this.ejbFacade.findEmployeeReservations(kontoEndpoint.pobierzMojeKonto());
+        }
+        return employeeReservations;
+    }
+
+    public Collection<Reserv> getManagerEmployeeReservations() {
+        if (managerEmployeeReservations == null) {
+            managerEmployeeReservations = this.ejbFacade.findManagerEmployeeReservations();
+        }
+        return managerEmployeeReservations;
+    }
+
 //    public Collection<Reserv> getReservations() {
 //        if (reservations == null) {
 //            reservations = this.ejbFacade.findReservations();
 //        }
 //        return reservations;
 //    }
-
     /**
      * Pass in collection of items
      *

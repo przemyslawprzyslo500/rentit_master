@@ -36,7 +36,7 @@
                         <p:outputLabel value="${msg.CreateLicenseTypeLabel_licenseEnd}" for="licenseEnd" />
                         <p:calendar id="licenseEnd" pattern="MM/dd/yyyy" value="#{licenseTypeController.selected.licenseEnd}" 
                                     title="${msg.CreateLicenseTypeTitle_licenseEnd}"  showOn="button"
-                                    mindate="${msg.CreateLicenseTypeLabel_licenseStart}"/>
+                                    mindate="${licenseTypeController.selected.licenseStart}"/>
 
                     </p:panelGrid>
                     <p:commandButton actionListener="#{licenseTypeController.saveNew}" value="${msg.Save}" 

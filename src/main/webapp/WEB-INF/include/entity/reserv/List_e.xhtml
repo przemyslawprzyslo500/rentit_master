@@ -19,8 +19,8 @@
                 <p:menuitem value="${msg.ReservMenuItem_equipmentId}" icon="ui-icon-search"  actionListener="#{reservController.prepareEquipmentId}" update=":EquipmentViewForm" oncomplete="PF('EquipmentViewDialog').show()" disabled="#{empty reservController.selected.equipmentId}"/>  
                 <p:menuitem value="${msg.ReservMenuItem_reservStatusId}" icon="ui-icon-search"  actionListener="#{reservController.prepareReservStatusId}" update=":ReservStatusViewForm" oncomplete="PF('ReservStatusViewDialog').show()" disabled="#{empty reservController.selected.reservStatusId}"/>  
             </p:contextMenu>
-            <p:dataTable id="datalist" widgetVar="stockTable"
-                         value="#{reservController.items}"
+            <p:dataTable id="datalist"
+                         value="#{reservController.employeeReservations}"
                          lazy="false"
                          rowKey="#{item.id}"
                          var="item"
@@ -45,12 +45,12 @@
                 <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{reservController.resetParents}"/>
                 <p:ajax event="rowDblselect" onsuccess="document.getElementById('ReservListForm:viewButton').click();"/>
 
-<!--                <p:column sortBy="#{item.id}" filterBy="#{item.id}">
+                <p:column sortBy="#{item.id}" filterBy="#{item.id}">
                     <f:facet name="header">
                         <h:outputText value="${msg.ListReservTitle_id}"/>
                     </f:facet>
                     <h:outputText value="#{item.id}"/>
-                </p:column>-->
+                </p:column>
 
                 <p:column sortBy="#{item.accountId.name}" filterBy="#{item.accountId.name}">
                     <f:facet name="header">
@@ -100,18 +100,9 @@
                     </h:outputText>
                 </p:column>
 
-                <p:column headerText="${msg.ListReservTitle_reservStatusId}" 
-                          sortBy="#{item.reservStatusId.reservationStatusName}" 
-                          filterBy="#{item.reservStatusId.reservationStatusName}" >
-                    <f:facet name="filter">
-                        <p:selectOneMenu onchange="PF('stockTable').filter()" id="reservationStatusId" style="width:10px;">
-                            <f:selectItem itemLabel="${msg.SelectOneMessage}" />
-<!--                            <f:selectItems value="#{reservStatusController.employeeReservationStatus}"-->
-                            <f:selectItems value="#{reservStatusController.items}"
-                                           var="reservStatusIdItem"
-                                           itemValue="#{reservStatusIdItem.reservationStatusName}"
-                                           itemLabel="#{reservStatusIdItem.reservationStatusName.toString()}" />
-                        </p:selectOneMenu>
+                <p:column sortBy="#{item.reservStatusId.reservationStatusName}" filterBy="#{item.reservStatusId.reservationStatusName}">
+                    <f:facet name="header">
+                        <h:outputText value="${msg.ListReservTitle_reservStatusId}"/>
                     </f:facet>
                     <h:outputText value="#{item.reservStatusId.reservationStatusName}"/>
                 </p:column>

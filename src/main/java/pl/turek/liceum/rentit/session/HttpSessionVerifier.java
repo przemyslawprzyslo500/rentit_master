@@ -8,9 +8,7 @@ package pl.turek.liceum.rentit.session;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
@@ -33,6 +31,8 @@ public class HttpSessionVerifier implements HttpSessionListener {
                 + " lastAccess: " + sessionLastAccessedTime
                 + " with maxInactiveInterval: " + sessionMaxInactiveInterval
                 + " created.");
+        Logger.getLogger(HttpSessionVerifier.class.getName()).log(Level.INFO,
+                "HttpSessionVerifier(sessionDestroyed). TotalActiveSessions: " +totalActiveSessions);
     }
     public void sessionDestroyed(HttpSessionEvent event) {
         totalActiveSessions--;
@@ -44,7 +44,8 @@ public class HttpSessionVerifier implements HttpSessionListener {
                 + " lastAccess: " + sessionLastAccessedTime
                 + " with maxInactiveInterval: " + sessionMaxInactiveInterval
                 + " destroyed.");
-        
+        Logger.getLogger(HttpSessionVerifier.class.getName()).log(Level.INFO,
+                "HttpSessionVerifier(sessionDestroyed). TotalActiveSessions: " +totalActiveSessions);
     }
 
     private void extractUserInformation(HttpServletRequest request, String url) {

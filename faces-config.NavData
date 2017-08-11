@@ -8,7 +8,6 @@
         <Node id="app/reserv/index.xhtml" x="150" y="300" zoom="true"/>
         <Node id="app/account/success.xhtml" x="1150" y="150" zoom="true"/>
         <Node id="app/usePlace/index.xhtml" x="400" y="150" zoom="true"/>
-        <Node id="login" x="650" y="300" zoom="true"/>
         <Node id="errors/login.xhtml" x="900" y="300" zoom="true"/>
         <Node id="mobile/equipment/index.xhtml" x="1150" y="300" zoom="true"/>
         <Node id="confirmation.xhtml" x="400" y="750" zoom="true"/>
@@ -18,8 +17,8 @@
         <Node id="errors/404.xhtml" x="1414" y="183" zoom="true"/>
         <Node id="index.xhtml" x="150" y="450" zoom="true"/>
         <Node id="mobile/licenseType/index.xhtml" x="400" y="600" zoom="true"/>
-        <Node id="app/licenseType/index.xhtml" x="650" y="150" zoom="true"/>
         <Node id="mobile/usePlace/index.xhtml" x="150" y="900" zoom="true"/>
+        <Node id="app/licenseType/index.xhtml" x="650" y="150" zoom="true"/>
         <Node id="login.xhtml" x="650" y="750" zoom="true"/>
         <Node id="mobile/reserv/index.xhtml" x="900" y="450" zoom="true"/>
         <Node id="mobile/reservStatus/index.xhtml" x="1150" y="450" zoom="true"/>
