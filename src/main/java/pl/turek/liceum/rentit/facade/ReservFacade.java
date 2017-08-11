@@ -31,8 +31,8 @@ import pl.turek.liceum.rentit.model.ReservStatus;
 @Stateless
 @LocalBean
 @Interceptors({LoggingInterceptor.class, PerformanceInterceptor.class})
-//@Transactional
-@TransactionAttribute(TransactionAttributeType.SUPPORTS)
+@Transactional
+//@TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class ReservFacade extends AbstractFacade<Reserv> {
 
     @PersistenceContext(unitName = "pl.turek.liceum.rentit_RentIt_war_PU")

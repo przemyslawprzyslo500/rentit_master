@@ -22,10 +22,26 @@
                         <p:inputText id="name" value="#{equipmentController.selected.name}" title="${msg.EditEquipmentTitle_name}" size="100" maxlength="255"/>
 
                         <p:outputLabel value="${msg.EditEquipmentLabel_rentPermission}" for="rentPermission" />
-                        <p:inputText id="rentPermission" value="#{equipmentController.selected.rentPermission}" title="${msg.EditEquipmentTitle_rentPermission}"/>
+                        <h:selectOneRadio id="rentPermission" value="#{equipmentController.selected.rentPermission}">
+                            <f:selectItem itemLabel="${msg.Yes}" itemValue="true" />
+                            <f:selectItem itemLabel="${msg.No}" itemValue="false" />
+                        </h:selectOneRadio> 
+<!--                        <p:inputText id="rentPermission" value="#{equipmentController.selected.rentPermission}" title="${msg.EditEquipmentTitle_rentPermission}"/>-->
 
-                        <p:outputLabel value="${msg.EditEquipmentLabel_type}" for="type" />
-                        <p:inputText id="type" value="#{equipmentController.selected.type}" title="${msg.EditEquipmentTitle_type}" size="100" maxlength="255"/>
+                        <p:outputLabel value="${msg.CreateEquipmentLabel_type}" for="type" />
+                        <h:selectOneRadio id="type" value="#{equipmentController.selected.type}">
+                            <f:selectItem itemLabel="${msg.Computer}" itemValue="${msg.Computer}" />
+                            <f:selectItem itemLabel="${msg.Laptop}" itemValue="${msg.Laptop}" />
+                            <f:selectItem itemLabel="${msg.Projector}" itemValue="${msg.Projector}" />
+                            <f:selectItem itemLabel="${msg.Monitor}" itemValue="${msg.Monitor}" />
+                            <f:selectItem itemLabel="${msg.MobileInteractiveWhiteboard}" itemValue="${msg.MobileInteractiveWhiteboard}" />
+                            <f:selectItem itemLabel="${msg.Microscope}" itemValue="${msg.Microscope}" />
+                            <f:selectItem itemLabel="${msg.Printer}" itemValue="${msg.Printer}" />
+                            <f:selectItem itemLabel="${msg.Scanner}" itemValue="${msg.Scanner}" />
+                        </h:selectOneRadio>
+
+<!--                        <p:outputLabel value="${msg.EditEquipmentLabel_type}" for="type" />
+                            <p:inputText id="type" value="#{equipmentController.selected.type}" title="${msg.EditEquipmentTitle_type}" size="100" maxlength="255"/>-->
 
                         <p:outputLabel value="${msg.EditEquipmentLabel_licenseTypeId}" for="licenseTypeId" />
                         <p:selectOneMenu id="licenseTypeId" value="#{equipmentController.selected.licenseTypeId}"  converter="licenseTypeConverter">
