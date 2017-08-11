@@ -32,9 +32,12 @@
     </servlet-mapping>
     <session-config>
         <session-timeout>
-            10
+            1
         </session-timeout>
     </session-config>
+    <listener>
+        <listener-class>pl.turek.liceum.rentit.session.HttpSessionVerifier</listener-class>
+    </listener>
     <welcome-file-list>
         <welcome-file>faces/login.xhtml</welcome-file>
     </welcome-file-list>
@@ -52,17 +55,6 @@
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
-    <!--    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>Public</web-resource-name>
-            <description>Makes the landing page explicitly public</description>
-            <url-pattern>/login.html</url-pattern>
-        </web-resource-collection>
-        <user-data-constraint>
-            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-        </user-data-constraint>
-         No auth-constraint = everybody has access! 
-    </security-constraint>-->
     <security-constraint>
         <display-name>AdminConstrain</display-name>
         <web-resource-collection>
@@ -183,9 +175,9 @@
     </security-role>
     <error-page>
         <exception-type>javax.faces.application.ViewExpiredException</exception-type>
-        <location>/faces/login.xhtml</location>
+        <location>/login.xhtml</location>
     </error-page>
-<!--    <error-page>
+    <!--    <error-page>
         <error-code>403</error-code>
         <location>/errors/403.xhtml</location>
     </error-page>
