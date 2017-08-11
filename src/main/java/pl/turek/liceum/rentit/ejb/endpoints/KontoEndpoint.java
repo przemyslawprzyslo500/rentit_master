@@ -20,6 +20,7 @@ import pl.turek.liceum.rentit.web.utils.KontoUtils;
  */
 @Stateful
 @LocalBean
+//@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 public class KontoEndpoint extends AbstractEndpoint implements SessionSynchronization {
 

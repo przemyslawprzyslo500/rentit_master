@@ -2,6 +2,8 @@ package pl.turek.liceum.rentit.web.konto;
 
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -14,6 +16,7 @@ import pl.turek.liceum.rentit.model.Account;
  */
 @ManagedBean(name = "edytujKontoPageBean")
 @RequestScoped
+@TransactionAttribute(TransactionAttributeType.MANDATORY)
 //@SessionScoped
 public class EdytujKontoPageBean implements Serializable{
 

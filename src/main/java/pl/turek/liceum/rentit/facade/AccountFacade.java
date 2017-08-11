@@ -32,8 +32,8 @@ import pl.turek.liceum.rentit.ejb.interceptor.PerformanceInterceptor;
 @Stateless
 @LocalBean
 @Interceptors({LoggingInterceptor.class, PerformanceInterceptor.class})
-@Transactional
-//@TransactionAttribute(TransactionAttributeType.MANDATORY)
+//@Transactional
+@TransactionAttribute(TransactionAttributeType.MANDATORY)
 //@RolesAllowed("admin")
 public class AccountFacade extends AbstractFacade<Account> {
 
