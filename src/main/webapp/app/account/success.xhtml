@@ -10,28 +10,14 @@
             <h:outputText value="${msg.AppName}"></h:outputText>
         </ui:define>
         <ui:define name="body" id="body"><center>
-                <p:panel header="Password Changed">
+                <p:panel header="Succes">
                     <p><h:outputText value="${msg.WelcomeMessage}"
                                      rendered="!#{facesContext.externalContext.isUserInRole('inactive')}">
                         </h:outputText></p>
                     <br />
-                    <h2><h:outputText value="Success">
-                        </h:outputText></h2>
+<!--                    <h2><h:outputText value="Success">
+                        </h:outputText></h2>-->
                 </p:panel>
-<!--                <h:outputText value="You are logged in as #{request.userPrincipal.name}"/>
-                <h:form styleClass="settings-form" rendered="#{request.userPrincipal ne null}"
-                        id="logoutbean" prependId="false">
-                    <h:commandButton action="#{loginBean.logout}" value="Logout"/>-->
             </center>
         </ui:define>
-    
-<!--    <ui:define name="title">
-        <h:outputText value="${msg.AppName}"></h:outputText>
-    </ui:define>
-    <ui:define name="body"><center>
-            <h:form id="success" >
-                <h2>SUKCES</h2><br />
-            </h:form>
-        </center>
-    </ui:define>-->
 </ui:composition>

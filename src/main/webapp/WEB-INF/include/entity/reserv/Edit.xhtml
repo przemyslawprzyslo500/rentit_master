@@ -22,25 +22,30 @@
                         <p:inputText id="description" value="#{reservController.selected.description}" title="${msg.EditReservTitle_description}" size="255" maxlength="255"/>
 
                         <p:outputLabel value="${msg.EditReservLabel_reservationStart}" for="reservationStart" />
-                        <p:calendar id="reservationStart" pattern="MM/dd/yyyy" value="#{reservController.selected.reservationStart}" title="${msg.EditReservTitle_reservationStart}"  showOn="button">
+                        <p:calendar id="reservationStart" pattern="MM/dd/yyyy" value="#{reservController.selected.reservationStart}" 
+                                    title="${msg.EditReservTitle_reservationStart}"  showOn="button">
                         <p:ajax event="dateSelect" update="reservationEnd"/>
                         </p:calendar>
                         
                         <p:outputLabel value="${msg.EditReservLabel_reservationEnd}" for="reservationEnd" />
-                        <p:calendar id="reservationEnd" pattern="MM/dd/yyyy" value="#{reservController.selected.reservationEnd}" title="${msg.EditReservTitle_reservationEnd}" mindate="#{{reservController.selected.reservationStart}}" showOn="button"/>
+                        <p:calendar id="reservationEnd" pattern="MM/dd/yyyy" value="#{reservController.selected.reservationEnd}" 
+                                    title="${msg.EditReservTitle_reservationEnd}" 
+                                    mindate="#{reservController.selected.reservationStart}" showOn="button"/>
 
                         <p:outputLabel value="${msg.EditReservLabel_reservationMadeDate}" for="reservationMadeDate" />
-                        <p:calendar id="reservationMadeDate" pattern="MM/dd/yyyy" value="#{reservController.selected.reservationMadeDate}" title="${msg.EditReservTitle_reservationMadeDate}"  showOn="button"/>
+                        <p:calendar id="reservationMadeDate" pattern="MM/dd/yyyy" 
+                                    value="#{reservController.selected.reservationMadeDate}" 
+                                    title="${msg.EditReservTitle_reservationMadeDate}"  showOn="button"/>
 
                         <p:outputLabel value="${msg.EditReservLabel_accountId}" for="accountId" />
-                        <p:selectOneMenu id="accountId" value="#{reservController.selected.accountId}"  converter="accountConverter">
+                        <p:selectOneMenu id="accountId" value="#{reservController.selected.accountId}"  
+                                         converter="accountConverter">
                             <f:selectItem itemLabel="${msg.SelectOneMessage}"/>
                             <f:selectItems value="#{accountController.items}"
                                            var="accountIdItem"
                                            itemValue="#{accountIdItem}"
                                            itemLabel="#{accountIdItem.name.toString()}"
                                            />
-
                         </p:selectOneMenu>
 
                         <p:outputLabel value="${msg.EditReservLabel_equipmentId}" for="equipmentId" />
@@ -51,7 +56,6 @@
                                            itemValue="#{equipmentIdItem}"
                                            itemLabel="#{equipmentIdItem.name.toString()}"
                                            />
-
                         </p:selectOneMenu>
 
                         <p:outputLabel value="${msg.EditReservLabel_reservStatusId}" for="reservStatusId" />
@@ -62,7 +66,6 @@
                                            itemValue="#{reservStatusIdItem}"
                                            itemLabel="#{reservStatusIdItem.reservationStatusName.toString()}"
                                            />
-
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{reservController.save}" value="${msg.Save}" update="display,:ReservListForm:datalist,:ReservListForm:ReservDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ReservEditDialog'));">

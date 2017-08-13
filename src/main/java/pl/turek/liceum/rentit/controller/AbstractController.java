@@ -167,13 +167,6 @@ public abstract class AbstractController<T> implements Serializable {
         }
         return managerEmployeeReservations;
     }
-
-//    public Collection<Reserv> getReservations() {
-//        if (reservations == null) {
-//            reservations = this.ejbFacade.findReservations();
-//        }
-//        return reservations;
-//    }
     /**
      * Pass in collection of items
      *
@@ -223,23 +216,19 @@ public abstract class AbstractController<T> implements Serializable {
     public void save(ActionEvent event) {
         String msg = ResourceBundle.getBundle("/Bundle").getString(itemClass.getSimpleName() + "Updated");
         persist(PersistAction.UPDATE, msg);
-
         if (!isValidationFailed()) {
-
             // Update the existing entity inside the item list
             List<T> itemList = refreshItem(this.selected, this.items);
             // If the original list has changed (it is a new object)
             if (this.items != itemList) {
                 this.setItems(itemList);
+//                this.setItems((Collection<T>) managerEmployeeReservations);
             }
-
             // Also refresh the filteredItems list in case the user has filtered the DataTable
             if (filteredItems != null) {
                 refreshItem(this.selected, this.filteredItems);
             }
-
         }
-
     }
 
     /**

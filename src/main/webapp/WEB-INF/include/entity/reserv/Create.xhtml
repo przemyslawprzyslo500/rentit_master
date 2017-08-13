@@ -29,8 +29,8 @@
                         <p:outputLabel value="${msg.CreateReservLabel_reservationMadeDate}" for="reservationMadeDate" />
                         <p:calendar id="reservationMadeDate" pattern="MM/dd/yyyy" mindate="#{currentDate}" maxdate="#{currentDate}" required="true" value="#{reservController.selected.reservationMadeDate}" title="${msg.CreateReservTitle_reservationMadeDate}"  showOn="button"/>
                         
-                        <p:outputLabel value="${msg.CreateReservLabel_accountId}" for="accountId" rendered="#{facesContext.externalContext.isUserInRole('admin')}"/>
-                        <p:selectOneMenu id="accountId" value="#{reservController.selected.accountId}"  converter="accountConverter" rendered="#{facesContext.externalContext.isUserInRole('admin')}">
+                        <p:outputLabel value="${msg.CreateReservLabel_accountId}" for="accountId" rendered="#{facesContext.externalContext.isUserInRole('manager')}"/>
+                        <p:selectOneMenu id="accountId" value="#{reservController.selected.accountId}"  converter="accountConverter" rendered="#{facesContext.externalContext.isUserInRole('manager')}">
                             <f:selectItem itemLabel="${msg.SelectOneMessage}"/>
                             <f:selectItems value="#{accountController.items}"
                                            var="accountIdItem"
@@ -52,8 +52,8 @@
                                            />
                         </p:selectOneMenu>
                         
-                        <p:outputLabel value="${msg.CreateReservLabel_reservStatusId}" for="reservStatusId" rendered="#{facesContext.externalContext.isUserInRole('admin')}"/>
-                        <p:selectOneMenu id="reservStatusId" value="#{reservController.selected.reservStatusId}" converter="reservStatusConverter" rendered="#{facesContext.externalContext.isUserInRole('admin')}">
+                        <p:outputLabel value="${msg.CreateReservLabel_reservStatusId}" for="reservStatusId" rendered="#{facesContext.externalContext.isUserInRole('manager')}"/>
+                        <p:selectOneMenu id="reservStatusId" value="#{reservController.selected.reservStatusId}" converter="reservStatusConverter" rendered="#{facesContext.externalContext.isUserInRole('manager')}">
                             <f:selectItem itemLabel="${msg.SelectOneMessage}"/>
                             <f:selectItems value="#{reservStatusController.items}"
                                            var="reservStatusIdItem"

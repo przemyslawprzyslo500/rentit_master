@@ -36,7 +36,7 @@
 
                         <p:outputLabel for="accountId" value="${msg.CreateReservLabel_accountId}" />
                         <h:selectOneRadio id="accountId" value="#{reservController.selected.accountId}" converter="accountConverter">
-                            <f:selectItem itemLabel="Your account" itemValue="#{edytujKontoPageBean.konto}" />
+                            <f:selectItem itemLabel="${msg.YourAccount}" itemValue="#{edytujKontoPageBean.konto}" />
                         </h:selectOneRadio>
 
                         <p:outputLabel value="${msg.CreateReservLabel_equipmentId}" for="equipmentId" />

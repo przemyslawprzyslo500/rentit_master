@@ -12,8 +12,8 @@
             <p:contextMenu id="ReservDataTableContextMenu" for="datalist">  
                 <p:menuitem value="${msg.Create}" onclick="document.getElementById('ReservListForm:createButton').click();" icon="ui-icon-plus"/>
                 <p:menuitem value="${msg.View}" onclick="document.getElementById('ReservListForm:viewButton').click();" icon="ui-icon-search"/>
-                <p:menuitem value="${msg.Edit}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" onclick="document.getElementById('ReservListForm:editButton').click();" icon="ui-icon-pencil"/>
-                <p:menuitem value="${msg.Delete}" rendered="#{facesContext.externalContext.isUserInRole('manager')}" onclick="document.getElementById('ReservListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:menuitem value="${msg.Edit}" onclick="document.getElementById('ReservListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="${msg.Delete}" onclick="document.getElementById('ReservListForm:deleteButton').click();" icon="ui-icon-trash"/>
                 <p:separator/>
                 <p:menuitem value="${msg.ReservMenuItem_accountId}" icon="ui-icon-search"  actionListener="#{reservController.prepareAccountId}" update=":AccountViewForm" oncomplete="PF('AccountViewDialog').show()" disabled="#{empty reservController.selected.accountId}"/>  
                 <p:menuitem value="${msg.ReservMenuItem_equipmentId}" icon="ui-icon-search"  actionListener="#{reservController.prepareEquipmentId}" update=":EquipmentViewForm" oncomplete="PF('EquipmentViewDialog').show()" disabled="#{empty reservController.selected.equipmentId}"/>  
@@ -120,8 +120,8 @@
 
             <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="${msg.Create}" actionListener="#{reservController.prepareCreate}" update=":ReservCreateForm" oncomplete="PF('ReservCreateDialog').show()"/>
             <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="${msg.View}" update=":ReservViewForm" oncomplete="PF('ReservViewDialog').show()" disabled="#{empty reservController.selected}"/>
-            <p:commandButton id="editButton"   rendered="#{facesContext.externalContext.isUserInRole('manager')}" style="visibility: hidden;" icon="ui-icon-pencil" value="${msg.Edit}" update=":ReservEditForm" oncomplete="PF('ReservEditDialog').show()" disabled="#{empty reservController.selected}"/>
-            <p:commandButton id="deleteButton" rendered="#{facesContext.externalContext.isUserInRole('manager')}" style="visibility: hidden;" icon="ui-icon-trash"  value="${msg.Delete}" actionListener="#{reservController.delete}" update=":growl,datalist" disabled="#{empty reservController.selected}">
+            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="${msg.Edit}" update=":ReservEditForm" oncomplete="PF('ReservEditDialog').show()" disabled="#{empty reservController.selected}"/>
+            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="${msg.Delete}" actionListener="#{reservController.delete}" update=":growl,datalist" disabled="#{empty reservController.selected}">
                 <p:confirm header="${msg.ConfirmationHeader}" message="${msg.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
             </p:commandButton>
 

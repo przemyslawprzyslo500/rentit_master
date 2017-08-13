@@ -7,6 +7,8 @@ import javax.ejb.TransactionAttributeType;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.transaction.Transactional;
 import pl.turek.liceum.rentit.exception.AppBaseException;
 import pl.turek.liceum.rentit.model.Account;
 
@@ -15,9 +17,10 @@ import pl.turek.liceum.rentit.model.Account;
  * @author java
  */
 @ManagedBean(name = "edytujKontoPageBean")
-@RequestScoped
+//@RequestScoped
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
-//@SessionScoped
+//@Transactional
+@SessionScoped
 public class EdytujKontoPageBean implements Serializable{
 
 //    @EJB
