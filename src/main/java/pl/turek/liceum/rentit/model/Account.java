@@ -20,6 +20,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+import javax.persistence.Transient;
 import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -33,7 +34,7 @@ import static pl.turek.liceum.rentit.session.HashPassword.hashPassword;
  */
 @Entity
 @Table(name = "ACCOUNT", catalog = "", schema = "RENTIT")
-@TableGenerator(name = "AccountIdGen", table = "GENERATOR", pkColumnName = "ENTITY_NAME", valueColumnName = "ID_RANGE", pkColumnValue = "Account",allocationSize = 1, initialValue=10)
+@TableGenerator(name = "AccountIdGen", table = "GENERATOR", pkColumnName = "ENTITY_NAME", valueColumnName = "ID_RANGE", pkColumnValue = "Account", allocationSize = 1, initialValue = 10)
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Account.findAll", query = "SELECT a FROM Account a")
@@ -84,6 +85,9 @@ public class Account implements Serializable {
     private Long version;
     @OneToMany(mappedBy = "accountId")
     private Collection<Reserv> reservCollection;
+
+    @Transient
+    private String hashPassword;
 
     public Account() {
     }
@@ -136,10 +140,21 @@ public class Account implements Serializable {
         return password;
     }
 
+    public String getHashPassword() {
+        return hashPassword;
+    }
+
     public void setPassword(String password) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-//        this.password = hashPassword(password);
+        System.out.println("haslo przed hash w account: " + password);
         this.password = password;
-//        System.out.println(this.password);
+//        this.password = hashPassword(password);
+        System.out.println("haslo po hash w account: " + this.password);
+    }
+    
+    public void setHashPassword(String password) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        System.out.println("haslo przed hash w account_hashpassword: " + password);
+        this.password = hashPassword(password);
+        System.out.println("haslo po hash w account_hashpassword: " + this.password);
     }
 
     public String getPhone() {
@@ -191,5 +206,5 @@ public class Account implements Serializable {
     public String toString() {
         return "pl.turek.liceum.rentit.model.Account[ id=" + id + " ]";
     }
-    
+
 }

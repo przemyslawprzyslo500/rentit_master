@@ -26,10 +26,10 @@
                         <p:inputText id="login" required="true" value="#{accountController.selected.login}" title="${msg.CreateAccountTitle_login}" size="100" maxlength="255"/>
 
                         <h:outputLabel for="pwd1" value="Password: *" />  
-                        <p:password id="pwd1" value="#{accountController.selected.password}" feedback="true" match="pwd2" label="Password" required="true" size="60"/>  
+                        <p:password id="pwd1" value="#{accountController.selected.hashPassword}" feedback="true" match="pwd2" label="Password" required="true" size="60"/>  
 
                         <h:outputLabel for="pwd2" value="Password confirm: *" />  
-                        <p:password id="pwd2" value="#{accountController.selected.password}" feedback="false" label="Password_repeat" required="true" size="60"/> 
+                        <p:password id="pwd2" value="#{accountController.selected.hashPassword}" feedback="false" label="Password_repeat" required="true" size="60"/> 
 
                         <p:outputLabel value="${msg.CreateAccountLabel_email}" for="email" />
                         <p:inputText id="email" value="#{accountController.selected.email}" title="${msg.CreateAccountTitle_email}" size="100" maxlength="255"/>

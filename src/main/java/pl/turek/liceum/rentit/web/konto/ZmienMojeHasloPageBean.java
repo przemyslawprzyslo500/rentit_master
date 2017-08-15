@@ -36,15 +36,15 @@ public class ZmienMojeHasloPageBean {
         return konto;
     }
         
-    private String hasloPowtorz = "";
+//    private String hasloPowtorz = "";
 
-    public String getHasloPowtorz() {
-        return hasloPowtorz;
-    }
+//    public String getHasloPowtorz() {
+//        return hasloPowtorz;
+//    }
 
-    public void setHasloPowtorz(String hasloPowtorz) {
-        this.hasloPowtorz = hasloPowtorz;
-    }
+//    public void setHasloPowtorz(String hasloPowtorz) {
+//        this.hasloPowtorz = hasloPowtorz;
+//    }
     
     public String stareHaslo = "";
 
@@ -56,20 +56,20 @@ public class ZmienMojeHasloPageBean {
         this.stareHaslo = stareHaslo;
     }
     
-    public String zmienHaslo() {
-        if (!(hasloPowtorz.equals(konto.getPassword()))){
-            ContextUtils.emitInternationalizedMessage("zmienMojeHasloForm:passwordRepeat", "passwords.not.matching");
-            return null;
-        }
+//    public String zmienHaslo() {
+//        if (!(hasloPowtorz.equals(konto.getPassword()))){
+//            ContextUtils.emitInternationalizedMessage("zmienMojeHasloForm:passwordRepeat", "passwords.not.matching");
+//            return null;
+//        }
             
-        try {
-            return kontoSession.zmienMojeHaslo(stareHaslo, konto.getPassword());
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(ZmienMojeHasloPageBean.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(ZmienMojeHasloPageBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
+//        try {
+//            return kontoSession.zmienMojeHaslo(stareHaslo, konto.getPassword());
+//        } catch (NoSuchAlgorithmException ex) {
+//            Logger.getLogger(ZmienMojeHasloPageBean.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (UnsupportedEncodingException ex) {
+//            Logger.getLogger(ZmienMojeHasloPageBean.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return null;
+//    }
     
 }

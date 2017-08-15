@@ -45,14 +45,6 @@ public class KontoEndpoint extends AbstractEndpoint implements SessionSynchroniz
         kontoFacade.create(konto);
     }
 
-//    public void aktywujKonto(Account konto) {
-//        Account k = kontoFacade.find(konto.getId());
-//    }
-
-//    public void deaktywujKonto(Account konto) {
-//        Account k = kontoFacade.find(konto.getId());
-//    }
-
     public List<Account> pobierzWszystkieKonta() {
         return kontoFacade.findAll();
     }

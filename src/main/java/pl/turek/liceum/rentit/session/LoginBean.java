@@ -8,6 +8,8 @@ package pl.turek.liceum.rentit.session;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
@@ -24,8 +26,8 @@ import javax.transaction.Transactional;
  */
 @Named(value = "loginBean")
 @RequestScoped
-//@TransactionAttribute(TransactionAttributeType.MANDATORY)
-@Transactional
+@TransactionAttribute(TransactionAttributeType.MANDATORY)
+//@Transactional
 public class LoginBean extends HttpServlet implements Serializable{
 
     private String userName;
