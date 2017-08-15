@@ -1,5 +1,9 @@
 package pl.turek.liceum.rentit.web.konto;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -33,28 +37,34 @@ public class ZmienHasloKontaPageBean {
     }
     
     @PostConstruct
-    private void init(){
+    private void init() {
         konto = kontoSession.getKontoZmienHaslo();
-        konto.setPassword(new String());
-    }
-    
-    private String hasloPowtorz = "";
-
-    public String getHasloPowtorz() {
-        return hasloPowtorz;
-    }
-
-    public void setHasloPowtorz(String hasloPowtorz) {
-        this.hasloPowtorz = hasloPowtorz;
-    }
-    
-    public String zmienHaslo() {
-        if (!(hasloPowtorz.equals(konto.getPassword()))){
-            ContextUtils.emitInternationalizedMessage("zmienHasloKontaForm:passwordRepeat", "passwords.not.matching");
-            return null;
+        try {
+            konto.setPassword(new String());
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(ZmienHasloKontaPageBean.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(ZmienHasloKontaPageBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
-        return kontoSession.zmienHasloKonta(konto.getPassword());
     }
     
+//    private String hasloPowtorz = "";
+//
+//    public String getHasloPowtorz() {
+//        return hasloPowtorz;
+//    }
+
+//    public void setHasloPowtorz(String hasloPowtorz) {
+//        this.hasloPowtorz = hasloPowtorz;
+//    }
+    
+//    public String zmienHaslo() {
+//        if (!(hasloPowtorz.equals(konto.getPassword()))){
+//            ContextUtils.emitInternationalizedMessage("zmienHasloKontaForm:passwordRepeat", "passwords.not.matching");
+//            return null;
+//        }
+//            
+//        return kontoSession.zmienHasloKonta(konto.getPassword());
+//    }
+//    
 }

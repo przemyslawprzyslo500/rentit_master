@@ -136,7 +136,7 @@ public class Account implements Serializable {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(String password) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 //        this.password = hashPassword(password);
         this.password = password;
 //        System.out.println(this.password);

@@ -1,6 +1,8 @@
 package pl.turek.liceum.rentit.web.konto;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import javax.annotation.PostConstruct;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -19,7 +21,6 @@ import pl.turek.liceum.rentit.model.Account;
 @ManagedBean(name = "edytujKontoPageBean")
 //@RequestScoped
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
-//@Transactional
 @SessionScoped
 public class EdytujKontoPageBean implements Serializable{
 
@@ -51,7 +52,7 @@ public class EdytujKontoPageBean implements Serializable{
         return konto;
     }
 
-    public String zapiszKonto() throws AppBaseException {
+    public String zapiszKonto() throws AppBaseException, NoSuchAlgorithmException, UnsupportedEncodingException {
         kontoSession.pobierzKontoDoEdycji(konto);
 //        kontoSession.pobierzMojeKonto();
         return kontoSession.zapiszKontoPoEdycji(konto);

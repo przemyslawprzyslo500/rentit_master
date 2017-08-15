@@ -27,11 +27,11 @@
                             <h:outputLabel value="E-mail: " for="email"/>
                             <p:inputText id="email" value="#{edytujKontoPageBean.konto.email}" title="email" />
 
-                                <h:outputLabel for="pwd1" value="Password: *" />  
+<!--                                <h:outputLabel for="pwd1" value="Password: *" />  
                                 <p:password id="pwd1" value="#{edytujKontoPageBean.konto.password}" feedback="true" match="pwd2" label="Password" />  
 
                                 <h:outputLabel for="pwd2" value="Password confirm: *" />  
-                                <p:password id="pwd2" value="#{edytujKontoPageBean.konto.password}" feedback="false" label="Password_repeat" />  
+                                <p:password id="pwd2" value="#{edytujKontoPageBean.konto.password}" feedback="false" label="Password_repeat" />  -->
 
                             <h:outputLabel value="Phone: " for="phone"/>
                             <p:inputText id="phone" value="#{edytujKontoPageBean.konto.phone}" title="phone" />
@@ -39,7 +39,7 @@
                         </p:panelGrid>
 
                         <h:commandButton action="#{edytujKontoPageBean.zapiszKonto()}" value="Zapisz" />
-                        <h:commandButton value="Cancel" action="/faces/index.xhtml" immediate="true"/>
+                        <h:commandButton value="Cancel" action="/index.xhtml" immediate="true"/>
                         <br />
                     </h:panelGroup>
                 </center>

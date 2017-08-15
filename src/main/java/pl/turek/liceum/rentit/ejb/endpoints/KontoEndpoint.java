@@ -1,6 +1,8 @@
 package pl.turek.liceum.rentit.ejb.endpoints;
 
+import java.io.UnsupportedEncodingException;
 import java.rmi.RemoteException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.*;
@@ -37,19 +39,19 @@ public class KontoEndpoint extends AbstractEndpoint implements SessionSynchroniz
         return kontoFacade.znajdzLogin(sctx.getCallerPrincipal().getName());
     }
 
-    public void utworzKonto(Account konto) throws AppBaseException {
+    public void utworzKonto(Account konto) throws AppBaseException, NoSuchAlgorithmException, UnsupportedEncodingException {
         // Konto ma hasło jawne podane w formularzu, należy je przeliczyć na skrót
         konto.setPassword(KontoUtils.wyliczSkrotHasla(konto.getPassword()));
         kontoFacade.create(konto);
     }
 
-    public void aktywujKonto(Account konto) {
-        Account k = kontoFacade.find(konto.getId());
-    }
+//    public void aktywujKonto(Account konto) {
+//        Account k = kontoFacade.find(konto.getId());
+//    }
 
-    public void deaktywujKonto(Account konto) {
-        Account k = kontoFacade.find(konto.getId());
-    }
+//    public void deaktywujKonto(Account konto) {
+//        Account k = kontoFacade.find(konto.getId());
+//    }
 
     public List<Account> pobierzWszystkieKonta() {
         return kontoFacade.findAll();
@@ -68,7 +70,7 @@ public class KontoEndpoint extends AbstractEndpoint implements SessionSynchroniz
         return kontoStan;
     }
 
-    public void zapiszKontoPoEdycji(Account konto) throws AppBaseException {
+    public void zapiszKontoPoEdycji(Account konto) throws AppBaseException, NoSuchAlgorithmException, UnsupportedEncodingException {
         if (null == kontoStan) {
             throw new IllegalArgumentException("Brak wczytanego konta do modyfikacji");
         }
@@ -83,7 +85,7 @@ public class KontoEndpoint extends AbstractEndpoint implements SessionSynchroniz
         kontoStan = null;
     }
 
-    public void zmienMojeHaslo(String stare, String nowe) {
+    public void zmienMojeHaslo(String stare, String nowe) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         Account mojeKonto = pobierzMojeKonto();
         if (!mojeKonto.getPassword().equals(KontoUtils.wyliczSkrotHasla(stare))) {
             throw new IllegalArgumentException("Podane dotychczasowe hasło nie zgadza się");
@@ -91,7 +93,7 @@ public class KontoEndpoint extends AbstractEndpoint implements SessionSynchroniz
         mojeKonto.setPassword(KontoUtils.wyliczSkrotHasla(nowe));
     }
 
-    public void zmienHaslo(Account konto, String haslo) {
+    public void zmienHaslo(Account konto, String haslo) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         Account k = kontoFacade.find(konto.getId());
         k.setPassword(KontoUtils.wyliczSkrotHasla(haslo));
     }

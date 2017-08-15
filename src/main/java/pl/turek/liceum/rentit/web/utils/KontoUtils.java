@@ -1,6 +1,8 @@
 
 package pl.turek.liceum.rentit.web.utils;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import pl.turek.liceum.rentit.model.Account;
 /**
  *
@@ -13,7 +15,7 @@ public class KontoUtils {
      * @param zrodlo encja zawierająca dane z formularza edycji
      * @param cel encja docelowa
      */
-    public static void przepiszDanePoEdycji(Account zrodlo, Account cel) {
+    public static void przepiszDanePoEdycji(Account zrodlo, Account cel) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         
         if (null == zrodlo || null == cel) return;
         
@@ -21,7 +23,8 @@ public class KontoUtils {
         cel.setSurname(zrodlo.getSurname());
         cel.setEmail(zrodlo.getEmail());
         cel.setPhone(zrodlo.getPhone());
-        
+        cel.setPassword(zrodlo.getPassword());
+        cel.setAccountFunction(zrodlo.getAccountFunction());
     }
     
     public static String wyliczSkrotHasla(String hasloJawne){

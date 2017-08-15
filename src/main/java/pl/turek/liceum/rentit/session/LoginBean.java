@@ -5,12 +5,13 @@
  */
 package pl.turek.liceum.rentit.session;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.enterprise.context.RequestScoped;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.faces.application.FacesMessage;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -19,7 +20,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import pl.turek.liceum.rentit.model.Account;
-import static pl.turek.liceum.rentit.session.HashPassword.hashPassword;
 
 /**
  *
@@ -27,8 +27,9 @@ import static pl.turek.liceum.rentit.session.HashPassword.hashPassword;
  */
 @Named(value = "loginBean")
 @RequestScoped
-//@TransactionAttribute(TransactionAttributeType.MANDATORY)
-@Transactional
+//@SessionScoped
+@TransactionAttribute(TransactionAttributeType.MANDATORY)
+//@Transactional
 public class LoginBean extends HttpServlet{
 
     private String userName;

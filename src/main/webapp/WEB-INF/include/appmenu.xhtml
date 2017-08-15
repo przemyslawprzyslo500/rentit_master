@@ -13,6 +13,7 @@
                 <p:menuitem value="${msg.Home}" action="/index.xhtml" immediate="true" icon="ui-icon-home"/>
                 <p:menuitem rendered="#{request.userPrincipal==null}" value="Zaloguj" outcome="/login" icon="ui-icon-home"/>
                 <p:menuitem value="${msg.EditAccountTitle}" action="#{listaKontPageBean.edytujKonto()}" outcome="/app/account/EditMyAccount.xhtml" />
+                <p:menuitem value="${msg.EditAccountPasswordTitle}" action="#{listaKontPageBean.edytujKonto()}" outcome="/app/account/EditMyPassword.xhtml" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('admin')}" value="${msg.AccountHeading} " outcome="/app/account/index" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('manager')}" value="${msg.EquipmentHeading} " outcome="/app/equipment/index" />
                     <p:menuitem rendered="#{facesContext.externalContext.isUserInRole('employee')}" value="${msg.EquipmentHeading} " outcome="/app/equipment/index_e" />

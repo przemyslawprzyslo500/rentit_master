@@ -1,6 +1,8 @@
 package pl.turek.liceum.rentit.web.konto;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -56,32 +58,22 @@ public class KontoSession implements Serializable {
         return "changePassword";
     }
 
-    public void aktywujKonto(Account Konto) {
-        kontoEndpoint.aktywujKonto(Konto);
-        ContextUtils.emitSuccessMessage(ListaKontPageBean.GENERAL_MSG_ID);
-    }
-
-    public void deaktywujKonto(Account Konto) {
-        kontoEndpoint.deaktywujKonto(Konto);
-        ContextUtils.emitSuccessMessage(ListaKontPageBean.GENERAL_MSG_ID);
-    }
-
     public String pobierzKontoDoEdycji(Account Konto) {
         kontoEdytuj = kontoEndpoint.pobierzKontoDoEdycji(Konto);
         return "editAccount";
     }
 
-    public String zapiszKontoPoEdycji(Account Konto) throws AppBaseException {
+    public String zapiszKontoPoEdycji(Account Konto) throws AppBaseException, NoSuchAlgorithmException, UnsupportedEncodingException {
         kontoEndpoint.zapiszKontoPoEdycji(Konto);
         return "success";
     }
 
-    public String zmienHasloKonta(String haslo) {
+    public String zmienHasloKonta(String haslo) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         kontoEndpoint.zmienHaslo(kontoZmienHaslo, haslo);
         return "success";
     }
 
-    public String zmienMojeHaslo(String stare, String nowe) {
+    public String zmienMojeHaslo(String stare, String nowe) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         kontoEndpoint.zmienMojeHaslo(stare, nowe);
         return "success";
     }

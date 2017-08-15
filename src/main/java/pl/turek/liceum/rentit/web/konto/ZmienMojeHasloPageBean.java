@@ -1,5 +1,9 @@
 package pl.turek.liceum.rentit.web.konto;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -58,7 +62,14 @@ public class ZmienMojeHasloPageBean {
             return null;
         }
             
-        return kontoSession.zmienMojeHaslo(stareHaslo, konto.getPassword());
+        try {
+            return kontoSession.zmienMojeHaslo(stareHaslo, konto.getPassword());
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(ZmienMojeHasloPageBean.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(ZmienMojeHasloPageBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
 }
