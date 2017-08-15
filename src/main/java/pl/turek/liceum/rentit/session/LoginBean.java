@@ -8,15 +8,15 @@ package pl.turek.liceum.rentit.session;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import pl.turek.liceum.rentit.model.Account;
+import javax.transaction.Transactional;
 
 /**
  *
@@ -25,7 +25,7 @@ import pl.turek.liceum.rentit.model.Account;
 @Named(value = "loginBean")
 @RequestScoped
 //@TransactionAttribute(TransactionAttributeType.MANDATORY)
-//@Transactional
+@Transactional
 public class LoginBean extends HttpServlet implements Serializable{
 
     private String userName;

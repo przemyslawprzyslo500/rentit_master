@@ -14,13 +14,13 @@
                 <h2>${msg.Hellopleaselogin} </h2><br />
                 <h:panelGrid columns="2" style="">
                     <h:outputLabel for="j_username"
-                                   value="${msg.Type_your_user_name} "/>
+                                   value="${msg.Type_your_user_name}"/>
                     <h:inputText id="j_username" value="#{loginBean.userName}" 
-                                 autocomplete="off" size="20"/>
+                                 size="20" label="${msg.Type_your_user_name}"/>
                     <h:outputLabel for="j_password"
                                    value="${msg.Type_your_password}" />
                     <h:inputSecret id="j_password" value="#{loginBean.password}"
-                                   autocomplete="off" size="20"/>
+                                   size="20" label="${msg.Type_your_password}"/>
                 </h:panelGrid>
                 <h:panelGroup>
                     <h:commandButton value="Submit" 
