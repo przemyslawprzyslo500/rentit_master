@@ -45,7 +45,7 @@
                             <f:selectItems value="#{equipmentController.rentableEquipmentItems}"
                                            var="equipmentIdItem"
                                            itemValue="#{equipmentIdItem}"
-                                           itemLabel="#{equipmentIdItem.name.toString()}"
+                                           itemLabel="#{equipmentIdItem.name.toString()}, #{equipmentIdItem.type.toString()}, #{equipmentIdItem.usePlaceId.building}, #{equipmentIdItem.licenseTypeId.licenseName} "
                                            />
                         </p:selectOneMenu>
 
