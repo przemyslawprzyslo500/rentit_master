@@ -99,7 +99,7 @@ public class Reserv implements Serializable {
     }
 
     public void setDescription(String description) {
-        Logger.getGlobal().log(Level.INFO, "Reservation: " + description + " created");
+        Logger.getGlobal().log(Level.INFO, "Reservation: " + description + " creating");
         this.description = description;
     }
 

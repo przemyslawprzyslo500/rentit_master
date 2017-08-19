@@ -19,11 +19,6 @@
         <param-name>org.ajax4jsf.handleViewExpiredOnClient</param-name> 
         <param-value>true</param-value>     
     </context-param>
-    <!--        <context-param>
-        <param-name>org.ajax4jsf.handleViewExpiredOnClient</param-name> 
-        <param-value>true</param-value>     
-    </context-param>
-    -->
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -74,7 +69,6 @@
             <url-pattern>/faces/app/index.hxtml</url-pattern>
             <url-pattern>/faces/app/login.hxtml</url-pattern>
             <url-pattern>/faces/errors/*</url-pattern>
-            <!--<url-pattern>/errors/*</url-pattern>-->
             <url-pattern>/faces/WEB-INF/include/entity/account/List.xhtml</url-pattern>
             <url-pattern>/faces/WEB-INF/include/entity/account/Create.xhtml</url-pattern>
             <url-pattern>/faces/WEB-INF/include/entity/account/Edit.xhtml</url-pattern>
@@ -181,7 +175,7 @@
         <exception-type>javax.faces.application.ViewExpiredException</exception-type>
         <location>/login.xhtml</location>
     </error-page>
-<!--    <error-page>
+    <error-page>
         <error-code>403</error-code>
         <location>/errors/403.xhtml</location>
     </error-page>
@@ -192,5 +186,13 @@
     <error-page>
         <error-code>404</error-code>
         <location>/errors/error.xhtml</location>
-    </error-page>-->
+    </error-page>
+    <error-page>
+        <exception-type>java.net.ConnectException</exception-type>
+        <location>/errors/error_connection.xhtml</location>
+    </error-page>
+    <error-page>
+        <exception-type>org.eclipse.persistence.exceptions.DatabaseException</exception-type>
+        <location>/errors/error_connection.xhtml</location>
+    </error-page>
 </web-app>

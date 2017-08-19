@@ -92,7 +92,7 @@ public class Equipment implements Serializable {
     }
 
     public void setName(String name) {
-        Logger.getGlobal().log(Level.INFO, "Equipment: " + name + " created");
+        Logger.getGlobal().log(Level.INFO, "Equipment: " + name + " creating");
         this.name = name;
     }
 

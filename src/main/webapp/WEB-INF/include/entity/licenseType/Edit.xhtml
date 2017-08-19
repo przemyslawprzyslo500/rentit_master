@@ -15,8 +15,12 @@
                     <p:panelGrid  columns="2" columnClasses="column" rendered="#{licenseTypeController.selected != null}">
 
                         <p:outputLabel value="${msg.EditLicenseTypeLabel_licenseName}" for="licenseName" />
-                        <p:inputText id="licenseName" value="#{licenseTypeController.selected.licenseName}" title="${msg.EditLicenseTypeTitle_licenseName}" size="60" maxlength="255"/>
-                        
+                        <p:inputText id="licenseName" value="#{licenseTypeController.selected.licenseName}" 
+                                     title="${msg.EditLicenseTypeTitle_licenseName}" size="60" maxlength="255"
+                                     validatorMessage="${msg.Validate_name}">
+                            <f:validateRegex pattern="[a-zA-Z0-9]+"/>
+                        </p:inputText>
+                            
                         <p:outputLabel value="${msg.EditLicenseTypeLabel_licenseStart}" for="licenseStart" />
                         <p:calendar id="licenseStart" pattern="MM/dd/yyyy" value="#{licenseTypeController.selected.licenseStart}" title="${msg.EditLicenseTypeTitle_licenseStart}"  showOn="button"/>
                         

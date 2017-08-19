@@ -17,10 +17,12 @@
 
                         <p:outputLabel value="${msg.CreateLicenseTypeLabel_licenseName}" for="licenseName" />
                         <p:inputText id="licenseName" value="#{licenseTypeController.selected.licenseName}" 
-                                     title="${msg.CreateLicenseTypeTitle_licenseName}" size="60" maxlength="255">
+                                     title="${msg.CreateLicenseTypeTitle_licenseName}" size="60" maxlength="255"
+                                     validatorMessage="${msg.Validate_name}">
                             <p:watermark for="licenseEnd,licenseStart" value="Date from callendar..."/>
                             <p:watermark for="licenseSerial" value="XXXXX-XXXXX-XXXXX-XXXXX-XXXXX"/>
                             <p:watermark for="licenseName" value="Text..."/>
+                            <f:validateRegex pattern="[a-zA-Z0-9]+"/>
                         </p:inputText>
 
                         <p:outputLabel value="${msg.CreateLicenseTypeLabel_licenseSerial}" for="licenseSerial" />

@@ -99,7 +99,7 @@ public class UsePlace implements Serializable {
     }
 
     public void setPlace(String place) {
-        Logger.getGlobal().log(Level.INFO, "Place: " + place + " created");
+        Logger.getGlobal().log(Level.INFO, "Place: " + place + " creating");
         this.place = place;
     }
 

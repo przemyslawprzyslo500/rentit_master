@@ -14,27 +14,38 @@
                 <h:panelGroup id="display">
                     <p:panelGrid  columns="2" columnClasses="column" rendered="#{accountController.selected != null}">
 
-                        <h:outputLabel value="${msg.EditAccountLabel_id}" for="id" />
-                        <h:outputText id="id" value="#{accountController.selected.id}" />
-
                         <p:outputLabel value="${msg.EditAccountLabel_name}" for="name" />
-                        <p:inputText id="name" value="#{accountController.selected.name}" title="${msg.EditAccountTitle_name}" size="100" maxlength="255"/>
-                        
+                        <p:inputText id="name" value="#{accountController.selected.name}" 
+                                     title="${msg.EditAccountTitle_name}" size="100" maxlength="255"
+                                     validatorMessage="${msg.Validate_surname}">
+                            <f:validateRegex pattern="[a-zA-Z]+"/>
+                        </p:inputText>
+
                         <p:outputLabel value="${msg.EditAccountLabel_surname}" for="surname" />
-                        <p:inputText id="surname" value="#{accountController.selected.surname}" title="${msg.EditAccountTitle_surname}" size="100" maxlength="255"/>
-                        
+                        <p:inputText id="surname" value="#{accountController.selected.surname}" 
+                                     title="${msg.EditAccountTitle_surname}" size="100" maxlength="255"
+                                     validatorMessage="${msg.Validate_surname}">
+                            <f:validateRegex pattern="[a-zA-Z]+"/>
+                        </p:inputText>
+
                         <p:outputLabel value="${msg.EditAccountLabel_login}" for="login" />
-                        <p:inputText id="login" value="#{accountController.selected.login}" title="${msg.EditAccountTitle_login}" size="100" maxlength="255"/>
-                        
-<!--                        <p:outputLabel value="${msg.EditAccountLabel_password}" for="password" />
-                        <p:inputText id="password" value="#{accountController.selected.password}"  title="${msg.EditAccountTitle_password}" size="100" maxlength="255"/>-->
-                        
+                        <p:inputText id="login" value="#{accountController.selected.login}" 
+                                     title="${msg.EditAccountTitle_login}" size="100" maxlength="255"/>
+
                         <p:outputLabel value="${msg.EditAccountLabel_email}" for="email" />
-                        <p:inputText id="email" value="#{accountController.selected.email}" title="${msg.EditAccountTitle_email}" size="100" maxlength="255"/>
-                        
+                        <p:inputText id="email" value="#{accountController.selected.email}" 
+                                     title="${msg.EditAccountTitle_email}" size="100" maxlength="255"
+                                     validatorMessage="${msg.Validate_email}">
+                            <f:validateRegex pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+                        </p:inputText>
+
                         <p:outputLabel value="${msg.EditAccountLabel_phone}" for="phone" />
-                        <p:inputText id="phone" value="#{accountController.selected.phone}" title="${msg.EditAccountTitle_phone}" size="100" maxlength="255"/>
-                        
+                        <p:inputText id="phone" value="#{accountController.selected.phone}" 
+                                     title="${msg.EditAccountTitle_phone}" size="100" maxlength="255"
+                                     validatorMessage="${msg.Validate_phone}">
+                            <f:validateRegex pattern="[0-9]+"/>
+                        </p:inputText>
+
                         <p:outputLabel for="accountFunction" value="${msg.CreateAccountLabel_accountFunction}" />
                         <h:selectOneRadio id="accountFunction" value="#{accountController.selected.accountFunction}">
                             <f:selectItem itemLabel="Administrator" itemValue="admin" />
@@ -42,12 +53,6 @@
                             <f:selectItem itemLabel="Employee" itemValue="employee" />
                             <f:selectItem itemLabel="Inactive" itemValue="inactive" />
                         </h:selectOneRadio>
-
-<!--                        <p:outputLabel for="accountActive" value="${msg.CreateAccountLabel_active}" />
-                        <h:selectOneRadio id="accountActive" value="#{accountController.selected.active}">
-                            <f:selectItem itemLabel="YES" itemValue="true" />
-                            <f:selectItem itemLabel="NO" itemValue="false" />
-                        </h:selectOneRadio>  -->
 
                     </p:panelGrid>
                     <p:commandButton actionListener="#{accountController.save}" value="${msg.Save}" update="display,:AccountListForm:datalist,:AccountListForm:AccountDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('AccountEditDialog'));">

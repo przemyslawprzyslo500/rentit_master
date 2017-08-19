@@ -19,8 +19,11 @@
                     <p:panelGrid columns="2" columnClasses="column">
 
                         <p:outputLabel value="${msg.CreateEquipmentLabel_name}" for="name" />
-                        <p:inputText id="name" value="#{equipmentController.selected.name}" title="${msg.CreateEquipmentTitle_name}" size="100" maxlength="255">
+                        <p:inputText id="name" value="#{equipmentController.selected.name}" 
+                                     title="${msg.CreateEquipmentTitle_name}" size="100" maxlength="255"
+                                     validatorMessage="${msg.Validate_name}">
                             <p:watermark for="name" value="Text..."/>
+                            <f:validateRegex pattern="[a-zA-Z0-9]+"/>
                         </p:inputText>
 
                         <p:outputLabel for="rentPermission" value="${msg.CreateEquipmentLabel_rentPermission}" />

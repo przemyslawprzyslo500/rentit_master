@@ -99,7 +99,7 @@ public class LicenseType implements Serializable {
     }
 
     public void setLicenseName(String licenseName) {
-        Logger.getGlobal().log(Level.INFO, "License: " + licenseName + " created");
+        Logger.getGlobal().log(Level.INFO, "License: " + licenseName + " creating");
         this.licenseName = licenseName;
     }
 

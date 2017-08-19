@@ -16,7 +16,8 @@
                     <p:panelGrid columns="2" columnClasses="column">
 
                         <p:outputLabel value="${msg.CreateReservLabel_description}" for="description" />
-                        <p:inputText id="description" value="#{reservController.selected.description}" title="${msg.CreateReservTitle_description}" size="100" maxlength="255"/>
+                        <p:inputText id="description" value="#{reservController.selected.description}" 
+                                     title="${msg.CreateReservTitle_description}" size="100" maxlength="255"/>
 
                         <p:outputLabel value="${msg.CreateReservLabel_reservationStart}" for="reservationStart" />
                         <p:calendar id="reservationStart" pattern="MM/dd/yyyy" required="true" mindate="#{currentDate}" requiredMessage="${msg.CreateReservRequiredMessage_date}" value="#{reservController.selected.reservationStart}" title="${msg.CreateReservTitle_reservationStart}"  showOn="button" >

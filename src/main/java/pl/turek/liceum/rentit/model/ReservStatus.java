@@ -76,7 +76,7 @@ public class ReservStatus implements Serializable {
     }
 
     public void setReservationStatusName(String reservationStatusName) {
-        Logger.getGlobal().log(Level.INFO, "Reservation Status: " + reservationStatusName + " created");
+        Logger.getGlobal().log(Level.INFO, "Reservation Status: " + reservationStatusName + " creating");
         this.reservationStatusName = reservationStatusName;
     }
 

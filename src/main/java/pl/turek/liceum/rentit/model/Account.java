@@ -128,7 +128,7 @@ public class Account implements Serializable {
 
     public void setLogin(String login) {
 //        System.out.println("Account. New Account created with login: "+login);
-        Logger.getGlobal().log(Level.INFO, "Account: " +login +" created");
+        Logger.getGlobal().log(Level.INFO, "Account: " +login +" creating");
         this.login = login;
     }
 
