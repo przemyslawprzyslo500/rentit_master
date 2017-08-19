@@ -19,9 +19,11 @@ import javax.faces.context.FacesContext;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import pl.turek.liceum.rentit.ejb.endpoints.KontoEndpoint;
+import pl.turek.liceum.rentit.model.Account;
 import pl.turek.liceum.rentit.model.Equipment;
 import pl.turek.liceum.rentit.model.Reserv;
 import pl.turek.liceum.rentit.model.ReservStatus;
+import pl.turek.liceum.rentit.session.HttpSessionVerifier;
 
 /**
  * Represents an abstract shell of to be used as JSF Controller to be used in
@@ -240,6 +242,8 @@ public abstract class AbstractController<T> implements Serializable {
     public void saveNew(ActionEvent event) {
         String msg = ResourceBundle.getBundle("/Bundle").getString(itemClass.getSimpleName() + "Created");
         persist(PersistAction.CREATE, msg);
+        Logger.getGlobal().log(Level.INFO, msg);
+        
         if (!isValidationFailed()) {
             items = null; // Invalidate list of items to trigger re-query.
             lazyItems = null; // Invalidate list of lazy items to trigger re-query.

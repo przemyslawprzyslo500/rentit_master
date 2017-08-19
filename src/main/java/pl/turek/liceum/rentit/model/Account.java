@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -125,6 +127,8 @@ public class Account implements Serializable {
     }
 
     public void setLogin(String login) {
+//        System.out.println("Account. New Account created with login: "+login);
+        Logger.getGlobal().log(Level.INFO, "Account: " +login +" created");
         this.login = login;
     }
 
@@ -145,16 +149,16 @@ public class Account implements Serializable {
     }
 
     public void setPassword(String password) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        System.out.println("haslo przed hash w account: " + password);
+//        System.out.println("haslo przed hash w account: " + password);
         this.password = password;
 //        this.password = hashPassword(password);
-        System.out.println("haslo po hash w account: " + this.password);
+//        System.out.println("haslo po hash w account: " + this.password);
     }
     
     public void setHashPassword(String password) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        System.out.println("haslo przed hash w account_hashpassword: " + password);
+//        System.out.println("haslo przed hash w account_hashpassword: " + password);
         this.password = hashPassword(password);
-        System.out.println("haslo po hash w account_hashpassword: " + this.password);
+//        System.out.println("haslo po hash w account_hashpassword: " + this.password);
     }
 
     public String getPhone() {

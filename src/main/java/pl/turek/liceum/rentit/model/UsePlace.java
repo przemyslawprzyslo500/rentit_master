@@ -7,6 +7,8 @@ package pl.turek.liceum.rentit.model;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -97,6 +99,7 @@ public class UsePlace implements Serializable {
     }
 
     public void setPlace(String place) {
+        Logger.getGlobal().log(Level.INFO, "Place: " + place + " created");
         this.place = place;
     }
 

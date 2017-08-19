@@ -8,6 +8,8 @@ package pl.turek.liceum.rentit.model;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,7 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "LICENSE_TYPE", catalog = "", schema = "RENTIT")
-@TableGenerator(name = "LicenseTypeIdGen", table = "GENERATOR", pkColumnName = "ENTITY_NAME", valueColumnName = "ID_RANGE", pkColumnValue = "LicenseType", allocationSize = 1,initialValue=10)
+@TableGenerator(name = "LicenseTypeIdGen", table = "GENERATOR", pkColumnName = "ENTITY_NAME", valueColumnName = "ID_RANGE", pkColumnValue = "LicenseType", allocationSize = 1, initialValue = 10)
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "LicenseType.findAll", query = "SELECT l FROM LicenseType l")
@@ -97,6 +99,7 @@ public class LicenseType implements Serializable {
     }
 
     public void setLicenseName(String licenseName) {
+        Logger.getGlobal().log(Level.INFO, "License: " + licenseName + " created");
         this.licenseName = licenseName;
     }
 
@@ -149,5 +152,5 @@ public class LicenseType implements Serializable {
     public String toString() {
         return "pl.turek.liceum.rentit.model.LicenseType[ id=" + id + " ]";
     }
-    
+
 }

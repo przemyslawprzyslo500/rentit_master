@@ -30,8 +30,8 @@ import pl.turek.liceum.rentit.model.Equipment;
 @Stateless
 @LocalBean
 @Interceptors({LoggingInterceptor.class, PerformanceInterceptor.class})
-@Transactional
-//@TransactionAttribute(TransactionAttributeType.MANDATORY)
+//@Transactional
+@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 public class LicenseTypeFacade extends AbstractFacade<LicenseType> {
 
     @PersistenceContext(unitName = "pl.turek.liceum.rentit_RentIt_war_PU")

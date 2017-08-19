@@ -7,6 +7,8 @@ package pl.turek.liceum.rentit.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -97,6 +99,7 @@ public class Reserv implements Serializable {
     }
 
     public void setDescription(String description) {
+        Logger.getGlobal().log(Level.INFO, "Reservation: " + description + " created");
         this.description = description;
     }
 

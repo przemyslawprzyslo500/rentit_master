@@ -7,6 +7,8 @@ package pl.turek.liceum.rentit.model;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,7 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "EQUIPMENT", catalog = "", schema = "RENTIT")
-@TableGenerator(name = "EquipmentIdGen", table = "GENERATOR", pkColumnName = "ENTITY_NAME", valueColumnName = "ID_RANGE", pkColumnValue = "Equipment",allocationSize = 1, initialValue=10)
+@TableGenerator(name = "EquipmentIdGen", table = "GENERATOR", pkColumnName = "ENTITY_NAME", valueColumnName = "ID_RANGE", pkColumnValue = "Equipment", allocationSize = 1, initialValue = 10)
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Equipment.findAll", query = "SELECT e FROM Equipment e")
@@ -90,6 +92,7 @@ public class Equipment implements Serializable {
     }
 
     public void setName(String name) {
+        Logger.getGlobal().log(Level.INFO, "Equipment: " + name + " created");
         this.name = name;
     }
 
@@ -158,5 +161,5 @@ public class Equipment implements Serializable {
     public String toString() {
         return "pl.turek.liceum.rentit.model.Equipment[ id=" + id + " ]";
     }
-    
+
 }

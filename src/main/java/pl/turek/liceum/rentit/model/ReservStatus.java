@@ -7,6 +7,8 @@ package pl.turek.liceum.rentit.model;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -74,6 +76,7 @@ public class ReservStatus implements Serializable {
     }
 
     public void setReservationStatusName(String reservationStatusName) {
+        Logger.getGlobal().log(Level.INFO, "Reservation Status: " + reservationStatusName + " created");
         this.reservationStatusName = reservationStatusName;
     }
 
