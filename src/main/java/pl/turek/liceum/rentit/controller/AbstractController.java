@@ -47,6 +47,8 @@ public abstract class AbstractController<T> implements Serializable {
     private Collection<Equipment> equipments_items;
     private Collection<ReservStatus> employeeReservationStatus;
     private Collection<Reserv> employeeReservations;
+    private Collection<Reserv> reservationsEnd;
+    private Collection<Reserv> employeeReservationsAccepted;
     private Collection<Reserv> managerEmployeeReservations;
     private LazyEntityDataModel<T> lazyItems;
     private List<T> filteredItems;
@@ -163,6 +165,20 @@ public abstract class AbstractController<T> implements Serializable {
         return employeeReservations;
     }
 
+    public Collection<Reserv> getEmployeeReservationsAccepted() {
+        if (employeeReservationsAccepted == null) {
+            employeeReservationsAccepted = this.ejbFacade.findEmployeeAcceptedReservations(kontoEndpoint.pobierzMojeKonto());
+        }
+        return employeeReservationsAccepted;
+    }
+    
+    public Collection<Reserv> getReservationsEnd() {
+        if (reservationsEnd == null) {
+            reservationsEnd = this.ejbFacade.findReservationsEnd();
+        }
+        return reservationsEnd;
+    }
+    
     public Collection<Reserv> getManagerEmployeeReservations() {
         if (managerEmployeeReservations == null) {
             managerEmployeeReservations = this.ejbFacade.findManagerEmployeeReservations();

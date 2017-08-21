@@ -73,13 +73,25 @@ public abstract class AbstractFacade<T> {
     public List<Reserv> findEmployeeReservations(Account account) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         return getEntityManager().createNamedQuery("Reserv.findByEmployee")
-                .setParameter("account", account).getResultList();
+                .setParameter("account", account).setParameter("reservStatusId", 1).getResultList();
     }
     
     public List<Reserv> findManagerEmployeeReservations() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         return getEntityManager().createNamedQuery("Reserv.findManagerEmployee")
                 .setParameter("reservStatusId", 1).getResultList();
+    }
+    
+    public List<Reserv> findReservationsEnd() {
+        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        return getEntityManager().createNamedQuery("Reserv.findReservationsEnd")
+                .setParameter("reservStatusId", 5).getResultList();
+    }
+    
+    public List<Reserv> findEmployeeAcceptedReservations(Account account) {
+        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        return getEntityManager().createNamedQuery("Reserv.findByEmployeeAccepted")
+                .setParameter("account", account).setParameter("reservStatusId", 3).setParameter("reservStatusId2", 4).getResultList();
     }
     
     public List<T> findRange(int[] range) {

@@ -10,16 +10,13 @@
 
         <p:panel header="${msg.ListReservTitle}">
             <p:contextMenu id="ReservDataTableContextMenu" for="datalist">  
-                <p:menuitem value="${msg.Create}" onclick="document.getElementById('ReservListForm:createButton').click();" icon="ui-icon-plus"/>
                 <p:menuitem value="${msg.View}" onclick="document.getElementById('ReservListForm:viewButton').click();" icon="ui-icon-search"/>
-                <p:menuitem value="${msg.Edit}" onclick="document.getElementById('ReservListForm:editButton').click();" icon="ui-icon-pencil"/>
-                <p:menuitem value="${msg.Delete}" onclick="document.getElementById('ReservListForm:deleteButton').click();" icon="ui-icon-trash"/>
                 <p:separator/>
                 <p:menuitem value="${msg.ReservMenuItem_equipmentId}" icon="ui-icon-search"  actionListener="#{reservController.prepareEquipmentId}" update=":EquipmentViewForm" oncomplete="PF('EquipmentViewDialog').show()" disabled="#{empty reservController.selected.equipmentId}"/>  
                 <p:menuitem value="${msg.ReservMenuItem_reservStatusId}" icon="ui-icon-search"  actionListener="#{reservController.prepareReservStatusId}" update=":ReservStatusViewForm" oncomplete="PF('ReservStatusViewDialog').show()" disabled="#{empty reservController.selected.reservStatusId}"/>  
             </p:contextMenu>
             <p:dataTable id="datalist"
-                         value="#{reservController.employeeReservations}"
+                         value="#{reservController.employeeReservationsAccepted}"
                          lazy="false"
                          rowKey="#{item.id}"
                          var="item"
@@ -29,27 +26,11 @@
                          selectionMode="single"
                          selection="#{reservController.selected}"
                          filteredValue="#{reservController.filteredItems}">
-                <!--
-                         To enable Lazy Loading, please copy/replace the following lines above,
-                         and be sure to replace the word HASH with the # symbol:
-                
-                         value="HASH{reservController.lazyItems}"
-                         lazy="true"
-                         rowKey="HASH{item.id}"  <<< Remove this line
-                -->
 
-
-                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ReservDataTableContextMenu" listener="#{reservController.resetParents}"/>
-                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ReservDataTableContextMenu" listener="#{reservController.resetParents}"/>
-                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{reservController.resetParents}"/>
+                <p:ajax event="rowSelect"   update="@form:viewButton,@form:ReservDataTableContextMenu" listener="#{reservController.resetParents}"/>
+                <p:ajax event="rowUnselect" update="@form:viewButton,@form:ReservDataTableContextMenu" listener="#{reservController.resetParents}"/>
+                <p:ajax event="contextMenu" update="@form:viewButton" listener="#{reservController.resetParents}"/>
                 <p:ajax event="rowDblselect" onsuccess="document.getElementById('ReservListForm:viewButton').click();"/>
-
-<!--                <p:column sortBy="#{item.id}" filterBy="#{item.id}">
-                    <f:facet name="header">
-                        <h:outputText value="${msg.ListReservTitle_id}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.id}"/>
-                </p:column>-->
 
                 <p:column sortBy="#{item.accountId.name}" filterBy="#{item.accountId.name}">
                     <f:facet name="header">
@@ -108,12 +89,7 @@
 
             </p:dataTable>
 
-            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="${msg.Create}" actionListener="#{reservController.prepareCreate}" update=":ReservCreateForm" oncomplete="PF('ReservCreateDialog').show()"/>
             <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="${msg.View}" update=":ReservViewForm" oncomplete="PF('ReservViewDialog').show()" disabled="#{empty reservController.selected}"/>
-            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="${msg.Edit}" update=":ReservEditForm" oncomplete="PF('ReservEditDialog').show()" disabled="#{empty reservController.selected}"/>
-            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="${msg.Delete}" actionListener="#{reservController.delete}" update=":growl,datalist" disabled="#{empty reservController.selected}">
-                <p:confirm header="${msg.ConfirmationHeader}" message="${msg.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
-            </p:commandButton>
 
         </p:panel>
         <ui:include src="/WEB-INF/include/confirmation.xhtml"/>
