@@ -14,12 +14,9 @@
                 <h:panelGroup id="display">
                     <p:panelGrid  columns="2" columnClasses="column" rendered="#{reservController.selected != null}">
 
-
-                        <h:outputLabel value="${msg.EditReservLabel_id}" for="id" />
-                        <h:outputText id="id" value="#{reservController.selected.id}" />
-
                         <p:outputLabel value="${msg.EditReservLabel_description}" for="description" />
-                        <p:inputText id="description" value="#{reservController.selected.description}" title="${msg.EditReservTitle_description}" size="255" maxlength="255"/>
+                        <p:inputText id="description" value="#{reservController.selected.description}" 
+                                     title="${msg.EditReservTitle_description}" size="60" maxlength="255"/>
 
                         <p:outputLabel value="${msg.EditReservLabel_reservationStart}" for="reservationStart" />
                         <p:calendar id="reservationStart" pattern="MM/dd/yyyy" value="#{reservController.selected.reservationStart}" 
@@ -35,18 +32,10 @@
                         <p:outputLabel value="${msg.CreateReservLabel_reservationMadeDate}" for="reservationMadeDate" />
                         <p:calendar id="reservationMadeDate" pattern="MM/dd/yyyy" 
                                     value="#{reservController.selected.reservationMadeDate}" 
-                                    title="${msg.EditReservTitle_reservationMadeDate}"  showOn="button"/>
+                                    title="${msg.EditReservTitle_reservationMadeDate}" disabled="true" readonly="true"/>
 
                         <p:outputLabel value="${msg.CreateReservLabel_accountId}" for="accountId" />
-                        <p:selectOneMenu id="accountId" value="#{reservController.selected.accountId}"  
-                                         converter="accountConverter">
-                            <f:selectItem itemLabel="${msg.SelectOneMessage}"/>
-                            <f:selectItems value="#{accountController.items}"
-                                           var="accountIdItem"
-                                           itemValue="#{accountIdItem}"
-                                           itemLabel="#{accountIdItem.name.toString()}"
-                                           />
-                        </p:selectOneMenu>
+                        <p:inputText id="accountId" value="#{reservController.selected.accountId.name}" readonly="true" disabled="true"/>
 
                         <p:outputLabel value="${msg.CreateReservLabel_equipmentId}" for="equipmentId" />
                         <p:selectOneMenu id="equipmentId" value="#{reservController.selected.equipmentId}"  converter="equipmentConverter">

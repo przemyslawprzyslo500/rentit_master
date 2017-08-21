@@ -35,10 +35,14 @@
                         </p:inputText>
 
                         <h:outputLabel for="pwd1" value="Password: *" />  
-                        <p:password id="pwd1" value="#{accountController.selected.hashPassword}" feedback="true" match="pwd2" label="Password" required="true" size="60"/>  
+                        <p:password id="pwd1" value="#{accountController.selected.hashPassword}" 
+                                    feedback="true" match="pwd2" label="Password" required="true" size="60" validatorMessage="Min. 8 character">
+                            <f:validateLength minimum="8"></f:validateLength>
+                        </p:password>
 
                         <h:outputLabel for="pwd2" value="Password confirm: *" />  
-                        <p:password id="pwd2" value="#{accountController.selected.hashPassword}" feedback="false" label="Password_repeat" required="true" size="60"/> 
+                        <p:password id="pwd2" value="#{accountController.selected.hashPassword}" 
+                                    feedback="false" label="Password_repeat" required="true" size="60" validatorMessage="Password 1 should match password 2"/> 
 
                         <p:outputLabel value="${msg.CreateAccountLabel_email}" for="email" />
                         <p:inputText id="email" value="#{accountController.selected.email}" 
@@ -46,14 +50,14 @@
                                      validatorMessage="${msg.Validate_email}">
                             <f:validateRegex pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
                         </p:inputText>
-                            
+
                         <p:outputLabel value="${msg.CreateAccountLabel_phone}" for="phone" />
                         <p:inputText id="phone" required="true" value="#{accountController.selected.phone}" 
                                      title="${msg.CreateAccountTitle_phone}" size="100" maxlength="255"
                                      validatorMessage="${msg.Validate_phone}">
                             <f:validateRegex pattern="[0-9]+"/>
                         </p:inputText>
-                            
+
                         <p:outputLabel for="accountFunction" value="${msg.CreateAccountLabel_accountFunction}" />
                         <h:selectOneRadio id="accountFunction" required="true" value="#{accountController.selected.accountFunction}">
                             <f:selectItem itemLabel="Administrator" itemValue="admin" />

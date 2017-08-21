@@ -15,9 +15,6 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" columnClasses="column" rendered="#{accountController.selected != null}">
 
-                        <h:outputText value="#{bundle.ViewAccountLabel_id}"/>
-                        <h:outputText value="#{accountController.selected.id}" title="#{bundle.ViewAccountTitle_id}"/>
-
                         <h:outputText value="#{bundle.ViewAccountLabel_accountFunction}"/>
                         <h:outputText value="#{accountController.selected.accountFunction}" title="#{bundle.ViewAccountTitle_accountFunction}"/>
 

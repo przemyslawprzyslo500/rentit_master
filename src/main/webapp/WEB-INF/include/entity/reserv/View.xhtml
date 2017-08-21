@@ -15,9 +15,6 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" columnClasses="column" rendered="#{reservController.selected != null}">
 
-                        <h:outputText value="${msg.ViewReservLabel_id}"/>
-                        <h:outputText value="#{reservController.selected.id}" title="${msg.ViewReservTitle_id}"/>
-
                         <h:outputText value="${msg.ViewReservLabel_description}"/>
                         <h:outputText value="#{reservController.selected.description}" title="${msg.ViewReservTitle_description}"/>
 
