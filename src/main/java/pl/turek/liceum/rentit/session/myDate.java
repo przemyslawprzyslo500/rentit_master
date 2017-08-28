@@ -11,7 +11,7 @@ import javax.inject.Named;
 
 /**
  *
- * @author miszcz
+ * @author Przemysław Przysło
  */
 
 @Named(value = "myDate")

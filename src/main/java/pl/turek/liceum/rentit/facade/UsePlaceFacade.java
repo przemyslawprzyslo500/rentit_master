@@ -25,7 +25,7 @@ import pl.turek.liceum.rentit.model.Equipment;
 
 /**
  *
- * @author miszcz
+ * @author Przemysław Przysło
  */
 @Stateless
 @LocalBean

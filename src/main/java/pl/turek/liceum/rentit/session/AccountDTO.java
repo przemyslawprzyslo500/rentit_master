@@ -11,7 +11,7 @@ import pl.turek.liceum.rentit.model.Account;
 
 /**
  *
- * @author miszcz
+ * @author Przemysław Przysło
  */
 @Named(value = "accountDTO")
 @SessionScoped

@@ -13,7 +13,7 @@ import java.util.Base64;
 
 /**
  *
- * @author miszcz
+ * @author Przemysław Przysło
  */
 public class HashPassword {
 

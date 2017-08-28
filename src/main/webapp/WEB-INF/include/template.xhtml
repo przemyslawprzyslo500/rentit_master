@@ -17,13 +17,12 @@
         <p:layout fullPage="true">
             <p:layoutUnit position="north" size="200" header="${msg.AppName}">
                 <p:panelGrid columns="3">
-                    <!--<h:form styleClass="settings-form" rendered="#{request.userPrincipal ne null}"-->
                     <h:form styleClass="settings-form"
                             id="logout" prependId="false">
                         <p:outputLabel value="${msg.Logged_as}"/>
                         <p:outputLabel value=" #{request.userPrincipal.name}  "/>
                         <p:commandButton action="#{loginBean.logout}" value="  ${msg.Logout}  "/>
-                        <p:panelGrid columns="2">
+                        <p:panelGrid columns="2" rendered="#{facesContext.externalContext.isUserInRole('admin')}">
                             <h:outputLabel id="testopis" value="Sesion ID"/>
                             <h:outputLabel id="test" value="#{request.session.id}"/>
                             <h:outputLabel id="test2opis" value="Session Context"/>

@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author miszcz
+ * @author Przemysław Przysło
  */
 @Entity
 @Table(name = "LICENSE_TYPE", catalog = "", schema = "RENTIT")

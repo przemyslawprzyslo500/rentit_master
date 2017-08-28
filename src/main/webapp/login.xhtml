@@ -16,17 +16,17 @@
                     <h:outputLabel for="j_username"
                                    value="${msg.Type_your_user_name}"/>
                     <h:inputText id="j_username" value="#{loginBean.userName}" 
-                                 size="20" label="${msg.Type_your_user_name}"/>
+                                 size="20" label="${msg.Type_your_user_name}" />
                     <h:outputLabel for="j_password"
                                    value="${msg.Type_your_password}" />
                     <h:inputSecret id="j_password" value="#{loginBean.password}"
                                    size="20" label="${msg.Type_your_password}"/>
                 </h:panelGrid>
                 <h:panelGroup>
-                    <h:commandButton value="Submit" 
+                    <h:commandButton value="${msg.Submit}" 
                                      action="#{loginBean.login}"
                                      type="submit"/>
-                    <h:commandButton value="Clear" type="reset"/>
+                    <h:commandButton value="${msg.Clear}" type="reset"/>
                 </h:panelGroup>
                 <br />admin
                 <br />manager

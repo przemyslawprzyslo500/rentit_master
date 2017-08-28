@@ -1,16 +1,10 @@
 package pl.turek.liceum.rentit.ejb.endpoints;
 
 import java.io.UnsupportedEncodingException;
-import java.rmi.RemoteException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.*;
-import javax.inject.Inject;
-import javax.interceptor.Interceptors;
-import pl.turek.liceum.rentit.ejb.facades.KontoFacade;
-import pl.turek.liceum.rentit.ejb.interceptor.LoggingInterceptor;
-import pl.turek.liceum.rentit.ejb.managers.KontaManager;
 import pl.turek.liceum.rentit.exception.AppBaseException;
 import pl.turek.liceum.rentit.facade.AccountFacade;
 import pl.turek.liceum.rentit.model.Account;
@@ -22,7 +16,6 @@ import pl.turek.liceum.rentit.web.utils.KontoUtils;
  */
 @Stateful
 @LocalBean
-//@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 public class KontoEndpoint extends AbstractEndpoint implements SessionSynchronization {
 

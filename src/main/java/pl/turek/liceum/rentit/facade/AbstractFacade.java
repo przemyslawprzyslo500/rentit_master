@@ -21,7 +21,7 @@ import pl.turek.liceum.rentit.model.ReservStatus;
 
 /**
  *
- * @author miszcz
+ * @author Przemysław Przysło
  */
 public abstract class AbstractFacade<T> {
 

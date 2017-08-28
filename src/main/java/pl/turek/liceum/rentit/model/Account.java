@@ -33,7 +33,7 @@ import static pl.turek.liceum.rentit.session.HashPassword.hashPassword;
 
 /**
  *
- * @author miszcz
+ * @author Przemysław Przysło
  */
 @Entity
 @Table(name = "ACCOUNT", catalog = "", schema = "RENTIT")
@@ -73,7 +73,7 @@ public class Account implements Serializable {
     @Size(max = 45)
     @Column(name = "PASSWORD", length = 45, nullable = false)
     private String password;
-    @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
+    @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{3})$", message="Invalid phone format, should be as xxxxxxxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
     @Size(max = 255)
     @Column(name = "PHONE", length = 255, nullable = false)
     private String phone;

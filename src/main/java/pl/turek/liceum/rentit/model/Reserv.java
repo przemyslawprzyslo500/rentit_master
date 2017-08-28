@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author miszcz
+ * @author Przemysław Przysło
  */
 @Entity
 @Table(name = "RESERV", catalog = "", schema = "RENTIT")

@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSessionListener;
 
 /**
  *
- * @author miszcz
+ * @author Przemysław Przysło
  */
 public class HttpSessionVerifier implements HttpSessionListener {
 

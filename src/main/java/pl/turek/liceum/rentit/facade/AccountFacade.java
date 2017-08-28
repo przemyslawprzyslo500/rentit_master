@@ -27,7 +27,7 @@ import pl.turek.liceum.rentit.ejb.interceptor.LoggingInterceptor;
 import pl.turek.liceum.rentit.ejb.interceptor.PerformanceInterceptor;
 /**
  *
- * @author miszcz
+ * @author Przemysław Przysło
  */
 @Stateless
 @LocalBean

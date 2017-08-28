@@ -28,7 +28,7 @@ import pl.turek.liceum.rentit.model.Reserv;
 
 /**
  *
- * @author miszcz
+ * @author Przemysław Przysło
  */
 @Stateless
 @LocalBean
