@@ -27,6 +27,7 @@ import pl.turek.liceum.rentit.model.Account_;
 @LocalBean
 @Interceptors({LoggingInterceptor.class, PerformanceInterceptor.class})
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
+
 public class KontoFacade extends AbstractFacade<Account> {
 
     @PersistenceContext(unitName = "pl.turek.liceum.rentit_RentIt_war_PU")

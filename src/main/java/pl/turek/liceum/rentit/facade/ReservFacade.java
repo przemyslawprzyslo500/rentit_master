@@ -5,6 +5,7 @@
  */
 package pl.turek.liceum.rentit.facade;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -31,9 +32,9 @@ import pl.turek.liceum.rentit.model.ReservStatus;
 @Stateless
 @LocalBean
 @Interceptors({LoggingInterceptor.class, PerformanceInterceptor.class})
-@Transactional
-//@TransactionAttribute(TransactionAttributeType.MANDATORY)
-//@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+@TransactionAttribute(TransactionAttributeType.MANDATORY)
+@RolesAllowed({"manager", "employee"})
+
 public class ReservFacade extends AbstractFacade<Reserv> {
 
     @PersistenceContext(unitName = "pl.turek.liceum.rentit_RentIt_war_PU")

@@ -7,6 +7,7 @@ package pl.turek.liceum.rentit.facade;
 
 import java.util.Collection;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -32,10 +33,9 @@ import pl.turek.liceum.rentit.ejb.interceptor.PerformanceInterceptor;
 @Stateless
 @LocalBean
 @Interceptors({LoggingInterceptor.class, PerformanceInterceptor.class})
-//@Transactional
-//@TransactionAttribute(TransactionAttributeType.MANDATORY)
-@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-//@RolesAllowed("admin")
+@TransactionAttribute(TransactionAttributeType.MANDATORY)
+@RolesAllowed({"admin", "manager", "employee"})
+
 public class AccountFacade extends AbstractFacade<Account> {
 
     @PersistenceContext(unitName = "pl.turek.liceum.rentit_RentIt_war_PU")

@@ -6,6 +6,7 @@
 package pl.turek.liceum.rentit.facade;
 
 import java.util.Collection;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -30,8 +31,8 @@ import pl.turek.liceum.rentit.model.Equipment;
 @Stateless
 @LocalBean
 @Interceptors({LoggingInterceptor.class, PerformanceInterceptor.class})
-//@Transactional
-@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+@TransactionAttribute(TransactionAttributeType.MANDATORY)
+@RolesAllowed({"admin", "manager"})
 public class LicenseTypeFacade extends AbstractFacade<LicenseType> {
 
     @PersistenceContext(unitName = "pl.turek.liceum.rentit_RentIt_war_PU")

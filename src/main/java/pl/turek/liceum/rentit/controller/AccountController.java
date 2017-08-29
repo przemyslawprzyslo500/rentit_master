@@ -1,9 +1,6 @@
 package pl.turek.liceum.rentit.controller;
 
 import pl.turek.liceum.rentit.model.Account;
-import javax.annotation.Resource;
-import javax.ejb.EJB;
-import javax.ejb.SessionContext;
 import pl.turek.liceum.rentit.facade.AccountFacade;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;

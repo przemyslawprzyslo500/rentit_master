@@ -73,8 +73,8 @@ public class KontoSession implements Serializable {
         return "success";
     }
 
-    public String zmienMojeHaslo(String stare, String nowe) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        kontoEndpoint.zmienMojeHaslo(stare, nowe);
+    public String zmienMojeHaslo(String nowe) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        kontoEndpoint.zmienMojeHaslo(nowe);
         return "success";
     }
 

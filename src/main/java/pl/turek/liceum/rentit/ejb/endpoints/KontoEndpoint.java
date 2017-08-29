@@ -70,12 +70,9 @@ public class KontoEndpoint extends AbstractEndpoint implements SessionSynchroniz
         kontoStan = null;
     }
 
-    public void zmienMojeHaslo(String stare, String nowe) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    public void zmienMojeHaslo(String nowe) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         Account mojeKonto = pobierzMojeKonto();
-        if (!mojeKonto.getPassword().equals(KontoUtils.wyliczSkrotHasla(stare))) {
-            throw new IllegalArgumentException("Podane dotychczasowe hasło nie zgadza się");
-        }
-        mojeKonto.setPassword(KontoUtils.wyliczSkrotHasla(nowe));
+        mojeKonto.setHashPassword(nowe);
     }
 
     public void zmienHaslo(Account konto, String haslo) throws NoSuchAlgorithmException, UnsupportedEncodingException {

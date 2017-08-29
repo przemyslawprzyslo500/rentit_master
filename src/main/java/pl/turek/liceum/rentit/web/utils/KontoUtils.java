@@ -21,14 +21,17 @@ public class KontoUtils {
         
         if (null == zrodlo || null == cel) return;
         
-        System.out.println("KontoUtils-PrzepiszDanePoEdycji_przed");
         cel.setName(zrodlo.getName());
         cel.setSurname(zrodlo.getSurname());
         cel.setEmail(zrodlo.getEmail());
         cel.setPhone(zrodlo.getPhone());
-        cel.setPassword(hashPassword(zrodlo.getPassword()));
+        System.out.println("przepisz dane konta CEL:" + cel.getPassword());
+        System.out.println("przepisz dane konta ZRODLO:" + zrodlo.getPassword());
+        System.out.println("przepisz dane konta ZRODLO po Hash:" + hashPassword(zrodlo.getPassword()));
+        if (!zrodlo.getPassword().equals(cel.getHashPassword())){
+            cel.setPassword(hashPassword(zrodlo.getPassword()));
+        }
         cel.setAccountFunction(zrodlo.getAccountFunction());
-        System.out.println("KontoUtils-PrzepiszDanePoEdycji_po");
     }
     
     public static String wyliczSkrotHasla(String hasloJawne){

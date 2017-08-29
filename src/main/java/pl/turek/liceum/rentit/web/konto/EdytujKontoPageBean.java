@@ -19,17 +19,11 @@ import pl.turek.liceum.rentit.model.Account;
  * @author java
  */
 @ManagedBean(name = "edytujKontoPageBean")
-//@RequestScoped
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
 @SessionScoped
+
 public class EdytujKontoPageBean implements Serializable{
 
-//    @EJB
-//    private AccountFacade accountFacade;
-    
-//    @Resource
-//    private SessionContext context;
-    
     public EdytujKontoPageBean() {
     }
 
@@ -57,11 +51,4 @@ public class EdytujKontoPageBean implements Serializable{
 //        kontoSession.pobierzMojeKonto();
         return kontoSession.zapiszKontoPoEdycji(konto);
     }
-//    public Account pobierzKontoDoEdycji(){
-//        return kontoSession.pobierzMojeKonto();
-//    }
-
-//    public Account pobierzMojeKonto() {
-//        return accountFacade.findByName(context.getCallerPrincipal().getName());
-//    }
 }
