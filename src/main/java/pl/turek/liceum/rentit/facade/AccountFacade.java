@@ -22,7 +22,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.transaction.Transactional;
 import pl.turek.liceum.rentit.model.Reserv;
 import pl.turek.liceum.rentit.ejb.interceptor.LoggingInterceptor;
 import pl.turek.liceum.rentit.ejb.interceptor.PerformanceInterceptor;

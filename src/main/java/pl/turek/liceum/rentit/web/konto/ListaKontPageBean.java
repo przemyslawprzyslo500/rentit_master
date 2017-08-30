@@ -71,7 +71,6 @@ public class ListaKontPageBean {
 
     @PostConstruct
     private void initModel() {
-        konta = kontoSession.dopasujKonta(szukanyLogin, szukaneImie, szukaneNazwisko, szukanyEmail);
         kontaDataModel = new ListDataModel<Account>(konta);
     }
     @ManagedProperty(value = "#{kontoSession}")

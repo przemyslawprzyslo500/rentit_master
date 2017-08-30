@@ -4,7 +4,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
-import javax.ejb.EJBException;
 import javax.ejb.SessionContext;
 
 abstract public class AbstractEndpoint {
@@ -14,7 +13,6 @@ abstract public class AbstractEndpoint {
     protected static final Logger LOGGER = Logger.getGlobal();
     private String transactionId;
 
-    // Przywróć "wykomentowane" linie aby uzyskać prostą implementację SessionSynchronization
     public void afterBegin() {
         transactionId = Long.toString(System.currentTimeMillis())
                 + ThreadLocalRandom.current().nextLong(Long.MAX_VALUE);

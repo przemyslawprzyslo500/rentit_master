@@ -16,9 +16,7 @@ import pl.turek.liceum.rentit.model.Account;
 @Named(value = "accountDTO")
 @SessionScoped
 public class AccountDTO {
-//    private Integer id;
     private String accountFunction;
-//    private boolean active;
     private String email;
     private String login;
     private String name;
@@ -29,7 +27,6 @@ public class AccountDTO {
     
     public AccountDTO(String accountFunction, boolean active, String email, String login, String name, String password, String phone, String surname) {
         this.accountFunction = accountFunction;
-//        this.active = active;
         this.email = email;
         this.login = login;
         this.name = name;
@@ -40,7 +37,6 @@ public class AccountDTO {
 
     public void init(){
         accountFunction=currentAccount.getAccountFunction();
-//        active=currentAccount.getActive();
         email=currentAccount.getEmail();
         login=currentAccount.getLogin();
         name=currentAccount.getName();
@@ -57,14 +53,6 @@ public class AccountDTO {
     public void setAccountFunction(String accountFunction) {
         this.accountFunction = accountFunction;
     }
-
-//    public boolean getActive() {
-//        return active;
-//    }
-
-//    public void setActive(boolean active) {
-//        this.active = active;
-//    }
 
     public String getEmail() {
         return email;

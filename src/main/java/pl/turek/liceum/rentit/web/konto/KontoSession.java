@@ -4,14 +4,11 @@ import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import pl.turek.liceum.rentit.ejb.endpoints.KontoEndpoint;
 import pl.turek.liceum.rentit.exception.AppBaseException;
-import pl.turek.liceum.rentit.exception.KontoException;
 import pl.turek.liceum.rentit.model.Account;
 import pl.turek.liceum.rentit.web.utils.ContextUtils;
 
@@ -68,11 +65,6 @@ public class KontoSession implements Serializable {
         return "success";
     }
 
-    public String zmienHasloKonta(String haslo) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        kontoEndpoint.zmienHaslo(kontoZmienHaslo, haslo);
-        return "success";
-    }
-
     public String zmienMojeHaslo(String nowe) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         kontoEndpoint.zmienMojeHaslo(nowe);
         return "success";
@@ -80,10 +72,6 @@ public class KontoSession implements Serializable {
 
     public List<Account> pobierzWszystkieKonta() {
         return kontoEndpoint.pobierzWszystkieKonta();
-    }
-
-    public List<Account> dopasujKonta(String loginWzor, String imieWzor, String nazwiskoWzor, String emailWzor) {
-        return kontoEndpoint.dopasujKonta(loginWzor, imieWzor, nazwiskoWzor, emailWzor);
     }
 
     public Account pobierzMojeKonto() {

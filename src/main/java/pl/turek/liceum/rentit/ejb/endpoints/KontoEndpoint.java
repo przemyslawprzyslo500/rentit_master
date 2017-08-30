@@ -27,23 +27,12 @@ public class KontoEndpoint extends AbstractEndpoint implements SessionSynchroniz
 
     private Account kontoStan;
 
-
     public Account pobierzMojeKonto() {
         return kontoFacade.znajdzLogin(sctx.getCallerPrincipal().getName());
     }
 
-    public void utworzKonto(Account konto) throws AppBaseException, NoSuchAlgorithmException, UnsupportedEncodingException {
-        // Konto ma hasło jawne podane w formularzu, należy je przeliczyć na skrót
-        konto.setPassword(KontoUtils.wyliczSkrotHasla(konto.getPassword()));
-        kontoFacade.create(konto);
-    }
-
     public List<Account> pobierzWszystkieKonta() {
         return kontoFacade.findAll();
-    }
-
-    public List<Account> dopasujKonta(String loginWzor, String imieWzor, String nazwiskoWzor, String emailWzor) {
-        return kontoFacade.dopasujKonta(loginWzor, imieWzor, nazwiskoWzor, emailWzor);
     }
 
     public Account znajdzLogin(String login) {
@@ -62,11 +51,8 @@ public class KontoEndpoint extends AbstractEndpoint implements SessionSynchroniz
         if (!kontoStan.equals(konto)) {
             throw new IllegalArgumentException("Modyfikowane konto niezgodne z wczytanym");
         }
-        // Przepisz te dane konta, które podlegają edycji (sa dostepne na formularzu)
         KontoUtils.przepiszDanePoEdycji(konto, kontoStan);
-        //wykonej merge() na encji Konto, aby weszła ona w stan zarządzany przez obecny kontekst trwalości
         kontoFacade.edit(kontoStan);
-        //usuń stan konta po zakończonej operacji - unika błędnego wielokrotnego wykonania
         kontoStan = null;
     }
 
@@ -74,10 +60,4 @@ public class KontoEndpoint extends AbstractEndpoint implements SessionSynchroniz
         Account mojeKonto = pobierzMojeKonto();
         mojeKonto.setHashPassword(nowe);
     }
-
-    public void zmienHaslo(Account konto, String haslo) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        Account k = kontoFacade.find(konto.getId());
-        k.setPassword(KontoUtils.wyliczSkrotHasla(haslo));
-    }
-
 }
